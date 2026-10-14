@@ -437,5 +437,26 @@ document.getElementById('toggle').onclick=()=>document.getElementById('panel').c
 map.fitBounds(qs.get('view')==='all'?allB:indoB,{paddingTopLeft:padTL(),paddingBottomRight:padBR()});
 setActive(key(hereStop));
 </script>
+
+<style>
+.cam{width:30px;height:30px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.5);border:2px solid #ff8fb1}
+.pgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px;max-height:300px;overflow:auto;width:280px}
+.pgal img{width:100%;height:84px;object-fit:cover;border-radius:6px;cursor:zoom-in}
+#plb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;place-items:center;z-index:99999;cursor:zoom-out}
+#plb img{max-width:95vw;max-height:92vh;border-radius:8px}
+</style>
+<div id="plb" onclick="this.style.display='none'"><img alt=""></div>
+<script>
+(function(){const G=[{"stop": 7, "place": "Sanur, Bali", "ll": [-8.7058, 115.2557], "photos": [{"src": "photos/01f03b1c8ab4.jpg", "thumb": "photos/01f03b1c8ab4_t.jpg", "date": "2026-10-12"}]}];
+const lb=document.getElementById('plb');
+window.openPhoto=src=>{lb.querySelector('img').src=src;lb.style.display='grid';};
+G.forEach(g=>{
+  const ll=[g.ll[0]+0.004,g.ll[1]+0.004];
+  const html='<b>📷 '+g.place+'</b> · '+g.photos.length+' photo'+(g.photos.length>1?'s':'')+
+    '<div class="pgal">'+g.photos.map(p=>'<a href="'+p.src+'" onclick="openPhoto(this.href);return false"><img loading="lazy" src="'+p.thumb+'" alt="'+(p.date||'')+'"></a>').join('')+'</div>';
+  L.marker(ll,{zIndexOffset:3000,icon:L.divIcon({className:'',iconSize:[30,30],iconAnchor:[15,15],html:'<div class="cam">📷</div>'})})
+   .addTo(map).bindPopup(html,{maxWidth:300});
+});})();
+</script>
 </body>
 </html>
