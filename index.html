@@ -439,24 +439,36 @@ setActive(key(hereStop));
 </script>
 
 <style>
-.cam{width:30px;height:30px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.5);border:2px solid #ff8fb1}
-.pgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px;max-height:300px;overflow:auto;width:280px}
+.cam{position:relative;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ff8a3d,#ff3d8b);display:grid;place-items:center;font-size:20px;line-height:1;border:3px solid #fff;box-shadow:0 0 0 3px rgba(255,61,139,.35),0 4px 12px rgba(0,0,0,.6);animation:campulse 2s infinite}
+.cam b{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:#fff;color:#e0245e;font:800 11px/18px Inter,sans-serif;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.5)}
+@keyframes campulse{0%,100%{box-shadow:0 0 0 3px rgba(255,61,139,.35),0 4px 12px rgba(0,0,0,.6)}50%{box-shadow:0 0 0 9px rgba(255,61,139,.12),0 4px 12px rgba(0,0,0,.6)}}
+#bPhotos{position:absolute;z-index:1000;right:12px;top:calc(env(safe-area-inset-top,0px) + 70px);padding:10px 16px;border:0;border-radius:22px;background:linear-gradient(135deg,#ff8a3d,#ff3d8b);color:#fff;font:700 15px Inter,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.5);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.pgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px;max-height:300px;overflow:auto;width:min(260px,70vw)}
 .pgal img{width:100%;height:84px;object-fit:cover;border-radius:6px;cursor:zoom-in}
-#plb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;place-items:center;z-index:99999;cursor:zoom-out}
-#plb img{max-width:95vw;max-height:92vh;border-radius:8px}
+#plb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;place-items:center;z-index:99999;cursor:zoom-out}
+#plb img{max-width:96vw;max-height:90vh;border-radius:8px}
 </style>
 <div id="plb" onclick="this.style.display='none'"><img alt=""></div>
 <script>
 (function(){const G=[{"stop": 6, "place": "Nusa Lembongan \u00b7 Jungutbatu", "ll": [-8.6698, 115.4471], "photos": [{"src": "photos/01f03b1c8ab4.jpg", "thumb": "photos/01f03b1c8ab4_t.jpg", "date": "2026-10-12"}]}];
 const lb=document.getElementById('plb');
 window.openPhoto=src=>{lb.querySelector('img').src=src;lb.style.display='grid';};
-G.forEach(g=>{
-  const ll=[g.ll[0]+0.004,g.ll[1]+0.004];
-  const html='<b>📷 '+g.place+'</b> · '+g.photos.length+' photo'+(g.photos.length>1?'s':'')+
+const pins=G.map(g=>{
+  const n=g.photos.length;
+  const html='<b>📷 '+g.place+'</b> · '+n+' photo'+(n>1?'s':'')+
     '<div class="pgal">'+g.photos.map(p=>'<a href="'+p.src+'" onclick="openPhoto(this.href);return false"><img loading="lazy" src="'+p.thumb+'" alt="'+(p.date||'')+'"></a>').join('')+'</div>';
-  L.marker(ll,{zIndexOffset:3000,icon:L.divIcon({className:'',iconSize:[30,30],iconAnchor:[15,15],html:'<div class="cam">📷</div>'})})
-   .addTo(map).bindPopup(html,{maxWidth:300});
-});})();
+  // fixed pixel offset: badge sits up-right of the stop marker at every zoom (anchor outside the icon box)
+  return L.marker(g.ll,{zIndexOffset:10000,riseOnHover:true,icon:L.divIcon({className:'',iconSize:[40,40],iconAnchor:[-6,52],popupAnchor:[26,-52],
+     html:'<div class="cam">📷<b>'+n+'</b></div>'})}).addTo(map).bindPopup(html,{maxWidth:290,autoPanPadding:[20,80]});
+});
+if(!pins.length) return;
+const btn=document.createElement('button');btn.id='bPhotos';btn.type='button';btn.textContent='📷 Photos';
+document.body.appendChild(btn);
+btn.onclick=e=>{e.stopPropagation();
+  if(pins.length===1){map.once('moveend',()=>pins[0].openPopup());map.flyTo(pins[0].getLatLng(),13,{duration:1.2});}
+  else map.flyToBounds(L.latLngBounds(pins.map(p=>p.getLatLng())).pad(.3),{duration:1.4,maxZoom:12});
+};
+})();
 </script>
 </body>
 </html>
