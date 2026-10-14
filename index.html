@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1222">
+<title>Gino &amp; Mary's Indonesia Adventure 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.min.js"></script>
+<style>
+:root{
+  --bg:#0a1222; --panel:rgba(12,20,38,.86); --line:rgba(255,255,255,.08);
+  --text:#e9eef7; --muted:#8c9ab3; --done:#6d7d99; --now:#ff6b6b; --booked:#2fd8c4;
+  --tent:#b7bfcc; --flight:#ffc857; --boat:#36c9ff; --live:#7c8cff; --ground:#ff8fb1;
+  --accent:#2fd8c4; --pend:#ffa94d;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+#map{position:absolute;inset:0;background:#08101e}
+.leaflet-container{font-family:Inter,system-ui,sans-serif}
+
+/* ---------- panel ---------- */
+#panel{position:absolute;z-index:1000;top:16px;left:16px;bottom:16px;width:370px;display:flex;flex-direction:column;
+  background:var(--panel);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);
+  border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.45);overflow:hidden}
+#panel header{padding:20px 20px 12px}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;line-height:1.08;margin:6px 0 4px;letter-spacing:-.01em}
+h1 em{font-style:normal;background:linear-gradient(90deg,#2fd8c4,#36c9ff 50%,#7c8cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:12.5px;line-height:1.45}
+.progress{margin:14px 0 4px;position:relative;height:6px;border-radius:6px;background:rgba(255,255,255,.08)}
+.progress i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,#2fd8c4,#36c9ff)}
+.progress b{position:absolute;top:-4px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--now);box-shadow:0 0 0 4px rgba(255,107,107,.25)}
+.progress-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+.btns{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);font:600 12px Inter,sans-serif;padding:7px 11px;border-radius:999px;cursor:pointer;transition:.2s}
+.btn:hover{background:rgba(47,216,196,.15);border-color:rgba(47,216,196,.5)}
+.btn.now{border-color:rgba(255,107,107,.5);color:#ffb3b3}
+#list{flex:1;overflow-y:auto;padding:4px 10px 12px;scrollbar-width:thin;scrollbar-color:#2a3550 transparent}
+.gap{margin:6px 10px 6px 46px;padding:8px 10px;border:1px dashed rgba(255,255,255,.18);border-radius:10px;font-size:11.5px;color:var(--muted)}
+.item{display:flex;gap:12px;align-items:flex-start;padding:10px;border-radius:14px;cursor:pointer;position:relative;transition:background .2s}
+.item:hover{background:rgba(255,255,255,.05)}
+.item.active{background:rgba(47,216,196,.10);box-shadow:inset 0 0 0 1px rgba(47,216,196,.35)}
+.item:not(:last-child)::after{content:"";position:absolute;left:24px;top:42px;bottom:-10px;width:2px;background:rgba(255,255,255,.07)}
+.num{flex:0 0 30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 12.5px Inter,sans-serif;color:#0a1222;position:relative;z-index:1}
+.s-done .num{background:var(--done);color:#e4e9f2}
+.s-now .num{background:var(--now);box-shadow:0 0 0 4px rgba(255,107,107,.25)}
+.s-booked .num{background:var(--booked)}
+.s-tentative .num{background:transparent;color:var(--tent);border:2px dashed var(--tent)}
+.s-pending .num{background:rgba(255,169,77,.14);color:#ffc58a;border:2px dashed var(--pend)}
+.s-end .num{background:#1b2742;color:var(--text);border:1px solid #2f3d5e;font-size:13px}
+.meta{min-width:0;flex:1}
+.place{font-weight:600;font-size:14px;line-height:1.25}
+.prop{font-size:12.5px;color:#c4cde0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dates{font-size:11.5px;color:var(--muted);margin-top:2px}
+.s-done .place,.s-done .prop{color:#9fabc2}
+.badge{display:inline-block;font:700 9.5px Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase;padding:3px 7px;border-radius:999px;vertical-align:middle;margin-left:4px}
+.b-done{background:rgba(109,125,153,.22);color:#aab6cc}
+.b-now{background:rgba(255,107,107,.18);color:#ff9a9a}
+.b-booked{background:rgba(47,216,196,.16);color:#5ff0de}
+.b-tentative{background:transparent;color:#d7dce5;border:1px dashed #9aa4b2}
+.b-pending{background:rgba(255,169,77,.16);color:#ffc58a;border:1px dashed rgba(255,169,77,.7)}
+.b-opt{background:transparent;color:#aeb6c4;border:1px dotted #8792a3}
+.b-end{background:rgba(255,255,255,.08);color:#c9d2e3}
+#legend{border-top:1px solid var(--line);padding:12px 18px 14px;font-size:11.5px;color:#c4cde0;display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+#legend .k{display:flex;align-items:center;gap:8px}
+#legend svg{flex:0 0 34px}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:0 0 12px}
+.foot{font-size:10.5px;color:#5d6b86;padding:0 18px 12px}
+
+/* ---------- markers ---------- */
+.pin{width:30px;height:30px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);display:grid;place-items:center;
+  box-shadow:0 6px 16px rgba(0,0,0,.5);border:2px solid rgba(255,255,255,.85);transition:transform .2s}
+.pin span{transform:rotate(45deg);font:700 12px Inter,sans-serif}
+.pin.done{background:#55647f;border-color:#a8b3c7}.pin.done span{color:#e8edf5}
+.pin.now{background:var(--now)}.pin.now span{color:#fff}
+.pin.booked{background:var(--booked)}.pin.booked span{color:#06231f}
+.pin.tentative{background:rgba(40,48,64,.85);border:2px dashed #cfd6e2}.pin.tentative span{color:#e2e7ef}
+.pin.pending{background:rgba(70,44,14,.9);border:2px dashed var(--pend)}.pin.pending span{color:#ffd2a1}
+.pin.side{width:24px;height:24px;opacity:.9}.pin.side span{font-size:10.5px}
+.leaflet-marker-icon:hover .pin{transform:rotate(-45deg) scale(1.12)}
+.endpt{width:16px;height:16px;transform:rotate(45deg);background:#1b2742;border:2px solid #dfe6f3;border-radius:3px;box-shadow:0 4px 10px rgba(0,0,0,.5)}
+.waypt{width:10px;height:10px;border-radius:50%;background:#0a1222;border:2px solid var(--flight)}
+.here{position:relative;width:22px;height:22px}
+.here .core{position:absolute;inset:5px;border-radius:50%;background:#ff6b6b;border:2px solid #fff;box-shadow:0 0 12px #ff6b6b}
+.here .ring{position:absolute;inset:0;border-radius:50%;border:2px solid #ff6b6b;animation:pulse 2s ease-out infinite}
+.here .ring.r2{animation-delay:1s}
+@keyframes pulse{0%{transform:scale(.6);opacity:1}100%{transform:scale(4.2);opacity:0}}
+.here-label{position:absolute;left:28px;top:-2px;white-space:nowrap;font:700 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  background:#ff6b6b;color:#fff;padding:4px 8px;border-radius:999px;box-shadow:0 4px 14px rgba(255,107,107,.5)}
+
+/* ---------- popup ---------- */
+.leaflet-popup-content-wrapper{background:rgba(13,21,40,.96);color:var(--text);border-radius:16px;border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.leaflet-popup-tip{background:rgba(13,21,40,.96)}
+.leaflet-popup-content{margin:0;width:280px!important}
+.leaflet-container a.leaflet-popup-close-button{color:#8c9ab3;top:8px;right:8px}
+.card{padding:16px 18px 14px}
+.card .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.card h3{font-family:Fraunces,Georgia,serif;font-size:19px;margin:0;line-height:1.15}
+.card .prop{font-size:13.5px;color:#dfe6f3;white-space:normal;font-weight:600;margin-bottom:6px}
+.card .row{font-size:12.5px;color:#b8c3d8;margin:3px 0}
+.card .note{font-size:12.5px;color:#c9d2e3;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08);line-height:1.45}
+.card a.web{display:inline-block;margin-top:10px;font-weight:600;font-size:12.5px;color:#5ff0de;text-decoration:none}
+.card a.web:hover{text-decoration:underline}
+.card .nav{display:flex;justify-content:space-between;margin-top:10px}
+.card .nav button{background:none;border:1px solid rgba(255,255,255,.12);color:#c9d2e3;font:600 11px Inter;padding:5px 10px;border-radius:999px;cursor:pointer}
+.card .nav button:disabled{opacity:.3;cursor:default}
+.leaflet-tooltip.legtip{background:rgba(13,21,40,.95);color:#e9eef7;border:1px solid rgba(255,255,255,.12);border-radius:10px;font:500 12px Inter;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.leaflet-tooltip.legtip:before{display:none}
+.leaflet-control-layers{background:rgba(13,21,40,.9)!important;color:#e9eef7;border:1px solid rgba(255,255,255,.1)!important;border-radius:12px!important}
+.leaflet-control-zoom a{background:rgba(13,21,40,.9)!important;color:#e9eef7!important;border-color:rgba(255,255,255,.1)!important}
+.leaflet-control-attribution{background:rgba(10,18,34,.75)!important;color:#7d8aa3!important}
+.leaflet-control-attribution a{color:#9fb3d6!important}
+#toggle{display:none}
+
+/* ---------- mobile: bottom sheet ---------- */
+@media (max-width:760px){
+  #panel{top:auto;left:0;right:0;bottom:0;width:auto;max-height:52vh;border-radius:20px 20px 0 0;transition:max-height .35s ease;padding-bottom:env(safe-area-inset-bottom)}
+  #panel.collapsed{max-height:150px}
+  #panel header{padding:10px 16px 8px}
+  h1{font-size:22px}
+  .sub{display:none}
+  #toggle{display:block;width:44px;height:5px;border-radius:5px;background:rgba(255,255,255,.25);margin:8px auto 0;border:0;padding:0;cursor:pointer}
+  #legend{grid-template-columns:1fr 1fr;font-size:10.5px;padding:10px 14px}
+  .foot{display:none}
+  .leaflet-top.leaflet-right{top:env(safe-area-inset-top)}
+  .leaflet-popup-content{width:250px!important}
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<aside id="panel">
+  <button id="toggle" aria-label="Expand or collapse list"></button>
+  <header>
+    <div class="eyebrow">Singapore · Bali · Komodo · Ambon · Banda · Raja Ampat</div>
+    <h1>Gino &amp; Mary's <em>Indonesia Adventure 2026</em></h1>
+    <div class="sub">Sep 18 → Dec 19, 2026 · Sarasota to New York the long way round. Tap a stop to fly there.</div>
+    <div class="progress"><i id="pfill"></i><b id="pdot"></b></div>
+    <div class="progress-meta"><span>Sep 18</span><span id="pday"></span><span>Dec 19</span></div>
+    <div class="btns">
+      <button class="btn now" id="bNow">● You are here</button>
+      <button class="btn" id="bIndo">Indonesia</button>
+      <button class="btn" id="bAll">Whole trip</button>
+    </div>
+  </header>
+  <div id="list"></div>
+  <div id="legend"></div>
+  <div class="foot">Dates are local. Booked = confirmed. Pending = needed, not booked yet. Tentative = draft plan. Routes are approximate.</div>
+</aside>
+
+<script>
+/* =========================================================
+   TRIP DATA  (no booking codes, phone numbers, or IDs)
+   tentative:true  -> not booked (draft plan)
+   pending:true    -> needed and intended, but not booked yet
+   optional:true   -> optional side trip
+   ========================================================= */
+const STOPS = [
+  {id:'srq', kind:'start', place:'Sarasota, FL', prop:'Trip start', ll:[27.3954,-82.5544],
+   start:'2026-09-18', end:'2026-09-18', dateText:'Depart Fri Sep 18', note:'Home base. UA1343 Sarasota → Newark at 06:05.'},
+  {n:1, place:'Newark, NJ area', prop:'Lodging not on file', ll:[40.7357,-74.1724],
+   start:'2026-09-18', end:'2026-09-21', note:'3 days with a Budget rental car from EWR before the long-haul flight out.'},
+  {id:'ams', kind:'waypoint', place:'Amsterdam (AMS)', prop:'Connection', ll:[52.3105,4.7683],
+   start:'2026-09-22', end:'2026-09-22', dateText:'Tue Sep 22 · day layover', note:'UA70 lands 07:15; SQ333 Business to Singapore leaves 20:35.'},
+  {n:2, place:'Singapore · Chinatown', prop:'Aura Opera House Chinatown', ll:[1.2827,103.8441],
+   start:'2026-09-23', end:'2026-09-25', web:'https://theoperahouse.sg/',
+   note:'Heritage hotel on the old Lai Chun Yuen opera house site. (No lodging on file for the night of Sep 25 before the 06:20 flight.)'},
+  {n:3, place:'Ubud, Bali', prop:'Arana Garden Ubud', ll:[-8.5128,115.2655],
+   start:'2026-09-26', end:'2026-10-01',
+   note:'Garden guesthouse in central Ubud. 2 nights booked + 3 extended on the spot. Monkey Forest Sep 27.'},
+  {n:4, place:'Sanur, Bali', prop:'Duyung Homestay', ll:[-8.6812,115.2618],
+   start:'2026-10-01', end:'2026-10-02', note:'One night by the harbour before the fast boat to Lembongan.'},
+  {n:5, place:'Nusa Lembongan · Jungutbatu', prop:'Jiva Bungalow', ll:[-8.6762,115.4507],
+   start:'2026-10-02', end:'2026-10-04', note:'Bungalow with breakfast. Arrived on Rocky Fast Cruise from Sanur.'},
+  {n:6, place:'Nusa Lembongan · Jungutbatu', prop:'Blue Corner Dive', ll:[-8.6698,115.4471],
+   start:'2026-10-04', end:'2026-10-12', web:'https://www.bluecornerdive.com/nusa-lembongan',
+   note:'Dive resort, boats leave from the beach out front. Diving Nusa Penida &amp; Lembongan. Last night Sun Oct 11.'},
+  {n:7, place:'Sanur, Bali', prop:'Athaya Homestay Sanur', ll:[-8.7058,115.2557],
+   start:'2026-10-12', end:'2026-10-17', note:'Back on Bali between islands.'},
+  {n:8, place:'Labuan Bajo, Flores', prop:'Puri Sari Beach Hotel', ll:[-8.5072,119.8770],
+   start:'2026-10-17', end:'2026-10-19', web:'https://www.purisaribeachhotel.net/en/',
+   note:'Beach hotel on Pantai Pede. Arrive on Batik Air ID 6335 from Bali (lands 18:00).'},
+  {n:9, place:'Komodo National Park', prop:'Maria Seascape (liveaboard)', ll:[-8.4935,119.8800], live:true,
+   start:'2026-10-19', end:'2026-10-22', web:'https://amaredivers.com/liveaboard-maria-seascape/',
+   note:'Komodo liveaboard (Central &amp; North), LBJ → LBJ.'},
+  {n:10, place:'Labuan Bajo, Flores', prop:'Puri Sari Beach Hotel (Deluxe)', ll:[-8.5072,119.8770],
+   start:'2026-10-22', end:'2026-10-25', web:'https://www.purisaribeachhotel.net/en/',
+   note:'3 nights after Maria Seascape.'},
+  {n:11, place:'Makassar, Sulawesi', prop:'Swiss-Belhotel Waterfront Makassar', ll:[-5.1365,119.4072],
+   start:'2026-10-25', end:'2026-10-26', web:'https://www.swiss-belhotel.com/',
+   note:'One night on the waterfront. Arrive on Wings IW1911 (lands 14:30); very early start for the 06:15 Lion flight to Ambon.'},
+  {n:12, place:'Ambon · Natsepa area', prop:'Hotels TBD (e.g. The Natsepa)', ll:[-3.6230,128.2840], tentative:true,
+   start:'2026-10-26', end:'2026-11-04', web:'https://thenatsepa.com',
+   note:'Draft plan: Ambon base before Amaya, e.g. Ambon city first, then The Natsepa beach resort (near Tulehu port). Nothing booked. '},
+  {id:'saparua', kind:'side', optional:true, place:'Saparua Island (optional)', prop:'Side trip · e.g. Mahu Lodge', ll:[-3.5700,128.6700], tentative:true,
+   start:'2026-10-28', end:'2026-10-31',
+   note:'Optional side trip inside the Ambon stay: speedboat Tulehu → Haria (~1–1.5 h), 3 nights, back to Natsepa Oct 31. Fort Duurstede, reef dives. Not booked.'},
+  {n:13, place:'Ambon → Banda Sea → Raja Ampat', prop:'Amaya Explorer (liveaboard)', ll:[-3.6900,128.1680], live:true,
+   start:'2026-11-04', end:'2026-11-14', web:'https://www.amayaexplorer.com/',
+   note:'Phinisi liveaboard. Boarding port Ambon (08:00–10:00 WIT); disembark Sorong Nov 14 noon.'},
+  {n:14, place:'Sorong, West Papua', prop:'Hotel TBD', ll:[-0.8790,131.2600], tentative:true,
+   start:'2026-11-14', end:'2026-11-17', note:'Plan: stay ~Nov 14–17 in Sorong, then the 14:00 ferry to Waisai.'},
+  {n:15, place:'Raja Ampat · Waisai', prop:'Lodging TBD (Waisai / islands)', ll:[-0.4300,130.8150], tentative:true,
+   start:'2026-11-17', end:'2026-12-01', dateText:'Nov 17 → ~Nov 28–Dec 1 (draft)',
+   note:'Draft plan: Waisai base (e.g. Waiwo), then an island dive lodge or homestay (Mansuar / Kri). Back to Sorong ~Nov 28–Dec 1. Nothing booked.'},
+  {n:16, place:'Jakarta', prop:'Hotel TBD (night of Dec 17)', ll:[-6.1256,106.6559], tentative:true,
+   start:'2026-12-17', end:'2026-12-18', note:'Flight is booked: EgyptAir MS978 Business CGK T3 → Cairo, 00:50 Dec 18.'},
+  {n:17, place:'Cairo, Egypt', prop:'~22 h layover · hotel TBD', ll:[30.1219,31.4056], tentative:true,
+   start:'2026-12-18', end:'2026-12-19', note:'Arrive 07:10, leave 05:15 next day.'},
+  {id:'jfk', kind:'end', place:'New York (JFK)', prop:'Home stretch', ll:[40.6413,-73.7781],
+   start:'2026-12-19', end:'2026-12-19', dateText:'Arrive Sat Dec 19, 10:15', note:'EgyptAir MS985 Business Cairo → JFK T1.'}
+];
+
+/* Routes (rough). mode: flight | boat | live | ground */
+const P = {
+  SANUR_H:[-8.6795,115.2645], JUNG:[-8.6705,115.4455],
+  LBJ:[-8.4866,119.8887], UPG:[-5.0616,119.5540], AMQ:[-3.7103,128.0891],
+  TULEHU:[-3.5880,128.3260], HARIA:[-3.5850,128.6450], SORONG_H:[-0.8780,131.2480], WAISAI_H:[-0.4330,130.8140]
+};
+const MARIA_LOOP=[[-8.4935,119.8800],[-8.4985,119.7600],[-8.4600,119.6600],[-8.4200,119.5600],[-8.4050,119.5000],
+  [-8.4300,119.4650],[-8.4700,119.5750],[-8.5350,119.5980],[-8.5400,119.6400],[-8.5600,119.7100],[-8.5200,119.8200],[-8.4950,119.8790]];
+const AMAYA=[[-3.6900,128.1680],[-3.7600,128.0900],[-3.8600,128.3200],[-4.2000,129.2000],[-4.5250,129.8950],
+  [-4.2000,130.6000],[-3.9300,130.9200],[-3.2000,131.1500],[-2.1500,130.5800],[-1.6000,130.4500],
+  [-1.0500,130.2800],[-0.7500,130.3600],[-0.5600,130.6800],[-0.7400,131.0000],[-0.8760,131.2500]];
+const SARAPUA_SEA=[P.TULEHU,[-3.5650,128.4300],[-3.5600,128.5500],P.HARIA];
+
+const LEGS = [
+  {from:'srq', to:1, mode:'flight', date:'2026-09-18', label:'UA1343 Sarasota → Newark'},
+  {from:1, to:'ams', mode:'flight', date:'2026-09-21', label:'UA70 Newark → Amsterdam'},
+  {from:'ams', to:2, mode:'flight', date:'2026-09-22', label:'SQ333 Amsterdam → Singapore (Business)'},
+  {from:2, to:3, mode:'flight', date:'2026-09-26', label:'SQ934 Singapore → Bali, then drive to Ubud'},
+  {from:3, to:4, mode:'ground', date:'2026-10-01', label:'Drive Ubud → Sanur'},
+  {from:4, to:5, mode:'boat', date:'2026-10-02', via:[P.SANUR_H, P.JUNG], label:'Rocky Fast Cruise Sanur → Lembongan'},
+  {from:5, to:6, mode:'ground', date:'2026-10-04', label:'Move to Blue Corner'},
+  {from:6, to:7, mode:'boat', date:'2026-10-12', via:[P.JUNG, P.SANUR_H], label:'Rocky Fast Cruise Lembongan → Sanur · Mon Oct 12, 11:00 → 11:40 WITA'},
+  {from:7, to:8, mode:'flight', date:'2026-10-17', label:'Batik Air ID 6335 Bali → Labuan Bajo · Sat Oct 17, 16:45 → 18:00 WITA'},
+  {from:8, to:9, mode:'ground', date:'2026-10-19', label:'Transfer to the boat'},
+  {from:9, to:10, mode:'live', date:'2026-10-19', path:MARIA_LOOP, label:'Maria Seascape · Komodo Central &amp; North loop (rough)', liveRoute:true},
+  {from:10, to:11, mode:'flight', date:'2026-10-25', label:'Wings IW1911 Labuan Bajo → Makassar · Sun Oct 25, 12:50 → 14:30 WITA',
+   path:[P.LBJ,P.UPG], pre:[{mode:'ground',path:[[-8.5072,119.8770],P.LBJ]}], then:[{mode:'ground',path:[P.UPG,[-5.1365,119.4072]]}]},
+  {from:11, to:12, mode:'flight', date:'2026-10-26', label:'Lion Air JT888 Makassar → Ambon · Mon Oct 26, 06:15 WITA → 09:00 WIT',
+   path:[P.UPG,P.AMQ], pre:[{mode:'ground',path:[[-5.1365,119.4072],P.UPG]}], then:[{mode:'ground',path:[P.AMQ,[-3.6560,128.1900],[-3.6230,128.2840]]}]},
+  {from:12, to:'saparua', mode:'boat', date:'2026-10-28', tentative:true, optional:true, label:'Optional: speedboat Tulehu → Haria, Saparua',
+   pre:[{mode:'ground',path:[[-3.6230,128.2840],P.TULEHU]}], path:SARAPUA_SEA, then:[{mode:'ground',path:[P.HARIA,[-3.5700,128.6700]]}]},
+  {from:'saparua', to:12, mode:'boat', date:'2026-10-31', tentative:true, optional:true, label:'Optional: speedboat Saparua → Tulehu, back to Natsepa',
+   path:[[-3.5700,128.6700],P.HARIA,[-3.5900,128.5500],[-3.6000,128.4300],P.TULEHU,[-3.6230,128.2840]]},
+  {from:12, to:13, mode:'ground', date:'2026-11-04', tentative:true, label:'Pickup to Amaya Explorer (Ambon Bay)'},
+  {from:13, to:14, mode:'live', date:'2026-11-04', path:AMAYA, label:'Amaya Explorer · Ambon → Banda → Misool → Raja Ampat → Sorong (rough)', liveRoute:true},
+  {from:14, to:15, mode:'boat', date:'2026-11-17', tentative:true, label:'Draft: fast ferry Sorong → Waisai (14:00, ~2 h)', path:[P.SORONG_H,[-0.7400,131.0800],[-0.5600,130.9000],P.WAISAI_H]},
+  /* Raja Ampat → Sorong → Jakarta intentionally omitted (not yet planned) */
+  {from:16, to:17, mode:'flight', date:'2026-12-18', label:'EgyptAir MS978 Jakarta → Cairo (Business) · 00:50 Dec 18'},
+  {from:17, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'}
+];
+
+/* =========================================================
+   DATE / STATUS
+   ========================================================= */
+const qs=new URLSearchParams(location.search);
+const baliToday = qs.get('today') || new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Makassar'}).format(new Date());
+const D = s => new Date(s+'T00:00:00Z');
+const fmt = s => D(s).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+const fmtW = s => D(s).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',timeZone:'UTC'});
+const nights = s => Math.round((D(s.end)-D(s.start))/864e5);
+function statusOf(s){
+  const fut = s.pending?'pending':(s.tentative?'tentative':'booked');
+  if(s.kind==='start'||s.kind==='end'||s.kind==='waypoint') return s.end<baliToday?'done':fut;
+  if(s.end<=baliToday) return 'done';
+  if(s.start<=baliToday && baliToday<s.end) return 'now';
+  return fut;
+}
+const LABEL={done:'Done',now:'Now',booked:'Booked',tentative:'Tentative',pending:'Pending'};
+const numOf = s => s.n ?? (s.kind==='end'?'⚑':(s.kind==='start'?'⌂':(s.kind==='side'?'S':'✈')));
+const cls = s => (s.n||s.kind==='side')?s.status:'end';
+const key = s => s.n ?? s.id;
+const byKey = k => STOPS.find(s => key(s)===k);
+STOPS.forEach(s=>s.status=statusOf(s));
+
+/* =========================================================
+   MAP
+   ========================================================= */
+const map = L.map('map',{zoomControl:false,worldCopyJump:false,minZoom:2,zoomSnap:.25});
+L.control.zoom({position:'topright'}).addTo(map);
+const ESRI='https://server.arcgisonline.com/ArcGIS/rest/services/';
+const darkBase = L.tileLayer(ESRI+'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,
+  attribution:'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors, and the GIS User Community'});
+const darkRef = L.tileLayer(ESRI+'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,opacity:.8});
+const dark = L.layerGroup([darkBase,darkRef]);
+const sat = L.tileLayer(ESRI+'World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,
+  attribution:'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community'});
+const ocean = L.tileLayer(ESRI+'Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:13,
+  attribution:'Tiles &copy; Esri &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'});
+dark.addTo(map);
+L.control.layers({'Dark':dark,'Satellite (Esri)':sat,'Ocean (Esri)':ocean},null,{position:'topright'}).addTo(map);
+
+const COLOR={flight:'#ffc857',boat:'#36c9ff',live:'#7c8cff',ground:'#ff8fb1'};
+const TENT='#aeb6c4';
+
+function arc(a,b){ // curved great-ish arc in lat/lng space (quadratic bezier)
+  const [y1,x1]=a,[y2,x2]=b, dx=x2-x1, dy=y2-y1, d=Math.hypot(dx,dy);
+  const k=Math.min(.22, .12+ d/900), mx=(x1+x2)/2 - dy*k, my=(y1+y2)/2 + dx*k;
+  const pts=[]; for(let t=0;t<=1.0001;t+=1/64){const u=1-t; pts.push([u*u*y1+2*u*t*my+t*t*y2, u*u*x1+2*u*t*mx+t*t*x2]);}
+  return pts;
+}
+function smooth(pts,it=3){ // Chaikin
+  for(let i=0;i<it;i++){const o=[pts[0]];for(let j=0;j<pts.length-1;j++){const[a,b]=[pts[j],pts[j+1]];
+    o.push([.75*a[0]+.25*b[0],.75*a[1]+.25*b[1]],[.25*a[0]+.75*b[0],.25*a[1]+.75*b[1]]);}o.push(pts[pts.length-1]);pts=o;}
+  return pts;
+}
+const legLayer=L.layerGroup().addTo(map);
+function drawSeg(mode,pts,leg){
+  const past = leg.date < baliToday && !leg.tentative;
+  const tent = !!leg.tentative;
+  const col = tent?TENT:COLOR[mode];
+  let path = mode==='flight' ? arc(pts[0],pts[pts.length-1]) : (pts.length>2?smooth(pts):pts);
+  const style={color:col,weight:mode==='live'?3.5:(mode==='flight'?2.2:3),opacity:past?.38:(tent?.75:.95),lineCap:'round'};
+  if(mode==='flight') style.dashArray = tent?'2 8':'7 7';
+  else if(leg.optional) {style.dashArray='1 7'; style.opacity=.7;}
+  else if(tent) style.dashArray='4 8';
+  else if(mode==='live') style.dashArray='14 6 2 6';
+  // glow underlay for upcoming booked legs
+  if(!past && !tent) L.polyline(path,{color:col,weight:style.weight+6,opacity:.12,interactive:false}).addTo(legLayer);
+  const pl=L.polyline(path,style).addTo(legLayer)
+    .bindTooltip(`${leg.optional?'<b style="color:#d7dce5">OPTIONAL</b> · ':(tent?'<b style="color:#d7dce5">TENTATIVE</b> · ':'')}${leg.label}<br><span style="color:#8c9ab3">${fmtW(leg.date)}${past?' · done':''}</span>`,{sticky:true,className:'legtip'});
+  pl.on('mouseover',()=>pl.setStyle({weight:style.weight+2}));pl.on('mouseout',()=>pl.setStyle({weight:style.weight}));
+  if(L.polylineDecorator){
+    const rep = mode==='flight'?'50%':(mode==='live'?'12%':'55%');
+    L.polylineDecorator(path,{patterns:[{offset:mode==='live'?'6%':'50%',repeat:mode==='live'?rep:0,
+      symbol:L.Symbol.arrowHead({pixelSize:mode==='flight'?9:8,polygon:true,
+        pathOptions:{color:col,fillColor:col,fillOpacity:past?.45:(tent?.7:1),opacity:0,weight:0}})}]}).addTo(legLayer);
+  }
+}
+LEGS.forEach(leg=>{
+  const a=byKey(leg.from).ll, b=byKey(leg.to).ll;
+  (leg.pre||[]).forEach(s=>drawSeg(s.mode,s.path,leg));
+  const main = leg.path || (leg.via?[a,...leg.via,b]:[a,b]);
+  drawSeg(leg.mode,main,leg);
+  (leg.then||[]).forEach(s=>drawSeg(s.mode,s.path,leg));
+});
+
+/* ---------- markers ---------- */
+const markers={};
+function cardHTML(s){
+  const st=s.status, idx=ORDER.indexOf(key(s));
+  const dt = s.dateText || `${fmtW(s.start)} → ${fmtW(s.end)} · ${nights(s)} night${nights(s)===1?'':'s'}`;
+  const numHtml = `<div class="num" style="flex:0 0 30px">${numOf(s)}</div>`;
+  return `<div class="card s-${cls(s)}">
+    <div class="top">${numHtml}<div><h3>${s.place}</h3></div></div>
+    <div class="prop">${s.prop}</div>
+    <div class="row">📅 ${dt}</div>
+    <div class="row">Status: <span class="badge b-${st}">${LABEL[st]}</span>${s.live?' <span class="badge b-end">Liveaboard</span>':''}${s.optional?' <span class="badge b-opt">Optional</span>':''}</div>
+    <div class="note">${s.note}</div>
+    ${s.web?`<a class="web" href="${s.web}" target="_blank" rel="noopener">Website ↗</a>`:''}
+    <div class="nav"><button ${idx<=0?'disabled':''} onclick="go(ORDER[${idx-1}])">‹ Prev</button><button ${idx>=ORDER.length-1?'disabled':''} onclick="go(ORDER[${idx+1}])">Next ›</button></div>
+  </div>`;
+}
+const ORDER = STOPS.map(key);
+STOPS.forEach(s=>{
+  let icon;
+  if(s.n) icon=L.divIcon({className:'',html:`<div class="pin ${s.status}"><span>${s.n}</span></div>`,iconSize:[30,30],iconAnchor:[15,36],popupAnchor:[0,-34]});
+  else if(s.kind==='side') icon=L.divIcon({className:'',html:`<div class="pin side ${s.status}"><span>S</span></div>`,iconSize:[24,24],iconAnchor:[12,29],popupAnchor:[0,-28]});
+  else if(s.kind==='waypoint') icon=L.divIcon({className:'',html:'<div class="waypt"></div>',iconSize:[10,10],iconAnchor:[7,7]});
+  else icon=L.divIcon({className:'',html:'<div class="endpt"></div>',iconSize:[16,16],iconAnchor:[10,10]});
+  markers[key(s)] = L.marker(s.ll,{icon,zIndexOffset:s.n?(s.status==='now'?1000:500-s.n):(s.kind==='side'?100:0),riseOnHover:true})
+    .addTo(map).bindPopup(cardHTML(s),{maxWidth:300,autoPanPaddingTopLeft:[innerWidth>760?400:10,20],autoPanPaddingBottomRight:[20,innerWidth>760?20:170]})
+    .on('click',()=>setActive(key(s)));
+});
+
+/* ---------- you are here ---------- */
+let hereStop = STOPS.find(s=>s.status==='now'&&s.n) || STOPS.find(s=>s.status==='now') || [...STOPS].reverse().find(s=>s.status==='done') || STOPS[0];
+const hereM=L.marker(hereStop.ll,{interactive:false,zIndexOffset:2000,icon:L.divIcon({className:'',iconSize:[22,22],iconAnchor:[11,11],
+  html:'<div class="here"><div class="ring"></div><div class="ring r2"></div><div class="core"></div><div class="here-label">You are here</div></div>'})}).addTo(map);
+
+/* ---------- panel list ---------- */
+const list=document.getElementById('list');
+STOPS.forEach((s,i)=>{
+  if(s.n===16){const g=document.createElement('div');g.className='gap';g.innerHTML='⋯ <b>~Dec 1 → Dec 17:</b> Raja Ampat → Sorong → … → Jakarta not planned yet (not drawn)';list.appendChild(g);}
+  const st=s.status, el=document.createElement('div');
+  el.className=`item s-${cls(s)}`; el.dataset.k=key(s);
+  const dt = s.dateText || `${fmt(s.start)} → ${fmt(s.end)} · ${nights(s)}n`;
+  el.innerHTML=`<div class="num">${numOf(s)}</div>
+    <div class="meta"><div class="place">${s.place}<span class="badge b-${st}">${LABEL[st]}</span>${s.optional?'<span class="badge b-opt">Optional</span>':''}</div>
+    <div class="prop">${s.prop}</div><div class="dates">${dt}</div></div>`;
+  el.onclick=()=>{go(key(s)); if(innerWidth<=760) document.getElementById('panel').classList.add('collapsed');};
+  list.appendChild(el);
+});
+function setActive(k){
+  document.querySelectorAll('.item').forEach(e=>e.classList.toggle('active',String(e.dataset.k)===String(k)));
+  const el=document.querySelector(`.item[data-k="${k}"]`); if(el) el.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function go(k){
+  const s=byKey(k); setActive(k); map.closePopup();
+  const z = s.n? (s.live?10:13) : (s.kind==='side'?11:6);
+  const off = innerWidth>760 ? [-185,0] : [0,-Math.min(innerHeight*.18,130)];
+  const target = map.unproject(map.project(s.ll,z).add(L.point(off)),z);
+  map.flyTo(target,z,{duration:1.6,easeLinearity:.2});
+  map.once('moveend',()=>markers[k].openPopup());
+}
+window.go=go; window.ORDER=ORDER;
+
+/* ---------- legend ---------- */
+const sv=(c,dash,w=3)=>`<svg width="34" height="10"><line x1="2" y1="5" x2="32" y2="5" stroke="${c}" stroke-width="${w}" stroke-linecap="round" ${dash?`stroke-dasharray="${dash}"`:''}/></svg>`;
+document.getElementById('legend').innerHTML=`
+  <div class="k">${sv(COLOR.flight,'5 5',2.2)}Flight</div>
+  <div class="k">${sv(COLOR.boat)}Boat / ferry</div>
+  <div class="k">${sv(COLOR.live,'10 4 2 4')}Liveaboard</div>
+  <div class="k">${sv(COLOR.ground)}Ground</div>
+  <div class="k">${sv(TENT,'3 6')}Tentative leg</div>
+  <div class="k">${sv('#6d7d99',null,3)}Past (faded)</div>
+  <div class="k"><span class="dot" style="background:var(--booked)"></span>Booked stop</div>
+  <div class="k"><span class="dot" style="border:2px dashed #b7bfcc"></span>Tentative stop</div>
+  <div class="k"><span class="dot" style="background:rgba(255,169,77,.15);border:2px dashed #ffa94d"></span>Pending (not booked)</div>
+  <div class="k">${sv(TENT,'1 6')}Optional side trip</div>`;
+
+/* ---------- progress ---------- */
+const t0=D('2026-09-18'),t1=D('2026-12-19'),tn=D(baliToday);
+const pct=Math.max(0,Math.min(1,(tn-t0)/(t1-t0)));
+document.getElementById('pfill').style.width=(pct*100)+'%';
+document.getElementById('pdot').style.left=(pct*100)+'%';
+document.getElementById('pday').textContent=`Day ${Math.round((tn-t0)/864e5)+1} of ${Math.round((t1-t0)/864e5)+1} · ${fmtW(baliToday)} (Bali)`;
+
+/* ---------- views ---------- */
+const padTL = ()=> innerWidth>760?[400,30]:[20,20];
+const padBR = ()=> innerWidth>760?[30,30]:[20,170];
+const indoB = L.latLngBounds(STOPS.filter(s=>s.n>=3&&s.n<=15).map(s=>s.ll)).extend([-10.3,105]);
+const allB  = L.latLngBounds(STOPS.map(s=>s.ll));
+const fitIndo=()=>map.flyToBounds(indoB,{paddingTopLeft:padTL(),paddingBottomRight:padBR(),duration:1.4});
+document.getElementById('bIndo').onclick=fitIndo;
+document.getElementById('bAll').onclick=()=>map.flyToBounds(allB,{paddingTopLeft:padTL(),paddingBottomRight:padBR(),duration:1.6});
+document.getElementById('bNow').onclick=()=>go(key(hereStop));
+document.getElementById('toggle').onclick=()=>document.getElementById('panel').classList.toggle('collapsed');
+map.fitBounds(qs.get('view')==='all'?allB:indoB,{paddingTopLeft:padTL(),paddingBottomRight:padBR()});
+setActive(key(hereStop));
+</script>
+</body>
+</html>
