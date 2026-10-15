@@ -195,23 +195,23 @@ const STOPS = [
   {n:11, place:'Makassar, Sulawesi', prop:'Swiss-Belhotel Waterfront Makassar', ll:[-5.1365,119.4072],
    start:'2026-10-25', end:'2026-10-26', web:'https://www.swiss-belhotel.com/',
    note:'One night on the waterfront. Arrive on Wings IW1911 (lands 14:30); very early start for the 06:15 Lion flight to Ambon.'},
-  {n:12, place:'Ambon · Natsepa area', prop:'Hotels TBD (e.g. The Natsepa)', ll:[-3.6230,128.2840], tentative:true,
-   start:'2026-10-26', end:'2026-11-04', web:'https://thenatsepa.com',
-   note:'Draft plan: Ambon base before Amaya, e.g. Ambon city first, then The Natsepa beach resort (near Tulehu port). Nothing booked. '},
-  {id:'saparua', kind:'side', optional:true, place:'Saparua Island (optional)', prop:'Side trip · e.g. Mahu Lodge', ll:[-3.5700,128.6700], tentative:true,
-   start:'2026-10-28', end:'2026-10-31',
-   note:'Optional side trip inside the Ambon stay: speedboat Tulehu → Haria (~1–1.5 h), 3 nights, back to Natsepa Oct 31. Fort Duurstede, reef dives. Not booked.'},
-  {n:13, place:'Ambon → Banda Sea → Raja Ampat', prop:'Amaya Explorer (liveaboard)', ll:[-3.6900,128.1680], live:true,
+  {n:12, place:'Ambon · Laha', prop:'Ambon Blue Rose Divers', ll:[-3.7265,128.0835],
+   start:'2026-10-26', end:'2026-10-30', web:'https://bluerosedivers.net',
+   note:'Dive lodge in Laha, about 10 minutes from Ambon airport. 4 nights of diving Ambon Bay after the Lion flight lands.'},
+  {n:13, place:'Ambon city', prop:'BIZ Hotel City Center', ll:[-3.6955,128.1795],
+   start:'2026-10-30', end:'2026-11-04',
+   note:'City-centre hotel for the 5 nights before the Amaya Explorer; the boat transfer starts here on Nov 4.'},
+  {n:14, place:'Ambon → Banda Sea → Raja Ampat', prop:'Amaya Explorer (liveaboard)', ll:[-3.6900,128.1680], live:true,
    start:'2026-11-04', end:'2026-11-14', web:'https://www.amayaexplorer.com/',
    note:'Phinisi liveaboard. Boarding port Ambon (08:00–10:00 WIT); disembark Sorong Nov 14 noon.'},
-  {n:14, place:'Sorong, West Papua', prop:'Hotel TBD', ll:[-0.8790,131.2600], tentative:true,
+  {n:15, place:'Sorong, West Papua', prop:'Hotel TBD', ll:[-0.8790,131.2600], tentative:true,
    start:'2026-11-14', end:'2026-11-17', note:'Plan: stay ~Nov 14–17 in Sorong, then the 14:00 ferry to Waisai.'},
-  {n:15, place:'Raja Ampat · Waisai', prop:'Lodging TBD (Waisai / islands)', ll:[-0.4300,130.8150], tentative:true,
+  {n:16, place:'Raja Ampat · Waisai', prop:'Lodging TBD (Waisai / islands)', ll:[-0.4300,130.8150], tentative:true,
    start:'2026-11-17', end:'2026-12-01', dateText:'Nov 17 → ~Nov 28–Dec 1 (draft)',
    note:'Draft plan: Waisai base (e.g. Waiwo), then an island dive lodge or homestay (Mansuar / Kri). Back to Sorong ~Nov 28–Dec 1. Nothing booked.'},
-  {n:16, place:'Jakarta', prop:'Hotel TBD (night of Dec 17)', ll:[-6.1256,106.6559], tentative:true,
+  {n:17, place:'Jakarta', prop:'Hotel TBD (night of Dec 17)', ll:[-6.1256,106.6559], tentative:true,
    start:'2026-12-17', end:'2026-12-18', note:'Flight is booked: EgyptAir MS978 Business CGK T3 → Cairo, 00:50 Dec 18.'},
-  {n:17, place:'Cairo, Egypt', prop:'~22 h layover · hotel TBD', ll:[30.1219,31.4056], tentative:true,
+  {n:18, place:'Cairo, Egypt', prop:'~22 h layover · hotel TBD', ll:[30.1219,31.4056], tentative:true,
    start:'2026-12-18', end:'2026-12-19', note:'Arrive 07:10, leave 05:15 next day.'},
   {id:'jfk', kind:'end', place:'New York (JFK)', prop:'Home stretch', ll:[40.6413,-73.7781],
    start:'2026-12-19', end:'2026-12-19', dateText:'Arrive Sat Dec 19, 10:15', note:'EgyptAir MS985 Business Cairo → JFK T1.'}
@@ -245,17 +245,14 @@ const LEGS = [
   {from:10, to:11, mode:'flight', date:'2026-10-25', label:'Wings IW1911 Labuan Bajo → Makassar · Sun Oct 25, 12:50 → 14:30 WITA',
    path:[P.LBJ,P.UPG], pre:[{mode:'ground',path:[[-8.5072,119.8770],P.LBJ]}], then:[{mode:'ground',path:[P.UPG,[-5.1365,119.4072]]}]},
   {from:11, to:12, mode:'flight', date:'2026-10-26', label:'Lion Air JT888 Makassar → Ambon · Mon Oct 26, 06:15 WITA → 09:00 WIT',
-   path:[P.UPG,P.AMQ], pre:[{mode:'ground',path:[[-5.1365,119.4072],P.UPG]}], then:[{mode:'ground',path:[P.AMQ,[-3.6560,128.1900],[-3.6230,128.2840]]}]},
-  {from:12, to:'saparua', mode:'boat', date:'2026-10-28', tentative:true, optional:true, label:'Optional: speedboat Tulehu → Haria, Saparua',
-   pre:[{mode:'ground',path:[[-3.6230,128.2840],P.TULEHU]}], path:SARAPUA_SEA, then:[{mode:'ground',path:[P.HARIA,[-3.5700,128.6700]]}]},
-  {from:'saparua', to:12, mode:'boat', date:'2026-10-31', tentative:true, optional:true, label:'Optional: speedboat Saparua → Tulehu, back to Natsepa',
-   path:[[-3.5700,128.6700],P.HARIA,[-3.5900,128.5500],[-3.6000,128.4300],P.TULEHU,[-3.6230,128.2840]]},
-  {from:12, to:13, mode:'ground', date:'2026-11-04', tentative:true, label:'Pickup to Amaya Explorer (Ambon Bay)'},
-  {from:13, to:14, mode:'live', date:'2026-11-04', path:AMAYA, label:'Amaya Explorer · Ambon → Banda → Misool → Raja Ampat → Sorong (rough)', liveRoute:true},
-  {from:14, to:15, mode:'boat', date:'2026-11-17', tentative:true, label:'Draft: fast ferry Sorong → Waisai (14:00, ~2 h)', path:[P.SORONG_H,[-0.7400,131.0800],[-0.5600,130.9000],P.WAISAI_H]},
+   path:[P.UPG,P.AMQ], pre:[{mode:'ground',path:[[-5.1365,119.4072],P.UPG]}], then:[{mode:'ground',path:[P.AMQ,[-3.7265,128.0835]]}]},
+  {from:12, to:13, mode:'ground', date:'2026-10-30', label:'Drive Laha → Ambon city · Fri Oct 30'},
+  {from:13, to:14, mode:'ground', date:'2026-11-04', label:'Transfer to Amaya Explorer (Ambon Bay) · Wed Nov 4'},
+  {from:14, to:15, mode:'live', date:'2026-11-04', path:AMAYA, label:'Amaya Explorer · Ambon → Banda → Misool → Raja Ampat → Sorong (rough)', liveRoute:true},
+  {from:15, to:16, mode:'boat', date:'2026-11-17', tentative:true, label:'Draft: fast ferry Sorong → Waisai (14:00, ~2 h)', path:[P.SORONG_H,[-0.7400,131.0800],[-0.5600,130.9000],P.WAISAI_H]},
   /* Raja Ampat → Sorong → Jakarta intentionally omitted (not yet planned) */
-  {from:16, to:17, mode:'flight', date:'2026-12-18', label:'EgyptAir MS978 Jakarta → Cairo (Business) · 00:50 Dec 18'},
-  {from:17, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'}
+  {from:17, to:18, mode:'flight', date:'2026-12-18', label:'EgyptAir MS978 Jakarta → Cairo (Business) · 00:50 Dec 18'},
+  {from:18, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'}
 ];
 
 /* =========================================================
@@ -379,7 +376,7 @@ const hereM=L.marker(hereStop.ll,{interactive:false,zIndexOffset:2000,icon:L.div
 /* ---------- panel list ---------- */
 const list=document.getElementById('list');
 STOPS.forEach((s,i)=>{
-  if(s.n===16){const g=document.createElement('div');g.className='gap';g.innerHTML='⋯ <b>~Dec 1 → Dec 17:</b> Raja Ampat → Sorong → … → Jakarta not planned yet (not drawn)';list.appendChild(g);}
+  if(s.n===17){const g=document.createElement('div');g.className='gap';g.innerHTML='⋯ <b>~Dec 1 → Dec 17:</b> Raja Ampat → Sorong → … → Jakarta not planned yet (not drawn)';list.appendChild(g);}
   const st=s.status, el=document.createElement('div');
   el.className=`item s-${cls(s)}`; el.dataset.k=key(s);
   const dt = s.dateText || `${fmt(s.start)} → ${fmt(s.end)} · ${nights(s)}n`;
@@ -427,7 +424,7 @@ document.getElementById('pday').textContent=`Day ${Math.round((tn-t0)/864e5)+1} 
 /* ---------- views ---------- */
 const padTL = ()=> innerWidth>760?[400,30]:[20,20];
 const padBR = ()=> innerWidth>760?[30,30]:[20,170];
-const indoB = L.latLngBounds(STOPS.filter(s=>s.n>=3&&s.n<=15).map(s=>s.ll)).extend([-10.3,105]);
+const indoB = L.latLngBounds(STOPS.filter(s=>s.n>=3&&s.n<=16).map(s=>s.ll)).extend([-10.3,105]);
 const allB  = L.latLngBounds(STOPS.map(s=>s.ll));
 const fitIndo=()=>map.flyToBounds(indoB,{paddingTopLeft:padTL(),paddingBottomRight:padBR(),duration:1.4});
 document.getElementById('bIndo').onclick=fitIndo;
@@ -450,7 +447,7 @@ setActive(key(hereStop));
 </style>
 <div id="plb" onclick="this.style.display='none'"><img alt=""></div>
 <script>
-(function(){const G=[{"stop": 6, "place": "Nusa Lembongan \u00b7 Jungutbatu", "ll": [-8.6698, 115.4471], "photos": [{"src": "photos/01f03b1c8ab4.jpg", "thumb": "photos/01f03b1c8ab4_t.jpg", "date": "2026-10-12"}]}];
+(function(){const G=[{"stop": 3, "place": "Ubud, Bali", "ll": [-8.5128, 115.2655], "photos": [{"src": "photos/e5ded09d7b67.jpg", "thumb": "photos/e5ded09d7b67_t.jpg", "date": null}, {"src": "photos/4ee20bb2f3be.jpg", "thumb": "photos/4ee20bb2f3be_t.jpg", "date": "2026-09-26"}, {"src": "photos/c8c6a816bef6.jpg", "thumb": "photos/c8c6a816bef6_t.jpg", "date": "2026-09-27"}, {"src": "photos/121df6db3ae9.jpg", "thumb": "photos/121df6db3ae9_t.jpg", "date": "2026-09-27"}, {"src": "photos/1d6c8765eafe.jpg", "thumb": "photos/1d6c8765eafe_t.jpg", "date": "2026-09-27"}, {"src": "photos/0d484345f92d.jpg", "thumb": "photos/0d484345f92d_t.jpg", "date": "2026-09-27"}, {"src": "photos/c5790632f620.jpg", "thumb": "photos/c5790632f620_t.jpg", "date": "2026-09-27"}, {"src": "photos/718a63488c7b.jpg", "thumb": "photos/718a63488c7b_t.jpg", "date": "2026-09-27"}, {"src": "photos/38a39aeaa055.jpg", "thumb": "photos/38a39aeaa055_t.jpg", "date": "2026-09-27"}, {"src": "photos/9085d17e5830.jpg", "thumb": "photos/9085d17e5830_t.jpg", "date": "2026-09-28"}, {"src": "photos/ccfba5c03714.jpg", "thumb": "photos/ccfba5c03714_t.jpg", "date": "2026-09-29"}, {"src": "photos/5a5fecffa83a.jpg", "thumb": "photos/5a5fecffa83a_t.jpg", "date": "2026-09-29"}, {"src": "photos/c60f9f42dd04.jpg", "thumb": "photos/c60f9f42dd04_t.jpg", "date": "2026-09-30"}]}, {"stop": "ams", "place": "Amsterdam (AMS)", "ll": [52.3105, 4.7683], "photos": [{"src": "photos/584d1c023228.jpg", "thumb": "photos/584d1c023228_t.jpg", "date": "2026-09-22"}]}, {"stop": 2, "place": "Singapore \u00b7 Chinatown", "ll": [1.2827, 103.8441], "photos": [{"src": "photos/dac5c7827a9c.jpg", "thumb": "photos/dac5c7827a9c_t.jpg", "date": "2026-09-24"}, {"src": "photos/b89fec585412.jpg", "thumb": "photos/b89fec585412_t.jpg", "date": "2026-09-24"}, {"src": "photos/56305880e310.jpg", "thumb": "photos/56305880e310_t.jpg", "date": "2026-09-24"}, {"src": "photos/26177996837e.jpg", "thumb": "photos/26177996837e_t.jpg", "date": "2026-09-24"}, {"src": "photos/94921a83f522.jpg", "thumb": "photos/94921a83f522_t.jpg", "date": "2026-09-24"}, {"src": "photos/1563edc27d62.jpg", "thumb": "photos/1563edc27d62_t.jpg", "date": "2026-09-24"}]}, {"stop": 6, "place": "Nusa Lembongan \u00b7 Jungutbatu", "ll": [-8.6698, 115.4471], "photos": [{"src": "photos/01f03b1c8ab4.jpg", "thumb": "photos/01f03b1c8ab4_t.jpg", "date": "2026-10-12"}, {"src": "photos/accf9081c3f2.jpg", "thumb": "photos/accf9081c3f2_t.jpg", "date": "2026-10-12"}]}];
 const lb=document.getElementById('plb');
 window.openPhoto=src=>{lb.querySelector('img').src=src;lb.style.display='grid';};
 const pins=G.map(g=>{
