@@ -434,6 +434,29 @@ document.getElementById('toggle').onclick=()=>document.getElementById('panel').c
 map.fitBounds(qs.get('view')==='all'?allB:indoB,{paddingTopLeft:padTL(),paddingBottomRight:padBR()});
 setActive(key(hereStop));
 </script>
+<!-- panel-toggle v1 -->
+<style>
+#panel{transition:transform .35s ease,max-height .35s ease}
+body.phide #panel{transform:translateX(calc(-100% - 24px));pointer-events:none}
+#ptab{position:absolute;z-index:1001;top:24px;left:394px;padding:9px 13px;border:0;border-radius:0 12px 12px 0;background:rgba(14,22,40,.92);color:#fff;font:700 13px Inter,sans-serif;box-shadow:0 3px 10px rgba(0,0,0,.5);cursor:pointer;transition:left .35s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body.phide #ptab{left:0}
+@media (max-width:760px){
+  body.phide #panel{transform:translateY(calc(100% + 10px))}
+  #ptab{top:auto;left:12px;bottom:calc(52vh + 10px);border-radius:18px;padding:10px 15px}
+  body:not(.phide) #panel.collapsed ~ #ptab{bottom:160px}
+  body.phide #ptab{left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 18px)}
+}
+</style>
+<script>
+(function(){const K='morraPanel',b=document.body,t=document.createElement('button');
+t.id='ptab';t.type='button';document.getElementById('panel').after(t);
+const phone=()=>matchMedia('(max-width:760px)').matches;
+const lab=()=>{const h=b.classList.contains('phide');t.textContent=h?(phone()?'▲ Show trip':'▶ Show'):(phone()?'▼ Hide':'◀ Hide');t.setAttribute('aria-expanded',!h);};
+let s=null;try{s=localStorage.getItem(K)}catch(e){}
+b.classList.toggle('phide',s?s==='hidden':phone());lab();
+t.onclick=e=>{e.stopPropagation();const h=!b.classList.contains('phide');b.classList.toggle('phide',h);try{localStorage.setItem(K,h?'hidden':'shown')}catch(e){}lab();setTimeout(()=>typeof map!=='undefined'&&map.invalidateSize(),400);};
+addEventListener('resize',lab);})();
+</script>
 
 <style>
 .cam{position:relative;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ff8a3d,#ff3d8b);display:grid;place-items:center;font-size:20px;line-height:1;border:3px solid #fff;box-shadow:0 0 0 3px rgba(255,61,139,.35),0 4px 12px rgba(0,0,0,.6);animation:campulse 2s infinite}
@@ -442,14 +465,43 @@ setActive(key(hereStop));
 #bPhotos{position:absolute;z-index:1000;right:12px;top:calc(env(safe-area-inset-top,0px) + 132px);padding:10px 16px;border:0;border-radius:22px;background:linear-gradient(135deg,#ff8a3d,#ff3d8b);color:#fff;font:700 15px Inter,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.5);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .pgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px;max-height:300px;overflow:auto;width:min(260px,70vw)}
 .pgal img{width:100%;height:84px;object-fit:cover;border-radius:6px;cursor:zoom-in}
-#plb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;place-items:center;z-index:99999;cursor:zoom-out}
-#plb img{max-width:96vw;max-height:90vh;border-radius:8px}
+#plb{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;place-items:center;z-index:99999;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+#plb img{max-width:96vw;max-height:calc(100vh - 120px);border-radius:8px;transition:opacity .15s}
+#plb button{position:absolute;border:0;background:rgba(255,255,255,.16);color:#fff;border-radius:50%;width:48px;height:48px;font:600 24px/48px Inter,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#plb .pv{left:10px;top:50%;margin-top:-24px}#plb .nx{right:10px;top:50%;margin-top:-24px}
+#plb .cl{right:12px;top:calc(env(safe-area-inset-top,0px) + 12px);width:42px;height:42px;line-height:42px;font-size:22px}
+#plb .cap{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);text-align:center;color:#fff;font:600 14px Inter,sans-serif;text-shadow:0 1px 4px #000;padding:0 60px}
+#plb .cap span{opacity:.7;font-weight:500}
 </style>
-<div id="plb" onclick="this.style.display='none'"><img alt=""></div>
+<div id="plb" role="dialog" aria-label="Photo viewer"><img alt=""><button class="pv" aria-label="Previous photo">‹</button><button class="nx" aria-label="Next photo">›</button><button class="cl" aria-label="Close">✕</button><div class="cap"></div></div>
 <script>
 (function(){const G=[{"stop": 3, "place": "Ubud, Bali", "ll": [-8.5128, 115.2655], "photos": [{"src": "photos/e5ded09d7b67.jpg", "thumb": "photos/e5ded09d7b67_t.jpg", "date": null}, {"src": "photos/4ee20bb2f3be.jpg", "thumb": "photos/4ee20bb2f3be_t.jpg", "date": "2026-09-26"}, {"src": "photos/c8c6a816bef6.jpg", "thumb": "photos/c8c6a816bef6_t.jpg", "date": "2026-09-27"}, {"src": "photos/121df6db3ae9.jpg", "thumb": "photos/121df6db3ae9_t.jpg", "date": "2026-09-27"}, {"src": "photos/1d6c8765eafe.jpg", "thumb": "photos/1d6c8765eafe_t.jpg", "date": "2026-09-27"}, {"src": "photos/0d484345f92d.jpg", "thumb": "photos/0d484345f92d_t.jpg", "date": "2026-09-27"}, {"src": "photos/c5790632f620.jpg", "thumb": "photos/c5790632f620_t.jpg", "date": "2026-09-27"}, {"src": "photos/718a63488c7b.jpg", "thumb": "photos/718a63488c7b_t.jpg", "date": "2026-09-27"}, {"src": "photos/38a39aeaa055.jpg", "thumb": "photos/38a39aeaa055_t.jpg", "date": "2026-09-27"}, {"src": "photos/9085d17e5830.jpg", "thumb": "photos/9085d17e5830_t.jpg", "date": "2026-09-28"}, {"src": "photos/ccfba5c03714.jpg", "thumb": "photos/ccfba5c03714_t.jpg", "date": "2026-09-29"}, {"src": "photos/5a5fecffa83a.jpg", "thumb": "photos/5a5fecffa83a_t.jpg", "date": "2026-09-29"}, {"src": "photos/c60f9f42dd04.jpg", "thumb": "photos/c60f9f42dd04_t.jpg", "date": "2026-09-30"}]}, {"stop": "ams", "place": "Amsterdam (AMS)", "ll": [52.3105, 4.7683], "photos": [{"src": "photos/584d1c023228.jpg", "thumb": "photos/584d1c023228_t.jpg", "date": "2026-09-22"}]}, {"stop": 2, "place": "Singapore \u00b7 Chinatown", "ll": [1.2827, 103.8441], "photos": [{"src": "photos/dac5c7827a9c.jpg", "thumb": "photos/dac5c7827a9c_t.jpg", "date": "2026-09-24"}, {"src": "photos/b89fec585412.jpg", "thumb": "photos/b89fec585412_t.jpg", "date": "2026-09-24"}, {"src": "photos/56305880e310.jpg", "thumb": "photos/56305880e310_t.jpg", "date": "2026-09-24"}, {"src": "photos/26177996837e.jpg", "thumb": "photos/26177996837e_t.jpg", "date": "2026-09-24"}, {"src": "photos/94921a83f522.jpg", "thumb": "photos/94921a83f522_t.jpg", "date": "2026-09-24"}, {"src": "photos/1563edc27d62.jpg", "thumb": "photos/1563edc27d62_t.jpg", "date": "2026-09-24"}]}, {"stop": 6, "place": "Nusa Lembongan \u00b7 Jungutbatu", "ll": [-8.6698, 115.4471], "photos": [{"src": "photos/01f03b1c8ab4.jpg", "thumb": "photos/01f03b1c8ab4_t.jpg", "date": "2026-10-12"}, {"src": "photos/accf9081c3f2.jpg", "thumb": "photos/accf9081c3f2_t.jpg", "date": "2026-10-12"}]}];
-const lb=document.getElementById('plb');
-window.openPhoto=src=>{lb.querySelector('img').src=src;lb.style.display='grid';};
+const ORD=s=>{const i=(typeof ORDER!=='undefined')?ORDER.indexOf(s):-1;return i<0?999:i;};
+G.sort((a,b)=>ORD(a.stop)-ORD(b.stop));
+G.forEach(g=>g.photos.sort((a,b)=>(a.date||'').localeCompare(b.date||'')));
+const ALL=[];G.forEach(g=>g.photos.forEach(p=>ALL.push({...p,g})));
+const lb=document.getElementById('plb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap');
+let cur=-1;
+const fd=d=>d?new Date(d+'T00:00:00Z').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',timeZone:'UTC'}):'';
+function show(i){const prev=cur>=0?ALL[cur].g:null;cur=(i+ALL.length)%ALL.length;const p=ALL[cur];
+  im.src=p.src;im.alt=p.g.place+' '+(p.date||'');
+  cap.innerHTML='📷 '+p.g.place+(p.date?' · '+fd(p.date):'')+' <span>· '+(cur+1)+' / '+ALL.length+'</span>';
+  [ALL[cur+1],ALL[cur-1]].forEach(q=>{if(q){const x=new Image();x.src=q.src;}});
+  if(prev&&prev!==p.g){map.closePopup();map.panTo(p.g.ll,{animate:true});}
+  lb.style.display='grid';}
+function close(){lb.style.display='none';cur=-1;}
+window.openPhoto=src=>{const i=ALL.findIndex(p=>src.endsWith(p.src));show(i<0?0:i);};
+lb.querySelector('.pv').onclick=e=>{e.stopPropagation();show(cur-1);};
+lb.querySelector('.nx').onclick=e=>{e.stopPropagation();show(cur+1);};
+lb.querySelector('.cl').onclick=e=>{e.stopPropagation();close();};
+lb.onclick=e=>{if(e.target===lb)close();};
+im.onclick=e=>e.stopPropagation();
+addEventListener('keydown',e=>{if(lb.style.display!=='grid')return;
+  if(e.key==='ArrowRight')show(cur+1);else if(e.key==='ArrowLeft')show(cur-1);else if(e.key==='Escape')close();});
+let tx=null,ty=0;
+lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+lb.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;tx=null;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){show(cur+(dx<0?1:-1));}},{passive:true});
 const pins=G.map(g=>{
   const n=g.photos.length;
   const html='<b>📷 '+g.place+'</b> · '+n+' photo'+(n>1?'s':'')+
