@@ -492,8 +492,8 @@ const A=[];
 legLayer.eachLayer(l=>{if(!(l instanceof L.Polyline)||!l.getTooltip())return;
   const m=l._anim||{mode:COLMODE[(l.options.color||'').toLowerCase()]||'boat'};
   const ll=l.getLatLngs();if(ll.length<2)return;
-  const km=geoLen(ll)/1000;let kind=m.mode==='flight'?'flight':(m.mode==='ground'?(km<3?'walk':'car'):'boat');
-  const dur=kind==='walk'?7000:Math.round(6000+Math.min(6000,Math.log10(1+km)*1500));
+  const km=geoLen(ll)/1000;if(m.mode==='ground'&&km<3)return;let kind=m.mode==='flight'?'flight':(m.mode==='ground'?(km<3?'walk':'car'):'boat');
+  const dur=kind==='walk'?12000:Math.round(11000+Math.min(9000,Math.log10(1+km)*2500));
   const el=document.createElement('div');
   let trail=[];
   if(kind!=='walk'){el.className='ai'+(m.past?' past':'');el.innerHTML=ICON[kind];pane.appendChild(el);
@@ -509,27 +509,29 @@ function at(a,f){const d=Math.max(0,Math.min(1,f))*a.len,c=a.cum;let lo=0,hi=c.l
 function place(el,p,rot){let r=rot/toRad,flip='';
   if(el.classList.contains('ai')&&Math.abs(r)>90){flip=' scaleY(-1)';} // keep the drawing upright
   el.style.transform='translate3d('+p.x+'px,'+p.y+'px,0) rotate('+r+'deg)'+flip;}
-const PAUSE=900;
+const PAUSE=4000;
 function foot(a,f,side){const p=at(a,f),n=document.createElement('div');n.className='aif';n.innerHTML=FOOT;
   const off=side?4:-4,nx=-Math.sin(p.ang)*off,ny=Math.cos(p.ang)*off;
   n.style.transform='translate3d('+(p.x+nx)+'px,'+(p.y+ny)+'px,0) rotate('+(p.ang/toRad+90)+'deg)';
   pane.appendChild(n);setTimeout(()=>n.remove(),2700);}
-function frame(now){A.forEach(a=>{const cyc=a.dur+PAUSE,t=((now+a.phase*cyc)%cyc);const f=Math.min(1,t/a.dur);
+const PXS=22;let lastNow=0;
+function frame(now){const dt=lastNow?Math.min(100,now-lastNow):0;lastNow=now;
+A.forEach(a=>{const D=Math.max(a.dur,a.len/PXS*1000),cyc=D+PAUSE;if(a.fr==null)a.fr=a.phase;a.fr=(a.fr+dt/cyc)%1;const t=a.fr*cyc;const f=Math.min(1,t/D);
   if(a.kind==='walk'){if(a.len<6)return;const step=Math.max(.06,10/a.len),k=Math.floor(f/step);
-    if(t<a.dur&&k!==a.lastFoot){a.lastFoot=k;foot(a,k*step,k%2);}if(t>=a.dur)a.lastFoot=-1;return;}
-  const p=at(a,f);place(a.el,p,p.ang);a.el.style.opacity=t>a.dur?Math.max(0,1-(t-a.dur)/PAUSE):'';
+    if(t<D&&k!==a.lastFoot){a.lastFoot=k;foot(a,k*step,k%2);}if(t>=D)a.lastFoot=-1;return;}
+  const p=at(a,f);place(a.el,p,p.ang);a.el.style.opacity=t>D?Math.max(0,1-(t-D)/PAUSE):'';
   a.trail.forEach((d,i)=>{const g=f-(i+1)*Math.min(.03,14/Math.max(a.len,1));
-    if(g<=0||t>a.dur){d.style.opacity=0;return;}const q=at(a,g);
+    if(g<=0||t>D){d.style.opacity=0;return;}const q=at(a,g);
     d.style.transform='translate3d('+q.x+'px,'+q.y+'px,0) scale('+(1-i*.12)+')';d.style.opacity=(.5-i*.075)*(a.past?.6:1);});});}
 let raf=0,vis=true;
-function loop(now){frame(now);raf=requestAnimationFrame(loop);}
+function loop(now){if(!raf)lastNow=0;frame(now);raf=requestAnimationFrame(loop);}
 function staticMid(){cancelAnimationFrame(raf);raf=0;A.forEach(a=>{a.trail.forEach(d=>d.style.opacity=0);
   if(a.kind==='walk'){pane.querySelectorAll('.aif').forEach(n=>n.remove());if(a.len>=6)[.4,.5,.6].forEach((f,i)=>foot(a,f,i%2));return;}
   const p=at(a,.5);place(a.el,p,p.ang);a.el.style.opacity='';});}
 function start(){project();if(reduce.matches||!vis)staticMid();else if(!raf)raf=requestAnimationFrame(loop);}
 map.on('zoomstart',()=>{pane.style.visibility='hidden';});
 map.on('zoomend viewreset',()=>{project();pane.style.visibility='';if(raf===0)start();});
-document.addEventListener('visibilitychange',()=>{vis=!document.hidden;if(!vis){cancelAnimationFrame(raf);raf=0;}else start();});
+document.addEventListener('visibilitychange',()=>{vis=!document.hidden;if(!vis){cancelAnimationFrame(raf);raf=0;lastNow=0;}else start();});
 (reduce.addEventListener?reduce.addEventListener('change',()=>{cancelAnimationFrame(raf);raf=0;start();}):0);
 start();
 // optional parchment tint for the base tiles (off by default)
