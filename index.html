@@ -469,8 +469,6 @@ addEventListener('resize',lab);})();
 .ait{position:absolute;left:0;top:0;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:#6b3f16;will-change:transform,opacity}
 .aif{position:absolute;left:0;top:0;width:9px;height:14px;margin:-7px 0 0 -4.5px;animation:aifade 2.6s ease-out forwards}
 @keyframes aifade{0%{opacity:0}12%{opacity:.95}100%{opacity:0}}
-body.parch .leaflet-tile-pane{filter:sepia(.55) saturate(.8) brightness(1.05) contrast(.95)}
-#bParch{position:absolute;z-index:1000;right:12px;top:calc(env(safe-area-inset-top,0px) + 180px);padding:8px 13px;border:1px solid #8a5a2b;border-radius:18px;background:#f3e3c3;color:#4a2a0c;font:italic 700 13px Georgia,serif;box-shadow:0 3px 10px rgba(0,0,0,.45);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 </style>
 <script>
 (function(){if(typeof map==='undefined'||typeof legLayer==='undefined')return;
@@ -535,12 +533,7 @@ map.on('zoomend viewreset',()=>{project();pane.style.visibility='';if(raf===0)st
 document.addEventListener('visibilitychange',()=>{vis=!document.hidden;if(!vis){cancelAnimationFrame(raf);raf=0;lastNow=0;}else start();});
 (reduce.addEventListener?reduce.addEventListener('change',()=>{cancelAnimationFrame(raf);raf=0;start();}):0);
 start();
-// optional parchment tint for the base tiles (off by default)
-const b=document.createElement('button');b.id='bParch';b.type='button';
-let on=false;try{on=localStorage.getItem('morraParch')==='1'}catch(e){}
-const lab=()=>{document.body.classList.toggle('parch',on);b.textContent=on?'🗺 Normal map':'📜 Parchment';b.setAttribute('aria-pressed',on);};
-b.onclick=e=>{e.stopPropagation();on=!on;try{localStorage.setItem('morraParch',on?'1':'0')}catch(e){}lab();};
-document.body.appendChild(b);lab();
+// old sepia toggle replaced by parchment theme (parchment.inc.html)
 window.__animIcons=A.reduce((o,a)=>(o[a.kind]=(o[a.kind]||0)+1,o),{});
 })();
 </script>
@@ -607,6 +600,99 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden){clearTimeo
 reduce.addEventListener&&reduce.addEventListener('change',()=>{kill();schedule(rnd(10000,20000));});
 schedule(rnd(10000,20000));
 window.__critterSpawn=spawn;window.__critterWater=W;
+})();
+</script>
+<!-- parchment v2 : default "old parchment" theme (original CSS art; OFL Google Font IM Fell English) -->
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+body.parch #map{background:#e9d6ac}
+body.parch .parch-tiles{filter:sepia(.85) saturate(.75) hue-rotate(-8deg) brightness(.98) contrast(1.05)}
+/* paper grain + burnt / vignette edges, above tiles, below markers, never blocks taps */
+#parchFx{position:absolute;inset:0;z-index:450;pointer-events:none;display:none}
+body.parch #parchFx{display:block}
+#parchFx::before{content:"";position:absolute;inset:0;mix-blend-mode:multiply;opacity:.55;
+ background:radial-gradient(ellipse at 20% 30%,rgba(160,110,50,.18),transparent 45%),radial-gradient(ellipse at 75% 70%,rgba(140,90,40,.16),transparent 50%),radial-gradient(ellipse at 60% 15%,rgba(120,80,30,.12),transparent 35%),
+ repeating-linear-gradient(37deg,rgba(90,60,20,.035) 0 2px,transparent 2px 5px),repeating-linear-gradient(-53deg,rgba(90,60,20,.03) 0 1px,transparent 1px 4px)}
+#parchFx::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 60px 18px rgba(92,52,14,.55),inset 0 0 160px 40px rgba(120,72,24,.28);
+ background:radial-gradient(ellipse at center,transparent 58%,rgba(70,36,8,.28) 100%)}
+/* ink routes & pins */
+body.parch .pin{background:#f3e3c3!important;border:2px solid #5a3412!important;box-shadow:0 2px 6px rgba(60,30,5,.5)}
+body.parch .pin span{color:#4a2a0c!important;font-family:'IM Fell English',Georgia,serif;font-size:13px}
+body.parch .pin.now{background:#8b2a12!important}body.parch .pin.now span{color:#fbecd0!important}
+body.parch .pin.done{opacity:.7}
+body.parch .pin.tentative,body.parch .pin.pending{border-style:dashed!important}
+body.parch .waypt,body.parch .endpt{background:#5a3412!important;border-color:#f3e3c3!important}
+/* popups as parchment notes */
+body.parch .leaflet-popup-content-wrapper,body.parch .leaflet-popup-tip{background:#f4e4c1;color:#3b2208;border:1px solid #a87a45;
+ box-shadow:inset 0 0 28px rgba(140,90,40,.35),0 10px 30px rgba(50,25,5,.5)}
+body.parch .leaflet-popup-content-wrapper{border-radius:6px}
+body.parch .card h3,body.parch .leaflet-popup-content b{font-family:'IM Fell English',Georgia,serif;color:#3b1f05}
+body.parch .card h3{font-size:22px;font-weight:400}
+body.parch .card .prop{color:#4a2a0c;font-family:'IM Fell English',Georgia,serif;font-size:15px;font-style:italic}
+body.parch .card .row,body.parch .card .note{color:#4b3218}
+body.parch .card .note{border-top:1px dashed rgba(90,52,18,.4)}
+body.parch .card a.web{color:#7a2e0c}
+body.parch .card .nav button{color:#4a2a0c;border-color:rgba(90,52,18,.45);font-family:'IM Fell English',Georgia,serif;font-size:13px}
+body.parch .leaflet-container a.leaflet-popup-close-button{color:#6b4520}
+body.parch .tbl{background:rgba(160,110,50,.12);border-color:rgba(90,52,18,.5)}
+body.parch .legtip{background:#f4e4c1!important;color:#3b2208!important;border:1px solid #a87a45!important;font-family:'IM Fell English',Georgia,serif}
+body.parch .legtip *{color:#5a3412!important}
+body.parch .legtip:before{display:none}
+/* side panel on paper */
+body.parch #panel{background:rgba(244,228,193,.94);color:#3b2208;border-color:#a87a45;box-shadow:inset 0 0 40px rgba(140,90,40,.35),0 14px 40px rgba(50,25,5,.45)}
+body.parch #panel h1{font-family:'IM Fell English',Georgia,serif;font-weight:400;color:#3b1f05}
+body.parch #panel .eyebrow{color:#7a2e0c}
+body.parch #panel *{border-color:rgba(120,80,40,.3)}
+body.parch #panel :is(.sub,.progress-meta,li,.meta,small,span,div){color:inherit}
+body.parch #ptab{background:#5a3412;color:#fbecd0}
+/* cartouche */
+#parchTitle{position:absolute;z-index:999;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 12px);display:none;pointer-events:none;
+ padding:6px 22px 7px;background:#f4e4c1;border:1.5px solid #5a3412;outline:1px solid #5a3412;outline-offset:3px;border-radius:3px;
+ font:400 19px/1.1 'IM Fell English SC','IM Fell English',Georgia,serif;color:#3b1f05;text-align:center;white-space:nowrap;box-shadow:0 4px 14px rgba(50,25,5,.45)}
+#parchTitle small{display:block;font:italic 12px 'IM Fell English',Georgia,serif;color:#6b4520}
+body.parch #parchTitle{display:block}
+@media (min-width:761px){#parchTitle{left:calc(50% + 200px)}body.phide #parchTitle{left:50%}}
+@media (max-width:760px){#parchTitle{font-size:15px;padding:5px 12px;left:12px;transform:none}}
+body.parch.popopen #parchTitle{display:none}
+body.parch .badge{background:#5a3412!important;color:#fbecd0!important;border-color:#5a3412!important}
+body.parch .leaflet-bar a,body.parch .leaflet-control-layers{background:#f3e3c3;color:#4a2a0c;border-color:#8a5a2b}
+/* the toggle (replaces the old sepia button) */
+#bParch{position:absolute;z-index:1000;right:12px;top:calc(env(safe-area-inset-top,0px) + 180px);padding:8px 13px;border:1px solid #8a5a2b;border-radius:18px;background:#f3e3c3;color:#4a2a0c;font:italic 15px 'IM Fell English',Georgia,serif;box-shadow:0 3px 10px rgba(0,0,0,.45);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body:not(.parch) #bParch{background:rgba(14,22,40,.92);color:#fff;border-color:rgba(255,255,255,.3);font:700 13px Inter,sans-serif}
+</style>
+<div id="parchFx" aria-hidden="true"></div>
+<div id="parchTitle">The Morras’ Indonesian Wanderings<small>Sep – Dec 2026</small></div>
+<script>
+(function(){if(typeof map==='undefined')return;
+const INK='#5a3412',K='morraParch';
+document.getElementById('map').appendChild(document.getElementById('parchFx'));
+const ESRI='https://server.arcgisonline.com/ArcGIS/rest/services/';
+const pt=L.tileLayer(ESRI+'World_Topo_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,className:'parch-tiles',
+  attribution:'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, USGS, &copy; OpenStreetMap contributors'});
+const parchBase=L.layerGroup([pt]);
+let others=[];
+function paths(g,f){g.eachLayer(l=>{if(l.eachLayer)paths(l,f);else if(l.setStyle)f(l);});}
+function inkRoutes(on){if(typeof legLayer==='undefined')return;
+  paths(legLayer,l=>{const o=l.options;
+    if(on){if(!l._orig)l._orig={color:o.color,opacity:o.opacity,dashArray:o.dashArray,fillColor:o.fillColor};
+      const glow=o.opacity<=.15;
+      l.setStyle({color:INK,fillColor:INK,opacity:glow?0:Math.max(.5,Math.min(.9,l._orig.opacity||.9)),dashArray:l._orig.dashArray||(l instanceof L.Polyline&&!(l instanceof L.Polygon)?'2 8':null)});}
+    else if(l._orig)l.setStyle(l._orig);});}
+let on=true;try{const v=localStorage.getItem(K);if(v==='0')on=false;}catch(e){}
+const b=document.createElement('button');b.id='bParch';b.type='button';
+function apply(){document.body.classList.toggle('parch',on);
+  if(on){if(!map.hasLayer(parchBase)){others=[];map.eachLayer(l=>{if(l instanceof L.TileLayer&&l!==pt)others.push(l);});
+      if(typeof dark!=='undefined')others=[dark,sat,ocean].filter(x=>map.hasLayer(x));
+      others.forEach(x=>map.removeLayer(x));parchBase.addTo(map);}}
+  else if(map.hasLayer(parchBase)){map.removeLayer(parchBase);(others.length?others:[dark]).forEach(x=>x&&x.addTo(map));}
+  inkRoutes(on);
+  b.textContent=on?'🗺 Normal map':'📜 Parchment';b.title=on?'Switch to the normal map':'Switch to the old-parchment map';b.setAttribute('aria-pressed',on);}
+b.onclick=e=>{e.stopPropagation();on=!on;try{localStorage.setItem(K,on?'1':'0')}catch(e){}apply();};
+// picking another base layer from the layers control leaves parchment mode
+map.on('baselayerchange',()=>{if(on){on=false;map.removeLayer(parchBase);try{localStorage.setItem(K,'0')}catch(e){}document.body.classList.remove('parch');inkRoutes(false);b.textContent='📜 Parchment';b.setAttribute('aria-pressed',false);}});
+document.body.appendChild(b);apply();
+map.on('popupopen',()=>document.body.classList.add('popopen'));map.on('popupclose',()=>document.body.classList.remove('popopen'));
+window.__parch=()=>on;
 })();
 </script>
 <!-- tidbits v1 -->
