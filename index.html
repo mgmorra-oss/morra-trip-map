@@ -765,6 +765,30 @@ if(DR&&DR.length){
 
 })();
 </script>
+<!-- tidbits v1 -->
+<style>
+.tbx{position:absolute;left:50%;margin-left:-14px;bottom:10px;border:0;background:none;font-size:15px;line-height:1;padding:6px;opacity:.45;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:opacity .2s,transform .2s}
+.tbx:hover,.tbx:focus{opacity:1;transform:scale(1.25) rotate(-8deg)}
+.tbx.on{opacity:1}
+.tbl{display:none;margin:8px 0 2px;padding:8px 10px;border-radius:10px;background:rgba(255,214,102,.12);border:1px dashed rgba(255,214,102,.5);font-size:13px;line-height:1.4}
+.tbl.on{display:block;animation:tbin .35s ease-out}
+.tbl p{margin:0 0 6px}.tbl p:last-child{margin:0}
+.tbl .h{font-weight:700;font-size:12px;opacity:.8;margin-bottom:4px}
+@keyframes tbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+</style>
+<script>
+(function(){const T={"Pacific Hotel Ambon": [{"date": "2026-10-26", "emoji": "🐀", "text": "Dinner at Dapur Ibu, a cute little warung on Jl. Cendrawasih run by the nicest lady. Great food, plus a surprise guest appearance by a big rat. Added to the adventure!"}, {"date": "2026-10-26", "emoji": "🌟", "text": "Mary is now a minor celebrity in Ambon. We were almost the only foreigners around, and some young girls asked to have their picture taken with her. I forgot to ask for a copy. Missed opportunity!"}], "Maria Seascape (liveaboard)": [{"date": "2026-10-19", "emoji": "🐉", "text": "Here be dragons! On Komodo we walked right up to (well, near) real Komodo dragons, the world's biggest lizards, lounging in the shade like they owned the place. They do. Tap the 'Here be dragons!' banner off the islands for the photos."}], "Swiss-Belhotel Waterfront Makassar": [{"date": "2026-10-25", "emoji": "😴", "text": "Makassar? More like Maka-sucks. No like. A quick overnight at the Swiss-Belhotel Waterfront before a 06:15 flight to Ambon. Not our favorite stop, but onward to better things!"}]};
+map.on('popupopen',e=>{const el=e.popup.getElement();if(!el)return;const c=el.querySelector('.card');if(!c||c.querySelector('.tbx'))return;
+  const p=c.querySelector('.prop'),k=p&&p.textContent.trim(),list=T[k];if(!list||!list.length)return;
+  c.style.position='relative';
+  const b=document.createElement('button');b.type='button';b.className='tbx';b.textContent='✨';b.title='psst…';b.setAttribute('aria-label','Show tidbits');
+  const box=document.createElement('div');box.className='tbl';
+  box.innerHTML='<div class="h">✨ Tidbits</div>'+list.map(t=>'<p>'+(t.emoji||'💬')+' '+t.text.replace(/</g,'&lt;')+'</p>').join('');
+  const nav=c.querySelector('.nav');c.insertBefore(box,nav||null);c.appendChild(b);
+  b.onclick=ev=>{ev.stopPropagation();const on=box.classList.toggle('on');b.classList.toggle('on',on);const P=e.popup;if(P._updateLayout){P._updateLayout();P._updatePosition();P._adjustPan&&P._adjustPan();}};
+});
+})();
+</script>
 
 <style>
 .cam{position:relative;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ff8a3d,#ff3d8b);display:grid;place-items:center;font-size:20px;line-height:1;border:3px solid #fff;box-shadow:0 0 0 3px rgba(255,61,139,.35),0 4px 12px rgba(0,0,0,.6);animation:campulse 2s infinite}
