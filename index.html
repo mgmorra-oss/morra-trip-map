@@ -658,10 +658,20 @@ body.parch #panel *{border-color:rgba(120,80,40,.3)}
 body.parch #panel :is(.sub,.progress-meta,li,.meta,small,span,div){color:inherit}
 /* legend in dark ink (legibility fix) */
 body.parch #panel #legend,body.parch #panel #legend .k{color:#2b1a0e;font-weight:600;opacity:1;filter:none}
+/* antique hand-coloured palette (colorfix): flight indigo, boat teal, liveaboard plum, ground burnt orange, tentative/optional ink */
 body.parch #legend svg line{stroke:#5a3412}
-body.parch #legend .k:nth-child(6) svg line{stroke:#8a6a48}
+body.parch #legend .k:nth-child(1) svg line{stroke:#2c3e7a}
+body.parch #legend .k:nth-child(2) svg line{stroke:#1f5f5b}
+body.parch #legend .k:nth-child(3) svg line{stroke:#5e2a5a}
+body.parch #legend .k:nth-child(4) svg line{stroke:#b5541c}
+body.parch #legend .k:nth-child(6) svg line{stroke:#1f5f5b;stroke-opacity:.4}
 body.parch #legend .dot{background:#f3e3c3!important;border:2px solid #5a3412!important}
-body.parch #legend .k:nth-child(8) .dot,body.parch #legend .k:nth-child(9) .dot{border-style:dashed!important}
+body.parch #legend .k:nth-child(7) .dot{background:#3d5a1e!important;border-color:#2a3f14!important}
+body.parch #legend .k:nth-child(8) .dot{border-style:dashed!important}
+body.parch #legend .k:nth-child(9) .dot{border:2px dashed #b5541c!important;background:#f6dcc4!important}
+body.parch .pin.booked{background:#3d5a1e!important;border-color:#2a3f14!important}body.parch .pin.booked span{color:#f3e3c3!important}
+body.parch .pin.pending{background:#f6dcc4!important;border-color:#b5541c!important}body.parch .pin.pending span{color:#7a3510!important}
+body.parch .pin.now{background:#8b1e1e!important;border-color:#4a0e0e!important}
 /* view buttons in dark ink (legibility fix) */
 body.parch #panel .btn{background:#f3e3c3;color:#2b1a0e;font-weight:600;border:1px solid #5a3412;opacity:1;filter:none;font-family:'IM Fell English',Georgia,serif;font-size:13px}
 body.parch #panel .btn:hover{background:#e8d3a8;border-color:#3b1f05}
@@ -688,6 +698,7 @@ body:not(.parch) #bParch{background:rgba(14,22,40,.92);color:#fff;border-color:r
 <script>
 (function(){if(typeof map==='undefined')return;
 const INK='#5a3412',K='morraParch';
+const PAL={'#ffc857':'#2c3e7a','#36c9ff':'#1f5f5b','#7c8cff':'#5e2a5a','#ff8fb1':'#b5541c','#aeb6c4':INK};
 document.getElementById('map').appendChild(document.getElementById('parchFx'));
 const ESRI='https://server.arcgisonline.com/ArcGIS/rest/services/';
 const pt=L.tileLayer(ESRI+'Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,maxNativeZoom:13,className:'parch-tiles',
@@ -705,7 +716,8 @@ function inkRoutes(on){if(typeof legLayer==='undefined')return;
   paths(legLayer,l=>{const o=l.options;
     if(on){if(!l._orig)l._orig={color:o.color,opacity:o.opacity,dashArray:o.dashArray,fillColor:o.fillColor};
       const glow=o.opacity<=.15;
-      l.setStyle({color:INK,fillColor:INK,opacity:glow?0:Math.max(.5,Math.min(.9,l._orig.opacity||.9)),dashArray:l._orig.dashArray||(l instanceof L.Polyline&&!(l instanceof L.Polygon)?'2 8':null)});}
+      const pc=PAL[(l._orig.color||'').toLowerCase()]||INK,op=l._orig.opacity||.9;
+      l.setStyle({color:pc,fillColor:PAL[(l._orig.fillColor||'').toLowerCase()]||pc,opacity:glow?0:(op<.5?.4:Math.max(.8,Math.min(.95,op))),dashArray:l._orig.dashArray||(l instanceof L.Polyline&&!(l instanceof L.Polygon)?'2 8':null)});}
     else if(l._orig)l.setStyle(l._orig);});}
 let on=true;try{const v=localStorage.getItem(K);if(v==='0')on=false;}catch(e){}
 const b=document.createElement('button');b.id='bParch';b.type='button';
