@@ -787,8 +787,8 @@ sched(8000+Math.random()*12000);window.__quake=quake;
 </script>
 <!-- tidbits v1 -->
 <style>
-.tbx{position:absolute;left:50%;margin-left:-14px;bottom:10px;border:0;background:none;font-size:15px;line-height:1;padding:6px;opacity:.45;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:opacity .2s,transform .2s}
-.tbx:hover,.tbx:focus{opacity:1;transform:scale(1.25) rotate(-8deg)}
+.tbx{position:absolute;left:50%;margin-left:-14px;bottom:10px;border:0;background:none;font-size:18px;line-height:1;padding:6px;opacity:.72;filter:drop-shadow(0 0 3px rgba(255,200,60,.65));animation:tbtw 3.2s ease-in-out infinite;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:opacity .2s,transform .2s}
+.tbx:hover,.tbx:focus{animation:none;opacity:1;transform:scale(1.25) rotate(-8deg)}
 .tbx.on{opacity:1}
 .tbl{display:none;margin:8px 0 2px;padding:8px 10px;border-radius:10px;background:rgba(255,214,102,.12);border:1px dashed rgba(255,214,102,.5);font-size:13px;line-height:1.4}
 .tbl.on{display:block;animation:tbin .35s ease-out}
@@ -797,6 +797,8 @@ sched(8000+Math.random()*12000);window.__quake=quake;
 .tbl .tbp{display:block;width:96px;height:72px;margin:6px 0 2px 22px;padding:0;border:2px solid rgba(255,214,102,.55);border-radius:10px;overflow:hidden;background:none;cursor:zoom-in;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:rotate(-1.5deg);transition:transform .2s}
 .tbl .tbp:hover,.tbl .tbp:focus{transform:rotate(0) scale(1.05)}
 .tbl .tbp img{width:100%;height:100%;object-fit:cover;display:block}
+@keyframes tbtw{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:.95;transform:scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.tbx{animation:none}}
 @keyframes tbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 </style>
 <script>
