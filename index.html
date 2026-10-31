@@ -210,10 +210,19 @@ const STOPS = [
   {n:16, place:'Raja Ampat · Waisai', prop:'Scuba Republic, Waisai (then islands TBD)', ll:[-0.4300,130.8150], tentative:true,
    start:'2026-11-18', end:'2026-12-01', dateText:'Nov 18 → ~Nov 28–Dec 1 (draft)',
    note:'Waisai base first: Scuba Republic double bungalow confirmed Nov 18–21, then an island dive lodge or homestay (Mansuar / Kri). Back to Sorong ~Nov 28–Dec 1.'},
-  {n:17, place:'Jakarta', prop:'Hotel TBD (night of Dec 17)', ll:[-6.1256,106.6559], tentative:true,
+  {n:17, place:'Sidemen, Bali', prop:'Abian Ayu Villa', ll:[-8.4870,115.4380],
+   start:'2026-12-01', end:'2026-12-06',
+   note:'Private pool villa with breakfast in the rice-terrace hills of east Bali. Check-in from 14:00 WITA, out by 12:00 Dec 6.'},
+  {n:18, place:'Canggu, Bali', prop:'The Calmtree Bungalow', ll:[-8.6540,115.1330],
+   start:'2026-12-06', end:'2026-12-10',
+   note:'Deluxe Double Bungalow with breakfast near Batu Bolong beach. Check-out Dec 10 for the Garuda flight to Yogyakarta.'},
+  {n:19, place:'Yogyakarta, Java', prop:'Duta Garden Hotel', ll:[-7.8180,110.3690],
+   start:'2026-12-10', end:'2026-12-17',
+   note:'Garden hotel in Prawirotaman, 7 nights with breakfast. Check-in from 14:00 WIB Thu Dec 10, out Thu Dec 17.'},
+  {n:20, place:'Jakarta', prop:'Hotel TBD (night of Dec 17)', ll:[-6.1256,106.6559], tentative:true,
    start:'2026-12-17', end:'2026-12-18', note:'Flight is booked: EgyptAir MS978 Business CGK T3 → Cairo, 00:50 Dec 18.'},
-  {n:18, place:'Cairo, Egypt', prop:'~22 h layover · hotel TBD', ll:[30.1219,31.4056], tentative:true,
-   start:'2026-12-18', end:'2026-12-19', note:'Arrive 07:10, leave 05:15 next day.'},
+  {n:21, place:'Cairo, Egypt', prop:'Le Méridien Cairo Airport', ll:[30.1219,31.4056],
+   start:'2026-12-18', end:'2026-12-19', note:'~22 h layover at the airport hotel (Terminal 3). Arrive 07:10, leave 05:15 next day.'},
   {id:'jfk', kind:'end', place:'New York (JFK)', prop:'Home stretch', ll:[40.6413,-73.7781],
    start:'2026-12-19', end:'2026-12-19', dateText:'Arrive Sat Dec 19, 10:15', note:'EgyptAir MS985 Business Cairo → JFK T1.'}
 ];
@@ -222,7 +231,7 @@ const STOPS = [
 const P = {
   SANUR_H:[-8.6795,115.2645], JUNG:[-8.6705,115.4455],
   LBJ:[-8.4866,119.8887], UPG:[-5.0616,119.5540], AMQ:[-3.7103,128.0891],
-  TULEHU:[-3.5880,128.3260], HARIA:[-3.5850,128.6450], SORONG_H:[-0.8780,131.2480], WAISAI_H:[-0.4330,130.8140]
+  TULEHU:[-3.5880,128.3260], HARIA:[-3.5850,128.6450], SORONG_H:[-0.8780,131.2480], WAISAI_H:[-0.4330,130.8140], DPS:[-8.7482,115.1672], YIA:[-7.9006,110.0573]
 };
 const MARIA_LOOP=[[-8.4935,119.8800],[-8.4985,119.7600],[-8.4600,119.6600],[-8.4200,119.5600],[-8.4050,119.5000],
   [-8.4300,119.4650],[-8.4700,119.5750],[-8.5350,119.5980],[-8.5400,119.6400],[-8.5600,119.7100],[-8.5200,119.8200],[-8.4950,119.8790]];
@@ -251,9 +260,13 @@ const LEGS = [
   {from:13, to:14, mode:'ground', date:'2026-11-04', label:'Transfer to Amaya Explorer (Ambon Bay) · Wed Nov 4'},
   {from:14, to:15, mode:'live', date:'2026-11-04', path:AMAYA, label:'Amaya Explorer · Ambon → Banda → Misool → Raja Ampat → Sorong (rough)', liveRoute:true},
   {from:15, to:16, mode:'boat', date:'2026-11-18', tentative:true, label:'Draft: fast ferry Sorong → Waisai · Wed Nov 18 (~2 h)', path:[P.SORONG_H,[-0.7400,131.0800],[-0.5600,130.9000],P.WAISAI_H]},
-  /* Raja Ampat → Sorong → Jakarta intentionally omitted (not yet planned) */
-  {from:17, to:18, mode:'flight', date:'2026-12-18', label:'EgyptAir MS978 Jakarta → Cairo (Business) · 00:50 Dec 18'},
-  {from:18, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'}
+  /* Raja Ampat → Bali (late Nov) intentionally omitted (not yet booked) */
+  {from:17, to:18, mode:'ground', date:'2026-12-06', label:'Drive Sidemen → Canggu · Sun Dec 6'},
+  {from:18, to:19, mode:'flight', date:'2026-12-10', label:'Garuda GA253 Bali → Yogyakarta · Thu Dec 10, 12:05 WITA → 12:55 WIB',
+   path:[P.DPS,P.YIA], pre:[{mode:'ground',path:[[-8.6540,115.1330],P.DPS]}], then:[{mode:'ground',path:[P.YIA,[-7.8180,110.3690]]}]},
+  /* Yogyakarta → Jakarta (Dec 17) not booked yet */
+  {from:20, to:21, mode:'flight', date:'2026-12-18', label:'EgyptAir MS978 Jakarta → Cairo (Business) · 00:50 Dec 18'},
+  {from:21, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'}
 ];
 
 /* =========================================================
@@ -426,7 +439,7 @@ document.getElementById('pday').textContent=`Day ${Math.round((tn-t0)/864e5)+1} 
 /* ---------- views ---------- */
 const padTL = ()=> innerWidth>760?[400,30]:[20,20];
 const padBR = ()=> innerWidth>760?[30,30]:[20,170];
-const indoB = L.latLngBounds(STOPS.filter(s=>s.n>=3&&s.n<=16).map(s=>s.ll)).extend([-10.3,105]);
+const indoB = L.latLngBounds(STOPS.filter(s=>s.n>=3&&s.n<=20).map(s=>s.ll)).extend([-10.3,105]);
 const allB  = L.latLngBounds(STOPS.map(s=>s.ll));
 const fitIndo=()=>map.flyToBounds(indoB,{paddingTopLeft:padTL(),paddingBottomRight:padBR(),duration:1.4});
 document.getElementById('bIndo').onclick=fitIndo;
