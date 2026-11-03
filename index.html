@@ -140,9 +140,9 @@ h1 em{font-style:normal;background:linear-gradient(90deg,#2fd8c4,#36c9ff 50%,#7c
   <header>
     <div class="eyebrow">Singapore · Bali · Komodo · Ambon · Banda · Raja Ampat</div>
     <h1>Gino &amp; Mary's <em>Indonesia Adventure 2026</em></h1>
-    <div class="sub">Sep 18 → Dec 19, 2026 · Sarasota to New York the long way round. Tap a stop to fly there.</div>
+    <div class="sub">Sep 18 → Dec 21, 2026 · Sarasota to Tampa the long way round. Tap a stop to fly there.</div>
     <div class="progress"><i id="pfill"></i><b id="pdot"></b></div>
-    <div class="progress-meta"><span>Sep 18</span><span id="pday"></span><span>Dec 19</span></div>
+    <div class="progress-meta"><span>Sep 18</span><span id="pday"></span><span>Dec 21</span></div>
     <div class="btns">
       <button class="btn now" id="bNow">● You are here</button>
       <button class="btn" id="bIndo">Indonesia</button>
@@ -223,8 +223,12 @@ const STOPS = [
    start:'2026-12-17', end:'2026-12-18', note:'Flight is booked: EgyptAir MS978 Business CGK T3 → Cairo, 00:50 Dec 18.'},
   {n:21, place:'Cairo, Egypt', prop:'Le Méridien Cairo Airport', ll:[30.1219,31.4056],
    start:'2026-12-18', end:'2026-12-19', note:'~22 h layover at the airport hotel (Terminal 3). Arrive 07:10, leave 05:15 next day.'},
-  {id:'jfk', kind:'end', place:'New York (JFK)', prop:'Home stretch', ll:[40.6413,-73.7781],
-   start:'2026-12-19', end:'2026-12-19', dateText:'Arrive Sat Dec 19, 10:15', note:'EgyptAir MS985 Business Cairo → JFK T1.'}
+  {id:'jfk', kind:'waypoint', place:'New York (JFK)', prop:'Back in the USA', ll:[40.6413,-73.7781],
+   start:'2026-12-19', end:'2026-12-19', dateText:'Arrive Sat Dec 19, 10:15', note:'EgyptAir MS985 Business Cairo → JFK T1. Pick up an Avis rental SUV at JFK for the drive out to Long Island.'},
+  {n:22, place:'Long Island, NY', prop:'Lodging not on file', ll:[40.7900,-73.1350],
+   start:'2026-12-19', end:'2026-12-21', note:'Two nights on Long Island with the rental car; drop it at Long Island MacArthur (ISP) the morning of Mon Dec 21.'},
+  {id:'tpa', kind:'end', place:'Tampa, FL', prop:'Home stretch', ll:[27.9755,-82.5332],
+   start:'2026-12-21', end:'2026-12-21', dateText:'Arrive Mon Dec 21, 12:35', note:'Southwest WN2242 Islip → Tampa, then home to Sarasota.'}
 ];
 
 /* Routes (rough). mode: flight | boat | live | ground */
@@ -266,7 +270,9 @@ const LEGS = [
    path:[P.DPS,P.YIA], pre:[{mode:'ground',path:[[-8.6540,115.1330],P.DPS]}], then:[{mode:'ground',path:[P.YIA,[-7.8180,110.3690]]}]},
   /* Yogyakarta → Jakarta (Dec 17) not booked yet */
   {from:20, to:21, mode:'flight', date:'2026-12-18', label:'EgyptAir MS978 Jakarta → Cairo (Business) · 00:50 Dec 18'},
-  {from:21, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'}
+  {from:21, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'},
+  {from:'jfk', to:22, mode:'ground', date:'2026-12-19', label:'Avis rental car JFK → Long Island · Sat Dec 19'},
+  {from:22, to:'tpa', mode:'flight', date:'2026-12-21', label:'Southwest WN2242 Islip → Tampa · Mon Dec 21, 09:25 → 12:35 ET'}
 ];
 
 /* =========================================================
@@ -430,7 +436,7 @@ document.getElementById('legend').innerHTML=`
   <div class="k">${sv(TENT,'1 6')}Optional side trip</div>`;
 
 /* ---------- progress ---------- */
-const t0=D('2026-09-18'),t1=D('2026-12-19'),tn=D(baliToday);
+const t0=D('2026-09-18'),t1=D('2026-12-21'),tn=D(baliToday);
 const pct=Math.max(0,Math.min(1,(tn-t0)/(t1-t0)));
 document.getElementById('pfill').style.width=(pct*100)+'%';
 document.getElementById('pdot').style.left=(pct*100)+'%';
