@@ -828,11 +828,11 @@ const svg='<svg viewBox="0 0 64 96" width="64" height="96" xmlns="http://www.w3.
  '<path d="M20 62h24M24 54h16" fill="none" stroke="'+INK+'" stroke-width="1.1" opacity=".55"/>'+
  '<text x="32" y="88" text-anchor="middle" font-family="IM Fell English, Georgia, serif" font-style="italic" font-size="13" fill="'+INK+'">Suanggi</text>'+
  '</svg>';
-const m=L.marker([-4.45,129.72],{zIndexOffset:8500,keyboard:true,title:'Suanggi Selatan',
+const m=L.marker([-4.327052,129.706202],{zIndexOffset:8500,keyboard:true,title:'Suanggi Selatan',
   icon:L.divIcon({className:'vvolc-icon',iconSize:[64,96],iconAnchor:[32,8],popupAnchor:[0,88],
     html:'<div class="vvolc" role="button" aria-label="Suanggi Selatan, a smoking volcano">'+svg+'</div>'})}).addTo(map);
 m.bindPopup('<b>Suanggi Selatan</b><br>Last dive of the day: a booming rumble at 95 feet, then the divemaster\'s explosion signal. The pinnacle is a smoking volcano.<br><br>In Indonesian, <i>suanggi</i> means owl \u2014 and in Maluku folklore, a witch or wandering spirit.');
-if(new URLSearchParams(location.search).get('at')==='suanggi') map.setView([-4.40,129.72],8);
+if(new URLSearchParams(location.search).get('at')==='suanggi') map.setView([-4.327052,129.706202],12);
 window.__suanggi=m;
 })();
 </script>
