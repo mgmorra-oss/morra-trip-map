@@ -806,30 +806,33 @@ sched(8000+Math.random()*12000);window.__quake=quake;
 </script>
 <!-- volcano v1 : little cartoony smoking volcano at Suanggi Selatan -->
 <style>
-.vvolc{cursor:pointer;filter:drop-shadow(0 1px 1.5px rgba(40,20,0,.55)) drop-shadow(0 0 2px rgba(255,240,205,.85));transform-origin:50% 90%;animation:vbob 3s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
-.vvolc:hover{animation-play-state:paused;transform:scale(1.12)}
-.vvolc .vsm{animation:vpuff 2.6s ease-in-out infinite;transform-origin:18px 22px}
-@keyframes vbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+.leaflet-div-icon.vvolc-icon{background:none!important;border:none!important}
+.vvolc{cursor:pointer;filter:drop-shadow(0 2px 2px rgba(40,20,0,.55)) drop-shadow(0 0 2px rgba(255,240,205,.9));transform-origin:50% 0;animation:vbob 3s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
+.vvolc:hover{animation-play-state:paused;transform:scale(1.1)}
+.vvolc .vsm{animation:vpuff 2.6s ease-in-out infinite;transform-origin:32px 40px}
+@keyframes vbob{0%,100%{transform:translateY(0)}50%{transform:translateY(2px)}}
 @keyframes vpuff{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 @media (prefers-reduced-motion:reduce){.vvolc,.vvolc .vsm{animation:none}}
 </style>
 <script>
 (function(){if(typeof map==='undefined'||typeof L==='undefined')return;
 const INK='#5a3412',PAPER='#f6e7c8',GLOW='#c0391b';
-const svg='<svg viewBox="0 0 36 50" width="36" height="50" xmlns="http://www.w3.org/2000/svg">'+
- '<g class="vsm" fill="'+PAPER+'" stroke="'+INK+'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'+
- '<circle cx="18" cy="11" r="4.2"/>'+
- '<circle cx="23.5" cy="7" r="3.2"/>'+
- '<circle cx="14.5" cy="5.5" r="2.8"/>'+
+const svg='<svg viewBox="0 0 64 96" width="64" height="96" xmlns="http://www.w3.org/2000/svg">'+
+ '<g class="vsm" fill="'+PAPER+'" stroke="'+INK+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+
+ '<circle cx="32" cy="20" r="7"/>'+
+ '<circle cx="42" cy="13" r="5.2"/>'+
+ '<circle cx="24" cy="11" r="4.6"/>'+
  '</g>'+
- '<path d="M7 46 L13.5 24 L16 28 L18.5 18 L21 27 L23.5 23 L29 46Z" fill="'+PAPER+'" stroke="'+INK+'" stroke-width="1.6" stroke-linejoin="round"/>'+
- '<path d="M16 28 L18.5 18 L21 27" fill="'+GLOW+'" stroke="'+INK+'" stroke-width="1.15" stroke-linejoin="round"/>'+
- '<path d="M12 40h12M14 34h8" fill="none" stroke="'+INK+'" stroke-width=".8" opacity=".55"/>'+
+ '<path d="M12 70 L24 38 L28 44 L32 28 L36 43 L40 36 L52 70Z" fill="'+PAPER+'" stroke="'+INK+'" stroke-width="2.2" stroke-linejoin="round"/>'+
+ '<path d="M28 44 L32 28 L36 43" fill="'+GLOW+'" stroke="'+INK+'" stroke-width="1.6" stroke-linejoin="round"/>'+
+ '<path d="M20 62h24M24 54h16" fill="none" stroke="'+INK+'" stroke-width="1.1" opacity=".55"/>'+
+ '<text x="32" y="88" text-anchor="middle" font-family="IM Fell English, Georgia, serif" font-style="italic" font-size="13" fill="'+INK+'">Suanggi</text>'+
  '</svg>';
-const m=L.marker([-4.322,129.707],{zIndexOffset:8500,keyboard:true,title:'Suanggi Selatan',
-  icon:L.divIcon({className:'',iconSize:[36,50],iconAnchor:[18,48],popupAnchor:[0,-44],
+const m=L.marker([-4.45,129.72],{zIndexOffset:8500,keyboard:true,title:'Suanggi Selatan',
+  icon:L.divIcon({className:'vvolc-icon',iconSize:[64,96],iconAnchor:[32,8],popupAnchor:[0,88],
     html:'<div class="vvolc" role="button" aria-label="Suanggi Selatan, a smoking volcano">'+svg+'</div>'})}).addTo(map);
 m.bindPopup('<b>Suanggi Selatan</b><br>Last dive of the day: a booming rumble at 95 feet, then the divemaster\'s explosion signal. The pinnacle is a smoking volcano.<br><br>In Indonesian, <i>suanggi</i> means owl \u2014 and in Maluku folklore, a witch or wandering spirit.');
+if(new URLSearchParams(location.search).get('at')==='suanggi') map.setView([-4.40,129.72],8);
 window.__suanggi=m;
 })();
 </script>
