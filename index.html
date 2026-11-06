@@ -219,8 +219,9 @@ const STOPS = [
   {n:19, place:'Yogyakarta, Java', prop:'Duta Garden Hotel', ll:[-7.8180,110.3690],
    start:'2026-12-10', end:'2026-12-17',
    note:'Garden hotel in Prawirotaman, 7 nights with breakfast. Check-in from 14:00 WIB Thu Dec 10, out Thu Dec 17.'},
-  {n:20, place:'Jakarta', prop:'Hotel TBD (night of Dec 17)', ll:[-6.1256,106.6559], tentative:true,
-   start:'2026-12-17', end:'2026-12-18', note:'Flight is booked: EgyptAir MS978 Business CGK T3 → Cairo, 00:50 Dec 18.'},
+  {n:20, place:'Jakarta', prop:'CGK Terminal 3 (evening transit)', ll:[-6.1256,106.6559],
+   start:'2026-12-17', end:'2026-12-18',
+   note:'Argo Semeru into Gambir, then to CGK for EgyptAir MS978 Business → Cairo, 00:50 Dec 18. No Jakarta hotel.'},
   {n:21, place:'Cairo, Egypt', prop:'Le Méridien Cairo Airport', ll:[30.1219,31.4056],
    start:'2026-12-18', end:'2026-12-19', note:'~22 h layover at the airport hotel (Terminal 3). Arrive 07:10, leave 05:15 next day.'},
   {id:'jfk', kind:'waypoint', place:'New York (JFK)', prop:'Back in the USA', ll:[40.6413,-73.7781],
@@ -235,7 +236,7 @@ const STOPS = [
 const P = {
   SANUR_H:[-8.6795,115.2645], JUNG:[-8.6705,115.4455],
   LBJ:[-8.4866,119.8887], UPG:[-5.0616,119.5540], AMQ:[-3.7103,128.0891],
-  TULEHU:[-3.5880,128.3260], HARIA:[-3.5850,128.6450], SORONG_H:[-0.8780,131.2480], WAISAI_H:[-0.4330,130.8140], DPS:[-8.7482,115.1672], YIA:[-7.9006,110.0573]
+  TULEHU:[-3.5880,128.3260], HARIA:[-3.5850,128.6450], SORONG_H:[-0.8780,131.2480], WAISAI_H:[-0.4330,130.8140], DPS:[-8.7482,115.1672], YIA:[-7.9006,110.0573], GMR:[-6.1764,106.8306], CGK:[-6.1256,106.6559]
 };
 const MARIA_LOOP=[[-8.4935,119.8800],[-8.4985,119.7600],[-8.4600,119.6600],[-8.4200,119.5600],[-8.4050,119.5000],
   [-8.4300,119.4650],[-8.4700,119.5750],[-8.5350,119.5980],[-8.5400,119.6400],[-8.5600,119.7100],[-8.5200,119.8200],[-8.4950,119.8790]];
@@ -268,7 +269,8 @@ const LEGS = [
   {from:17, to:18, mode:'ground', date:'2026-12-06', label:'Drive Sidemen → Canggu · Sun Dec 6'},
   {from:18, to:19, mode:'flight', date:'2026-12-10', label:'Garuda GA253 Bali → Yogyakarta · Thu Dec 10, 12:05 WITA → 12:55 WIB',
    path:[P.DPS,P.YIA], pre:[{mode:'ground',path:[[-8.6540,115.1330],P.DPS]}], then:[{mode:'ground',path:[P.YIA,[-7.8180,110.3690]]}]},
-  /* Yogyakarta → Jakarta (Dec 17) not booked yet */
+  {from:19, to:20, mode:'ground', date:'2026-12-17', label:'Argo Semeru Yogyakarta → Gambir · Thu Dec 17, 12:57 → 19:39 WIB',
+   path:[[-7.8180,110.3690], P.GMR, P.CGK]},
   {from:20, to:21, mode:'flight', date:'2026-12-18', label:'EgyptAir MS978 Jakarta → Cairo (Business) · 00:50 Dec 18'},
   {from:21, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'},
   {from:'jfk', to:22, mode:'ground', date:'2026-12-19', label:'Avis rental car JFK → Long Island · Sat Dec 19'},
@@ -397,7 +399,7 @@ const hereM=L.marker(hereStop.ll,{interactive:false,zIndexOffset:2000,icon:L.div
 /* ---------- panel list ---------- */
 const list=document.getElementById('list');
 STOPS.forEach((s,i)=>{
-  if(s.n===17){const g=document.createElement('div');g.className='gap';g.innerHTML='⋯ <b>~Dec 1 → Dec 17:</b> Raja Ampat → Sorong → … → Jakarta not planned yet (not drawn)';list.appendChild(g);}
+  if(s.n===17){const g=document.createElement('div');g.className='gap';g.innerHTML='⋯ <b>~Dec 1:</b> Raja Ampat → Bali return not yet booked (not drawn)';list.appendChild(g);}
   const st=s.status, el=document.createElement('div');
   el.className=`item s-${cls(s)}`; el.dataset.k=key(s);
   const dt = s.dateText || `${fmt(s.start)} → ${fmt(s.end)} · ${nights(s)}n`;
