@@ -494,6 +494,8 @@ t.id='ptab';t.type='button';document.getElementById('panel').after(t);
 const phone=()=>matchMedia('(max-width:760px)').matches;
 const lab=()=>{const h=b.classList.contains('phide');t.textContent=h?(phone()?'▲ Show log':'▶ Show'):(phone()?'▼ Hide':'◀ Hide');t.setAttribute('aria-expanded',String(!h));t.setAttribute('aria-label',h?'Show dive log panel':'Hide dive log panel');};
 let s=null;try{s=localStorage.getItem(K)}catch(e){}
+const qp=(new URLSearchParams(location.search)).get('panel');
+if(qp==='show') s='shown'; else if(qp==='hide') s='hidden';
 b.classList.toggle('phide',s?s==='hidden':phone());lab();
 t.onclick=e=>{e.stopPropagation();const h=!b.classList.contains('phide');b.classList.toggle('phide',h);try{localStorage.setItem(K,h?'hidden':'shown')}catch(e){}lab();setTimeout(()=>typeof map!=='undefined'&&map.invalidateSize(),400);};
 addEventListener('resize',lab);})();
