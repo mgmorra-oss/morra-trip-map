@@ -191,7 +191,8 @@ footer.foot{margin-top:28px;font-size:11.5px;color:#5d6b86;line-height:1.45}
           <div class="row1">
             <div>
               <h3>${d.title}</h3>
-              <div class="when">${fmtDate(d.date)} · ${d.start_time_local} · ${d.duration_display}</div>
+              ${d.subtitle?`<div class="when">${d.subtitle}</div>`:''}
+              <div class="when">${fmtDate(d.date)} · ${d.start_time_local} · ${d.duration_display}${d.with_mary && !(d.subtitle||'').includes('with Mary')?' · with Mary':''}</div>
             </div>
             <span class="dn">#${d.dive_number}</span>
           </div>

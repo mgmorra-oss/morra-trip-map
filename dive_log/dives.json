@@ -1,7 +1,7 @@
 {
   "title": "Gino & Mary \u2014 Dive Log",
   "trip": "Indonesia 2026",
-  "generated_at_wit": "2026-11-09 21:37 Asia/Jayapura (WIT, UTC+9)",
+  "generated_at_wit": "2026-11-09 21:49 Asia/Jayapura (WIT, UTC+9)",
   "time_assumption": "All Garmin start times are device-local as shown in Connect (not converted from UTC). Photo EXIF times are GoPro local after the +3,908-day date correction; treated as the same local clock family when matching Komodo dives.",
   "garmin_csv": "garmin_dives.csv",
   "garmin_status": "loaded",
@@ -108,7 +108,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24622524185",
       "activity_name": "Dive 302: Klungkung Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -8.715273,
+        115.456786
+      ],
+      "avg_depth_ft": 45,
+      "avg_depth_m": 13.7,
+      "subtitle": "with Mary"
     },
     {
       "id": "dive-303",
@@ -139,7 +148,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24622525004",
       "activity_name": "Dive 303: Klungkung Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -8.794839,
+        115.525827
+      ],
+      "avg_depth_ft": 36,
+      "avg_depth_m": 11.0,
+      "subtitle": "with Mary"
     },
     {
       "id": "dive-304",
@@ -170,7 +188,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24635221853",
       "activity_name": "Dive 304: Klungkung Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -8.684051,
+        115.482673
+      ],
+      "avg_depth_ft": 43,
+      "avg_depth_m": 13.1,
+      "subtitle": "with Mary"
     },
     {
       "id": "dive-305",
@@ -201,7 +228,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24635261292",
       "activity_name": "Dive 305: Klungkung Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.660003,
+        115.451933
+      ],
+      "avg_depth_ft": 31,
+      "avg_depth_m": 9.4,
+      "subtitle": null
     },
     {
       "id": "dive-306",
@@ -229,7 +265,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24647660402",
       "activity_name": "Dive 306: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -8.675421,
+        115.538142
+      ],
+      "avg_depth_ft": 45,
+      "avg_depth_m": 13.7,
+      "subtitle": "with Mary"
     },
     {
       "id": "dive-307",
@@ -260,7 +305,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24647660768",
       "activity_name": "Dive 307: Klungkung Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.676098,
+        115.524853
+      ],
+      "avg_depth_ft": 38,
+      "avg_depth_m": 11.6,
+      "subtitle": null
     },
     {
       "id": "dive-308",
@@ -291,7 +345,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24669411646",
       "activity_name": "Dive 308: Klungkung Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -8.703724,
+        115.58515
+      ],
+      "avg_depth_ft": 45,
+      "avg_depth_m": 13.7,
+      "subtitle": "with Mary"
     },
     {
       "id": "dive-309",
@@ -322,7 +385,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24669411649",
       "activity_name": "Dive 309: Klungkung Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -8.676634,
+        115.573153
+      ],
+      "avg_depth_ft": 40,
+      "avg_depth_m": 12.2,
+      "subtitle": "with Mary"
     },
     {
       "id": "dive-310",
@@ -360,7 +432,16 @@
           "match_note": "EXIF inside dive window"
         }
       ],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -8.627582,
+        119.712195
+      ],
+      "avg_depth_ft": 43,
+      "avg_depth_m": 13.1,
+      "subtitle": "with Mary"
     },
     {
       "id": "dive-311",
@@ -391,7 +472,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24777636607",
       "activity_name": "Dive 311: Manggarai Barat Multi-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.626793,
+        119.707974
+      ],
+      "avg_depth_ft": 43,
+      "avg_depth_m": 13.1,
+      "subtitle": null
     },
     {
       "id": "dive-312",
@@ -422,7 +512,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24785344206",
       "activity_name": "Dive 312: Manggarai Barat Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.568105,
+        119.655328
+      ],
+      "avg_depth_ft": 41,
+      "avg_depth_m": 12.5,
+      "subtitle": null
     },
     {
       "id": "dive-313",
@@ -490,7 +589,16 @@
           "match_note": "EXIF inside dive window"
         }
       ],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.578518,
+        119.679857
+      ],
+      "avg_depth_ft": 39,
+      "avg_depth_m": 11.9,
+      "subtitle": null
     },
     {
       "id": "dive-314",
@@ -521,7 +629,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24787333320",
       "activity_name": "Dive 314: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.538105,
+        119.599487
+      ],
+      "avg_depth_ft": 35,
+      "avg_depth_m": 10.7,
+      "subtitle": null
     },
     {
       "id": "dive-315",
@@ -571,7 +688,16 @@
           "match_note": "EXIF inside dive window"
         }
       ],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.431612,
+        119.560422
+      ],
+      "avg_depth_ft": 44,
+      "avg_depth_m": 13.4,
+      "subtitle": null
     },
     {
       "id": "dive-316",
@@ -675,7 +801,16 @@
           "match_note": "EXIF inside dive window"
         }
       ],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.439757,
+        119.5656
+      ],
+      "avg_depth_ft": 43,
+      "avg_depth_m": 13.1,
+      "subtitle": null
     },
     {
       "id": "dive-317",
@@ -716,7 +851,16 @@
           "match_note": "EXIF inside dive window"
         }
       ],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.459347,
+        119.560634
+      ],
+      "avg_depth_ft": 29,
+      "avg_depth_m": 8.8,
+      "subtitle": null
     },
     {
       "id": "dive-318",
@@ -747,7 +891,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24809278731",
       "activity_name": "Dive 318: Manggarai Barat Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.509583,
+        119.643483
+      ],
+      "avg_depth_ft": 35,
+      "avg_depth_m": 10.7,
+      "subtitle": null
     },
     {
       "id": "dive-319",
@@ -778,7 +931,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24809928150",
       "activity_name": "Dive 319: Manggarai Barat Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.509658,
+        119.699586
+      ],
+      "avg_depth_ft": 37,
+      "avg_depth_m": 11.3,
+      "subtitle": null
     },
     {
       "id": "dive-320",
@@ -809,7 +971,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24811890401",
       "activity_name": "Dive 320: Manggarai Barat Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -8.482284,
+        119.833077
+      ],
+      "avg_depth_ft": 31,
+      "avg_depth_m": 9.4,
+      "subtitle": null
     },
     {
       "id": "dive-322",
@@ -840,12 +1011,21 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24959307058",
       "activity_name": "Dive 322: Ambon Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -3.706551,
+        128.103821
+      ],
+      "avg_depth_ft": 44,
+      "avg_depth_m": 13.4,
+      "subtitle": null
     },
     {
       "id": "dive-323",
       "dive_number": 323,
-      "title": "Suanggi Selatan \u00b7 Dive #323",
+      "title": "Suanggi Selatan",
       "site": "Suanggi Selatan",
       "site_source": "Same start GPS cluster as Dive #326 (309 m) named Suanggi Selatan in trip tidbit",
       "region": "Banda Sea",
@@ -871,12 +1051,21 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24969607454",
       "activity_name": "Dive 323: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -4.327076,
+        129.701437
+      ],
+      "avg_depth_ft": 55,
+      "avg_depth_m": 16.8,
+      "subtitle": "Banda Sea \u00b7 Dive #323 \u00b7 with Mary"
     },
     {
       "id": "dive-324",
       "dive_number": 324,
-      "title": "Suanggi Selatan \u00b7 Dive #324",
+      "title": "Suanggi Selatan",
       "site": "Suanggi Selatan",
       "site_source": "Same start GPS cluster as Dive #326 (282 m) named Suanggi Selatan in trip tidbit",
       "region": "Banda Sea",
@@ -902,12 +1091,21 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24970940433",
       "activity_name": "Dive 324: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -4.325984,
+        129.704974
+      ],
+      "avg_depth_ft": 59,
+      "avg_depth_m": 18.0,
+      "subtitle": "Banda Sea \u00b7 Dive #324"
     },
     {
       "id": "dive-325",
       "dive_number": 325,
-      "title": "Suanggi Selatan \u00b7 Dive #325",
+      "title": "Suanggi Selatan",
       "site": "Suanggi Selatan",
       "site_source": "Same start GPS cluster as Dive #326 (284 m) named Suanggi Selatan in trip tidbit",
       "region": "Banda Sea",
@@ -933,12 +1131,21 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24971439621",
       "activity_name": "Dive 325: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -4.324698,
+        129.705583
+      ],
+      "avg_depth_ft": 61,
+      "avg_depth_m": 18.6,
+      "subtitle": "Banda Sea \u00b7 Dive #325 \u00b7 with Mary"
     },
     {
       "id": "dive-326",
       "dive_number": 326,
-      "title": "Suanggi Selatan \u00b7 Dive #326",
+      "title": "Suanggi Selatan",
       "site": "Suanggi Selatan",
       "site_source": "Trip map tidbit (Gino): 'Last dive of the day at Suanggi Selatan' on 2026-11-05",
       "region": "Banda Sea",
@@ -964,7 +1171,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24972706733",
       "activity_name": "Dive 326: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -4.321507,
+        129.703036
+      ],
+      "avg_depth_ft": 57,
+      "avg_depth_m": 17.4,
+      "subtitle": "Banda Sea \u00b7 Dive #326 \u00b7 with Mary"
     },
     {
       "id": "dive-327",
@@ -995,7 +1211,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24981205415",
       "activity_name": "Dive 327: Maluku Tengah Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -4.507646,
+        129.945484
+      ],
+      "avg_depth_ft": 57,
+      "avg_depth_m": 17.4,
+      "subtitle": null
     },
     {
       "id": "dive-328",
@@ -1026,7 +1251,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24982229640",
       "activity_name": "Dive 328: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -4.486656,
+        129.928272
+      ],
+      "avg_depth_ft": 56,
+      "avg_depth_m": 17.1,
+      "subtitle": null
     },
     {
       "id": "dive-329",
@@ -1057,7 +1291,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24982885068",
       "activity_name": "Dive 329: Maluku Tengah Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -4.505099,
+        129.881689
+      ],
+      "avg_depth_ft": 42,
+      "avg_depth_m": 12.8,
+      "subtitle": "with Mary"
     },
     {
       "id": "dive-330",
@@ -1088,7 +1331,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24991468913",
       "activity_name": "Dive 330: Maluku Tengah Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -4.610321,
+        130.047064
+      ],
+      "avg_depth_ft": 47,
+      "avg_depth_m": 14.3,
+      "subtitle": null
     },
     {
       "id": "dive-331",
@@ -1119,7 +1371,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24992669779",
       "activity_name": "Dive 331: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -4.640165,
+        130.05588
+      ],
+      "avg_depth_ft": 49,
+      "avg_depth_m": 14.9,
+      "subtitle": null
     },
     {
       "id": "dive-332",
@@ -1150,7 +1411,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/24993294063",
       "activity_name": "Dive 332: Maluku Tengah Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -4.607079,
+        130.048834
+      ],
+      "avg_depth_ft": 42,
+      "avg_depth_m": 12.8,
+      "subtitle": null
     },
     {
       "id": "dive-333",
@@ -1181,7 +1451,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/25002844155",
       "activity_name": "Dive 333: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": "Mary",
+      "with_mary": true,
+      "gps_exit": [
+        -3.930625,
+        131.215146
+      ],
+      "avg_depth_ft": 46,
+      "avg_depth_m": 14.0,
+      "subtitle": "with Mary"
     },
     {
       "id": "dive-334",
@@ -1212,7 +1491,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/25004006659",
       "activity_name": "Dive 334: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -3.924245,
+        131.215207
+      ],
+      "avg_depth_ft": 57,
+      "avg_depth_m": 17.4,
+      "subtitle": null
     },
     {
       "id": "dive-335",
@@ -1243,7 +1531,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/25014597366",
       "activity_name": "Dive 335: Raja Ampat Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -2.215949,
+        130.453993
+      ],
+      "avg_depth_ft": 45,
+      "avg_depth_m": 13.7,
+      "subtitle": null
     },
     {
       "id": "dive-336",
@@ -1274,7 +1571,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/25015817138",
       "activity_name": "Dive 336: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -2.195538,
+        130.427202
+      ],
+      "avg_depth_ft": 57,
+      "avg_depth_m": 17.4,
+      "subtitle": null
     },
     {
       "id": "dive-337",
@@ -1305,7 +1611,16 @@
       "activity_url": "https://connect.garmin.com/modern/activity/25015820106",
       "activity_name": "Dive 337: Single-Gas Dive",
       "photos": [],
-      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat)."
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -2.203359,
+        130.425927
+      ],
+      "avg_depth_ft": 52,
+      "avg_depth_m": 15.8,
+      "subtitle": null
     }
   ],
   "day_galleries": [
@@ -1485,5 +1800,25 @@
     },
     "matched": 16,
     "unmatched": 16
+  },
+  "fit_site_scan": {
+    "scanned_zips": 37,
+    "result": "No dive site name strings found in FIT session/dive_summary/dive_settings/sport/developer-like fields or raw string scan. Connect Dive Location / site_name in garmin_sites.csv are region-only (Klungkung, Manggarai Barat, Maluku Tengah, Ambon, Raja Ampat) or blank.",
+    "buddy_source": "garmin_sites.csv notes \u201cDive buddy: Mary\u201d",
+    "with_mary_dives": [
+      302,
+      303,
+      304,
+      306,
+      308,
+      309,
+      310,
+      323,
+      325,
+      326,
+      329,
+      333
+    ],
+    "scanned_at_wit": "2026-11-09 21:49 Asia/Jayapura (WIT)"
   }
 }
