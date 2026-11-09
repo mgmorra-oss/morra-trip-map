@@ -1,7 +1,7 @@
 {
   "title": "Gino & Mary \u2014 Dive Log",
   "trip": "Indonesia 2026",
-  "generated_at_wit": "2026-11-09 21:57 Asia/Jayapura (WIT, UTC+9)",
+  "generated_at_wit": "2026-11-09 22:16 Asia/Jayapura (WIT, UTC+9)",
   "time_assumption": "All Garmin start times are device-local as shown in Connect (not converted from UTC). Photo EXIF times are GoPro local after the +3,908-day date correction; treated as the same local clock family when matching Komodo dives.",
   "garmin_csv": "garmin_dives.csv",
   "garmin_status": "loaded",
@@ -82,9 +82,9 @@
     {
       "id": "dive-302",
       "dive_number": 302,
-      "title": "Nusa Lembongan / Penida \u00b7 Dive #302",
-      "site": null,
-      "site_source": null,
+      "title": "Crystal Bay",
+      "site": "Crystal Bay",
+      "site_source": "scubaboard.com/threads/620725 Crystal Bay",
       "region": "Nusa Lembongan / Penida",
       "garmin_location_site": "Klungkung",
       "trip_id": "lembongan",
@@ -117,14 +117,23 @@
       ],
       "avg_depth_ft": 45,
       "avg_depth_m": 13.7,
-      "subtitle": "with Mary"
+      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #302 \u00b7 with Mary",
+      "site_confidence": "high",
+      "site_distance_m": 51.5,
+      "site_match_notes": "nearest 52m; next 1547m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 21.8,
+        "source": "scubaboard.com/threads/620725 Crystal Bay",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-303",
       "dive_number": 303,
-      "title": "Nusa Lembongan / Penida \u00b7 Dive #303",
-      "site": null,
-      "site_source": null,
+      "title": "Manta Point",
+      "site": "Manta Point",
+      "site_source": "paradisedivingbali.com/manta-point",
       "region": "Nusa Lembongan / Penida",
       "garmin_location_site": "Klungkung",
       "trip_id": "lembongan",
@@ -157,14 +166,23 @@
       ],
       "avg_depth_ft": 36,
       "avg_depth_m": 11.0,
-      "subtitle": "with Mary"
+      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #303 \u00b7 with Mary",
+      "site_confidence": "high",
+      "site_distance_m": 202.6,
+      "site_match_notes": "nearest 203m; next 11819m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 202.6,
+        "source": "paradisedivingbali.com/manta-point",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-304",
       "dive_number": 304,
-      "title": "Nusa Lembongan / Penida \u00b7 Dive #304",
-      "site": null,
-      "site_source": null,
+      "title": "Toyapakeh (likely)",
+      "site": "Toyapakeh",
+      "site_source": "balidiving.co/toyapakeh",
       "region": "Nusa Lembongan / Penida",
       "garmin_location_site": "Klungkung",
       "trip_id": "lembongan",
@@ -197,14 +215,23 @@
       ],
       "avg_depth_ft": 43,
       "avg_depth_m": 13.1,
-      "subtitle": "with Mary"
+      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #304 \u00b7 with Mary",
+      "site_confidence": "likely",
+      "site_distance_m": 302.2,
+      "site_match_notes": "nearest 302m (300m\u20131km band)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 302.2,
+        "source": "balidiving.co/toyapakeh",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-305",
       "dive_number": 305,
-      "title": "Nusa Lembongan / Penida \u00b7 Dive #305",
-      "site": null,
-      "site_source": null,
+      "title": "Mangrove Point (likely)",
+      "site": "Mangrove Point",
+      "site_source": "paradisedivingbali.com/mangrove-point",
       "region": "Nusa Lembongan / Penida",
       "garmin_location_site": "Klungkung",
       "trip_id": "lembongan",
@@ -237,14 +264,23 @@
       ],
       "avg_depth_ft": 31,
       "avg_depth_m": 9.4,
-      "subtitle": null
+      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #305",
+      "site_confidence": "likely",
+      "site_distance_m": 1000.5,
+      "site_match_notes": "nearest Mangrove Point 1000m (>1km)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 1000.5,
+        "source": "paradisedivingbali.com/mangrove-point",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-306",
       "dive_number": 306,
-      "title": "Nusa Lembongan / Penida \u00b7 Dive #306",
-      "site": null,
-      "site_source": null,
+      "title": "Buyuk (likely)",
+      "site": "Buyuk",
+      "site_source": "paradisedivingbali.com/diving/dive-sites/buyuk",
       "region": "Nusa Lembongan / Penida",
       "garmin_location_site": null,
       "trip_id": "lembongan",
@@ -274,14 +310,23 @@
       ],
       "avg_depth_ft": 45,
       "avg_depth_m": 13.7,
-      "subtitle": "with Mary"
+      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #306 \u00b7 with Mary",
+      "site_confidence": "likely",
+      "site_distance_m": 1151.6,
+      "site_match_notes": "nearest Sental 1152m (>1km)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 810.1,
+        "source": "paradisedivingbali.com/diving/dive-sites/buyuk",
+        "gps_used": "exit"
+      }
     },
     {
       "id": "dive-307",
       "dive_number": 307,
-      "title": "Nusa Lembongan / Penida \u00b7 Dive #307",
-      "site": null,
-      "site_source": null,
+      "title": "SD Point",
+      "site": "SD Point",
+      "site_source": "padi.com/dive-site/indonesia/sd-point",
       "region": "Nusa Lembongan / Penida",
       "garmin_location_site": "Klungkung",
       "trip_id": "lembongan",
@@ -314,7 +359,16 @@
       ],
       "avg_depth_ft": 38,
       "avg_depth_m": 11.6,
-      "subtitle": null
+      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #307",
+      "site_confidence": "high",
+      "site_distance_m": 253.0,
+      "site_match_notes": "nearest 253m; next 491m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 253.0,
+        "source": "padi.com/dive-site/indonesia/sd-point",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-308",
@@ -354,7 +408,16 @@
       ],
       "avg_depth_ft": 45,
       "avg_depth_m": 13.7,
-      "subtitle": "with Mary"
+      "subtitle": "with Mary",
+      "site_confidence": "unknown",
+      "site_distance_m": 7372.6,
+      "site_match_notes": "nearest Sental 7373m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 1274.1,
+        "source": "nearest catalog: Malibu Point @ 1274m (nusapenida.org Malibu Point)",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-309",
@@ -394,14 +457,23 @@
       ],
       "avg_depth_ft": 40,
       "avg_depth_m": 12.2,
-      "subtitle": "with Mary"
+      "subtitle": "with Mary",
+      "site_confidence": "unknown",
+      "site_distance_m": 6041.6,
+      "site_match_notes": "nearest Sental 6042m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 3191.2,
+        "source": "nearest catalog: Mentigi @ 3191m (Mentigi Beach public coords near Buyuk/Sental)",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-310",
       "dive_number": 310,
-      "title": "Komodo \u00b7 Dive #310",
-      "site": null,
-      "site_source": null,
+      "title": "Wainilu (likely)",
+      "site": "Wainilu",
+      "site_source": "scubaboard.com/threads/620725 Wainilu",
       "region": "Komodo",
       "garmin_location_site": null,
       "trip_id": "komodo",
@@ -441,14 +513,23 @@
       ],
       "avg_depth_ft": 43,
       "avg_depth_m": 13.1,
-      "subtitle": "with Mary"
+      "subtitle": "Komodo \u00b7 Dive #310 \u00b7 with Mary",
+      "site_confidence": "likely",
+      "site_distance_m": 11239.1,
+      "site_match_notes": "nearest Siaba Besar 11239m (>1km)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 493.7,
+        "source": "scubaboard.com/threads/620725 Wainilu",
+        "gps_used": "exit"
+      }
     },
     {
       "id": "dive-311",
       "dive_number": 311,
-      "title": "Komodo \u00b7 Dive #311",
-      "site": null,
-      "site_source": null,
+      "title": "Wainilu",
+      "site": "Wainilu",
+      "site_source": "scubaboard.com/threads/620725 Wainilu",
       "region": "Komodo",
       "garmin_location_site": "Manggarai Barat",
       "trip_id": "komodo",
@@ -481,7 +562,16 @@
       ],
       "avg_depth_ft": 43,
       "avg_depth_m": 13.1,
-      "subtitle": null
+      "subtitle": "Komodo \u00b7 Dive #311",
+      "site_confidence": "high",
+      "site_distance_m": 11045.4,
+      "site_match_notes": "nearest Siaba Besar 11045m (>1km)",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 77.1,
+        "source": "scubaboard.com/threads/620725 Wainilu",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-312",
@@ -521,14 +611,23 @@
       ],
       "avg_depth_ft": 41,
       "avg_depth_m": 12.5,
-      "subtitle": null
+      "subtitle": null,
+      "site_confidence": "unknown",
+      "site_distance_m": 2172.8,
+      "site_match_notes": "nearest Siaba Besar 2173m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 2172.8,
+        "source": "nearest catalog: Siaba Besar @ 2173m (padi.com/dive-site/indonesia/siaba-besar)",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-313",
       "dive_number": 313,
-      "title": "Komodo \u00b7 Dive #313",
-      "site": null,
-      "site_source": null,
+      "title": "Pengah Kecil",
+      "site": "Pengah Kecil",
+      "site_source": "divers.world/komodo-national-park/pengah-kecil",
       "region": "Komodo",
       "garmin_location_site": "Manggarai Barat",
       "trip_id": "komodo",
@@ -598,14 +697,23 @@
       ],
       "avg_depth_ft": 39,
       "avg_depth_m": 11.9,
-      "subtitle": null
+      "subtitle": "Komodo \u00b7 Dive #313",
+      "site_confidence": "high",
+      "site_distance_m": 4723.9,
+      "site_match_notes": "nearest Siaba Besar 4724m (>1km)",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 15.2,
+        "source": "divers.world/komodo-national-park/pengah-kecil",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-314",
       "dive_number": 314,
-      "title": "Komodo \u00b7 Dive #314",
-      "site": null,
-      "site_source": null,
+      "title": "Taka Makassar (likely)",
+      "site": "Taka Makassar",
+      "site_source": "padi.com/dive-site/indonesia/taka-makassar-2",
       "region": "Komodo",
       "garmin_location_site": null,
       "trip_id": "komodo",
@@ -638,14 +746,23 @@
       ],
       "avg_depth_ft": 35,
       "avg_depth_m": 10.7,
-      "subtitle": null
+      "subtitle": "Komodo \u00b7 Dive #314",
+      "site_confidence": "likely",
+      "site_distance_m": 562.8,
+      "site_match_notes": "nearest 563m (300m\u20131km band)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 562.8,
+        "source": "padi.com/dive-site/indonesia/taka-makassar-2",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-315",
       "dive_number": 315,
-      "title": "Komodo \u00b7 Dive #315",
-      "site": null,
-      "site_source": null,
+      "title": "Castle Rock (likely)",
+      "site": "Castle Rock",
+      "site_source": "padi.com/dive-site/indonesia/castle-rock",
       "region": "Komodo",
       "garmin_location_site": null,
       "trip_id": "komodo",
@@ -697,14 +814,23 @@
       ],
       "avg_depth_ft": 44,
       "avg_depth_m": 13.4,
-      "subtitle": null
+      "subtitle": "Komodo \u00b7 Dive #315",
+      "site_confidence": "likely",
+      "site_distance_m": 343.4,
+      "site_match_notes": "nearest 343m (300m\u20131km band)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 343.4,
+        "source": "padi.com/dive-site/indonesia/castle-rock",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-316",
       "dive_number": 316,
-      "title": "Komodo \u00b7 Dive #316",
-      "site": null,
-      "site_source": null,
+      "title": "Crystal Rock",
+      "site": "Crystal Rock",
+      "site_source": "padi.com/dive-site/indonesia/crystal-rock",
       "region": "Komodo",
       "garmin_location_site": null,
       "trip_id": "komodo",
@@ -810,14 +936,23 @@
       ],
       "avg_depth_ft": 43,
       "avg_depth_m": 13.1,
-      "subtitle": null
+      "subtitle": "Komodo \u00b7 Dive #316",
+      "site_confidence": "high",
+      "site_distance_m": 95.6,
+      "site_match_notes": "nearest 96m; next 294m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 95.6,
+        "source": "padi.com/dive-site/indonesia/crystal-rock",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-317",
       "dive_number": 317,
-      "title": "Komodo \u00b7 Dive #317",
-      "site": null,
-      "site_source": null,
+      "title": "Shotgun (likely)",
+      "site": "Shotgun",
+      "site_source": "scubaboard.com/threads/620725 Shotgun",
       "region": "Komodo",
       "garmin_location_site": "Manggarai Barat",
       "trip_id": "komodo",
@@ -860,14 +995,23 @@
       ],
       "avg_depth_ft": 29,
       "avg_depth_m": 8.8,
-      "subtitle": null
+      "subtitle": "Komodo \u00b7 Dive #317",
+      "site_confidence": "likely",
+      "site_distance_m": 2438.7,
+      "site_match_notes": "nearest Castle Rock (Diveboard) 2439m (>1km)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 462.3,
+        "source": "scubaboard.com/threads/620725 Shotgun",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-318",
       "dive_number": 318,
-      "title": "Komodo \u00b7 Dive #318",
-      "site": null,
-      "site_source": null,
+      "title": "Tatawa Besar (likely)",
+      "site": "Tatawa Besar",
+      "site_source": "scubaboard.com/threads/620725 Tatawa Besar",
       "region": "Komodo",
       "garmin_location_site": "Manggarai Barat",
       "trip_id": "komodo",
@@ -900,14 +1044,23 @@
       ],
       "avg_depth_ft": 35,
       "avg_depth_m": 10.7,
-      "subtitle": null
+      "subtitle": "Komodo \u00b7 Dive #318",
+      "site_confidence": "likely",
+      "site_distance_m": 641.4,
+      "site_match_notes": "nearest 641m (300m\u20131km band)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 426.7,
+        "source": "scubaboard.com/threads/620725 Tatawa Besar",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-319",
       "dive_number": 319,
-      "title": "Komodo \u00b7 Dive #319",
-      "site": null,
-      "site_source": null,
+      "title": "Sebayur Kecil",
+      "site": "Sebayur Kecil",
+      "site_source": "padi.com/dive-site/indonesia/sebayur-kecil",
       "region": "Komodo",
       "garmin_location_site": "Manggarai Barat",
       "trip_id": "komodo",
@@ -940,7 +1093,16 @@
       ],
       "avg_depth_ft": 37,
       "avg_depth_m": 11.3,
-      "subtitle": null
+      "subtitle": "Komodo \u00b7 Dive #319",
+      "site_confidence": "high",
+      "site_distance_m": 187.5,
+      "site_match_notes": "nearest 187m; next 7201m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 127.9,
+        "source": "padi.com/dive-site/indonesia/sebayur-kecil",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-320",
@@ -980,14 +1142,23 @@
       ],
       "avg_depth_ft": 31,
       "avg_depth_m": 9.4,
-      "subtitle": null
+      "subtitle": null,
+      "site_confidence": "unknown",
+      "site_distance_m": 15020.1,
+      "site_match_notes": "nearest Batu Bolong 2 / Linta area 15020m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 14789.3,
+        "source": "nearest catalog: Sebayur Kecil @ 14789m (padi.com/dive-site/indonesia/sebayur-kecil)",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-322",
       "dive_number": 322,
-      "title": "Ambon \u00b7 Dive #322",
-      "site": null,
-      "site_source": null,
+      "title": "Laha 2 (likely)",
+      "site": "Laha 2",
+      "site_source": "divehappy.com Damai trip report Laha #2",
       "region": "Ambon",
       "garmin_location_site": "Ambon",
       "trip_id": "amaya",
@@ -1020,14 +1191,23 @@
       ],
       "avg_depth_ft": 44,
       "avg_depth_m": 13.4,
-      "subtitle": null
+      "subtitle": "Ambon \u00b7 Dive #322",
+      "site_confidence": "likely",
+      "site_distance_m": 205.0,
+      "site_match_notes": "nearest 205m; next 187827m",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 40.0,
+        "source": "divehappy.com Damai trip report Laha #2",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-323",
       "dive_number": 323,
-      "title": "Suanggi Selatan",
+      "title": "Suanggi Selatan (likely)",
       "site": "Suanggi Selatan",
-      "site_source": "Same start GPS cluster as Dive #326 (309 m) named Suanggi Selatan in trip tidbit",
+      "site_source": "diveboard.com P Suanggi",
       "region": "Banda Sea",
       "garmin_location_site": null,
       "trip_id": "amaya",
@@ -1060,14 +1240,23 @@
       ],
       "avg_depth_ft": 55,
       "avg_depth_m": 16.8,
-      "subtitle": "Banda Sea \u00b7 Dive #323 \u00b7 with Mary"
+      "subtitle": "Banda Sea \u00b7 Dive #323 \u00b7 with Mary",
+      "site_confidence": "likely",
+      "site_distance_m": 512.6,
+      "site_match_notes": "itinerary+tidbit Suanggi Selatan; nearest Suanggi catalog 513m",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 512.6,
+        "source": "diveboard.com P Suanggi",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-324",
       "dive_number": 324,
-      "title": "Suanggi Selatan",
+      "title": "Suanggi Selatan (likely)",
       "site": "Suanggi Selatan",
-      "site_source": "Same start GPS cluster as Dive #326 (282 m) named Suanggi Selatan in trip tidbit",
+      "site_source": "diveboard.com P Suanggi",
       "region": "Banda Sea",
       "garmin_location_site": null,
       "trip_id": "amaya",
@@ -1100,14 +1289,23 @@
       ],
       "avg_depth_ft": 59,
       "avg_depth_m": 18.0,
-      "subtitle": "Banda Sea \u00b7 Dive #324"
+      "subtitle": "Banda Sea \u00b7 Dive #324",
+      "site_confidence": "likely",
+      "site_distance_m": 501.0,
+      "site_match_notes": "itinerary+tidbit Suanggi Selatan; nearest Suanggi catalog 501m",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 501.0,
+        "source": "diveboard.com P Suanggi",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-325",
       "dive_number": 325,
-      "title": "Suanggi Selatan",
+      "title": "Suanggi Selatan (likely)",
       "site": "Suanggi Selatan",
-      "site_source": "Same start GPS cluster as Dive #326 (284 m) named Suanggi Selatan in trip tidbit",
+      "site_source": "diveboard.com P Suanggi",
       "region": "Banda Sea",
       "garmin_location_site": null,
       "trip_id": "amaya",
@@ -1140,14 +1338,23 @@
       ],
       "avg_depth_ft": 61,
       "avg_depth_m": 18.6,
-      "subtitle": "Banda Sea \u00b7 Dive #325 \u00b7 with Mary"
+      "subtitle": "Banda Sea \u00b7 Dive #325 \u00b7 with Mary",
+      "site_confidence": "likely",
+      "site_distance_m": 508.7,
+      "site_match_notes": "itinerary+tidbit Suanggi Selatan; nearest Suanggi catalog 509m",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 508.7,
+        "source": "diveboard.com P Suanggi",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-326",
       "dive_number": 326,
       "title": "Suanggi Selatan",
       "site": "Suanggi Selatan",
-      "site_source": "Trip map tidbit (Gino): 'Last dive of the day at Suanggi Selatan' on 2026-11-05",
+      "site_source": "indive.io/forgotten-islands/suanggi",
       "region": "Banda Sea",
       "garmin_location_site": null,
       "trip_id": "amaya",
@@ -1180,14 +1387,23 @@
       ],
       "avg_depth_ft": 57,
       "avg_depth_m": 17.4,
-      "subtitle": "Banda Sea \u00b7 Dive #326 \u00b7 with Mary"
+      "subtitle": "Banda Sea \u00b7 Dive #326 \u00b7 with Mary",
+      "site_confidence": "high",
+      "site_distance_m": 296.4,
+      "site_match_notes": "itinerary+tidbit Suanggi Selatan; nearest Suanggi catalog 296m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 296.4,
+        "source": "indive.io/forgotten-islands/suanggi",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-327",
       "dive_number": 327,
-      "title": "Banda Sea \u00b7 Dive #327",
-      "site": null,
-      "site_source": null,
+      "title": "Pohon Miring (likely)",
+      "site": "Pohon Miring",
+      "site_source": "divehappy.com Damai trip report Pohon Miring",
       "region": "Banda Sea",
       "garmin_location_site": "Maluku Tengah",
       "trip_id": "amaya",
@@ -1220,14 +1436,23 @@
       ],
       "avg_depth_ft": 57,
       "avg_depth_m": 17.4,
-      "subtitle": null
+      "subtitle": "Banda Sea \u00b7 Dive #327",
+      "site_confidence": "likely",
+      "site_distance_m": 2925.0,
+      "site_match_notes": "nearest Batu Kapal 2925m (>1km)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 301.4,
+        "source": "divehappy.com Damai trip report Pohon Miring",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-328",
       "dive_number": 328,
-      "title": "Banda Sea \u00b7 Dive #328",
-      "site": null,
-      "site_source": null,
+      "title": "Batu Kapal",
+      "site": "Batu Kapal",
+      "site_source": "divehappy.com Damai trip report Batu Kapal",
       "region": "Banda Sea",
       "garmin_location_site": null,
       "trip_id": "amaya",
@@ -1260,14 +1485,23 @@
       ],
       "avg_depth_ft": 56,
       "avg_depth_m": 17.1,
-      "subtitle": null
+      "subtitle": "Banda Sea \u00b7 Dive #328",
+      "site_confidence": "high",
+      "site_distance_m": 220.5,
+      "site_match_notes": "nearest 221m; next 11963m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 171.7,
+        "source": "divehappy.com Damai trip report Batu Kapal",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-329",
       "dive_number": 329,
-      "title": "Banda Sea \u00b7 Dive #329",
-      "site": null,
-      "site_source": null,
+      "title": "Lava Flow",
+      "site": "Lava Flow",
+      "site_source": "divehappy.com Damai trip report Lava Flow (Banda Api)",
       "region": "Banda Sea",
       "garmin_location_site": "Maluku Tengah",
       "trip_id": "amaya",
@@ -1300,14 +1534,23 @@
       ],
       "avg_depth_ft": 42,
       "avg_depth_m": 12.8,
-      "subtitle": "with Mary"
+      "subtitle": "Banda Sea \u00b7 Dive #329 \u00b7 with Mary",
+      "site_confidence": "high",
+      "site_distance_m": 5992.7,
+      "site_match_notes": "nearest Batu Kapal 5993m (>1km)",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 57.6,
+        "source": "divehappy.com Damai trip report Lava Flow (Banda Api)",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-330",
       "dive_number": 330,
-      "title": "Banda Sea \u00b7 Dive #330",
-      "site": null,
-      "site_source": null,
+      "title": "Karang Hatta (likely)",
+      "site": "Karang Hatta",
+      "site_source": "reefwander.com karang-hatta (Skaru/Sekaru reef)",
       "region": "Banda Sea",
       "garmin_location_site": "Maluku Tengah",
       "trip_id": "amaya",
@@ -1340,7 +1583,16 @@
       ],
       "avg_depth_ft": 47,
       "avg_depth_m": 14.3,
-      "subtitle": null
+      "subtitle": "Banda Sea \u00b7 Dive #330",
+      "site_confidence": "likely",
+      "site_distance_m": 18578.5,
+      "site_match_notes": "nearest Batu Kapal 18579m (>1km)",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 1002.8,
+        "source": "reefwander.com karang-hatta (Skaru/Sekaru reef)",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-331",
@@ -1380,7 +1632,16 @@
       ],
       "avg_depth_ft": 49,
       "avg_depth_m": 14.9,
-      "subtitle": null
+      "subtitle": null,
+      "site_confidence": "unknown",
+      "site_distance_m": 21933.9,
+      "site_match_notes": "nearest Batu Kapal 21934m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 3450.6,
+        "source": "nearest catalog: Karang Hatta @ 3451m (reefwander.com karang-hatta (Skaru/Sekaru reef))",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-332",
@@ -1420,14 +1681,23 @@
       ],
       "avg_depth_ft": 42,
       "avg_depth_m": 12.8,
-      "subtitle": null
+      "subtitle": null,
+      "site_confidence": "unknown",
+      "site_distance_m": 18588.3,
+      "site_match_notes": "nearest Batu Kapal 18588m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 1373.5,
+        "source": "nearest catalog: Karang Hatta @ 1374m (reefwander.com karang-hatta (Skaru/Sekaru reef))",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-333",
       "dive_number": 333,
-      "title": "Banda Sea \u2192 Raja Ampat \u00b7 Dive #333",
-      "site": null,
-      "site_source": null,
+      "title": "Too Many Fish (Koon)",
+      "site": "Too Many Fish (Koon)",
+      "site_source": "divehappy.com Damai trip report Too Many Fish Koon",
       "region": "Banda Sea \u2192 Raja Ampat",
       "garmin_location_site": null,
       "trip_id": "amaya",
@@ -1460,14 +1730,23 @@
       ],
       "avg_depth_ft": 46,
       "avg_depth_m": 14.0,
-      "subtitle": "with Mary"
+      "subtitle": "Banda Sea \u2192 Raja Ampat \u00b7 Dive #333 \u00b7 with Mary",
+      "site_confidence": "high",
+      "site_distance_m": 155119.8,
+      "site_match_notes": "nearest Batu Kapal 155120m (>1km)",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 40.5,
+        "source": "divehappy.com Damai trip report Too Many Fish Koon",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-334",
       "dive_number": 334,
-      "title": "Banda Sea \u2192 Raja Ampat \u00b7 Dive #334",
-      "site": null,
-      "site_source": null,
+      "title": "Too Many Fish (Koon)",
+      "site": "Too Many Fish (Koon)",
+      "site_source": "divehappy.com Damai trip report Too Many Fish Koon",
       "region": "Banda Sea \u2192 Raja Ampat",
       "garmin_location_site": null,
       "trip_id": "amaya",
@@ -1500,7 +1779,16 @@
       ],
       "avg_depth_ft": 57,
       "avg_depth_m": 17.4,
-      "subtitle": null
+      "subtitle": "Banda Sea \u2192 Raja Ampat \u00b7 Dive #334",
+      "site_confidence": "high",
+      "site_distance_m": 155102.5,
+      "site_match_notes": "nearest Batu Kapal 155103m (>1km)",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 276.5,
+        "source": "divehappy.com Damai trip report Too Many Fish Koon",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-335",
@@ -1540,14 +1828,23 @@
       ],
       "avg_depth_ft": 45,
       "avg_depth_m": 13.7,
-      "subtitle": null
+      "subtitle": null,
+      "site_confidence": "unknown",
+      "site_distance_m": 17405.3,
+      "site_match_notes": "nearest Boo Windows 17405m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 3716.8,
+        "source": "nearest catalog: Barracuda (Wayil) @ 3717m (divehappy.com Barracuda Wayil)",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-336",
       "dive_number": 336,
-      "title": "Raja Ampat \u00b7 Dive #336",
-      "site": null,
-      "site_source": null,
+      "title": "Barracuda (Wayil)",
+      "site": "Barracuda (Wayil)",
+      "site_source": "divehappy.com Barracuda Wayil",
       "region": "Raja Ampat",
       "garmin_location_site": null,
       "trip_id": "amaya",
@@ -1580,14 +1877,23 @@
       ],
       "avg_depth_ft": 57,
       "avg_depth_m": 17.4,
-      "subtitle": null
+      "subtitle": "Raja Ampat \u00b7 Dive #336",
+      "site_confidence": "high",
+      "site_distance_m": 20742.6,
+      "site_match_notes": "nearest Boo Windows 20743m (>1km)",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 68.6,
+        "source": "divehappy.com Barracuda Wayil",
+        "gps_used": "entry"
+      }
     },
     {
       "id": "dive-337",
       "dive_number": 337,
-      "title": "Raja Ampat \u00b7 Dive #337",
-      "site": null,
-      "site_source": null,
+      "title": "Wedding Cake",
+      "site": "Wedding Cake",
+      "site_source": "divehappy.com Wedding Cake + padi.com",
       "region": "Raja Ampat",
       "garmin_location_site": null,
       "trip_id": "amaya",
@@ -1620,7 +1926,16 @@
       ],
       "avg_depth_ft": 52,
       "avg_depth_m": 15.8,
-      "subtitle": null
+      "subtitle": "Raja Ampat \u00b7 Dive #337",
+      "site_confidence": "high",
+      "site_distance_m": 21432.8,
+      "site_match_notes": "nearest Boo Windows 21433m (>1km)",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 18.4,
+        "source": "divehappy.com Wedding Cake + padi.com",
+        "gps_used": "entry"
+      }
     }
   ],
   "day_galleries": [
@@ -1821,5 +2136,16 @@
     ],
     "scanned_at_wit": "2026-11-09 21:49 Asia/Jayapura (WIT)"
   },
-  "cache_bust": "2026-11-09T21:57:18"
+  "gps_site_matching": {
+    "method": "Nearest public dive-site coordinate (PADI, Diveboard, divers.world, DiveHappy published trip GPS, ScubaBoard Bali/Komodo GPS thread, indive, reefwander, Wikivoyage). high=<300m unambiguous; likely=300\u20131100m or two sites both <400m; else unknown (region label kept). Entry GPS preferred; exit if no entry.",
+    "counts": {
+      "high": 14,
+      "likely": 14,
+      "unknown": 7,
+      "no_gps": 0
+    },
+    "generated_at_wit": "2026-11-09 22:16 Asia/Jayapura (WIT)",
+    "review_csv": "gps_site_matches.csv",
+    "catalog_file": "site_catalog.json"
+  }
 }
