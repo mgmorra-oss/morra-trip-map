@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1222">
+<title>Dive Log — Gino &amp; Mary · Indonesia 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root{
+  --bg:#0a1222; --panel:rgba(12,20,38,.92); --line:rgba(255,255,255,.08);
+  --text:#e9eef7; --muted:#8c9ab3; --accent:#2fd8c4; --boat:#36c9ff; --live:#7c8cff;
+  --pend:#ffa94d; --now:#ff6b6b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:
+  radial-gradient(1200px 600px at 10% -10%, rgba(47,216,196,.12), transparent 55%),
+  radial-gradient(900px 500px at 100% 0%, rgba(124,140,255,.14), transparent 50%),
+  var(--bg)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:20px 16px 72px}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(28px,5vw,36px);line-height:1.08;margin:6px 0 6px;letter-spacing:-.01em}
+h1 em{font-style:normal;background:linear-gradient(90deg,#2fd8c4,#36c9ff 50%,#7c8cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:13px;line-height:1.45;max-width:48ch}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);font:600 12.5px Inter,sans-serif;padding:9px 14px;border-radius:999px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{background:rgba(47,216,196,.15);border-color:rgba(47,216,196,.5);text-decoration:none}
+.btn.primary{background:rgba(47,216,196,.16);border-color:rgba(47,216,196,.45);color:#9ff5e9}
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.tot{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px;backdrop-filter:blur(10px)}
+.tot .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tot .v{font:700 22px Inter;margin-top:4px;letter-spacing:-.02em}
+.tot .s{font-size:12px;color:var(--muted);margin-top:2px}
+.trip{margin:28px 0 10px}
+.trip h2{font-family:Fraunces,Georgia,serif;font-size:24px;margin:0 0 4px}
+.trip .meta{font-size:12.5px;color:var(--muted);line-height:1.4}
+.trip .badge{display:inline-block;margin-left:8px;font:700 10px Inter;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;vertical-align:middle}
+.badge.done{background:rgba(47,216,196,.16);color:#7aefdf}
+.badge.in_progress{background:rgba(255,107,107,.16);color:#ff9a9a}
+.list{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px 14px 12px;box-shadow:0 14px 36px rgba(0,0,0,.25)}
+.card .row1{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.dn{flex:0 0 auto;font:700 11px Inter;letter-spacing:.06em;color:#0a1222;background:var(--accent);padding:5px 9px;border-radius:999px}
+h3{font-family:Fraunces,Georgia,serif;font-size:18px;margin:0 0 2px;line-height:1.2}
+.when{font-size:12.5px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 8px}
+.stat{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:9px}
+.stat .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font:700 14px Inter;margin-top:3px;line-height:1.25}
+.stat .v small{font-weight:500;color:var(--muted);font-size:11.5px}
+.mini{height:120px;border-radius:12px;border:1px solid var(--line);margin-top:8px;overflow:hidden;background:#0c1528}
+.mini.nogps{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px}
+.note{font-size:12.5px;color:#b8c3d8;line-height:1.4;margin-top:8px}
+.maplink,.glink{display:inline-flex;margin-top:8px;margin-right:10px;font:600 12px Inter;color:#5ff0de}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:7px;margin-top:10px}
+.thumbs a{display:block;aspect-ratio:4/3;border-radius:9px;overflow:hidden;border:1px solid var(--line);background:#0c1528;position:relative}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs .conf{position:absolute;left:4px;bottom:4px;font:700 8px Inter;letter-spacing:.04em;text-transform:uppercase;padding:2px 5px;border-radius:6px;background:rgba(0,0,0,.55);color:#c9d2e3}
+.thumbs .conf.high{color:#7aefdf}
+.thumbs .conf.medium{color:#ffc58a}
+.gallery{border-style:dashed}
+footer.foot{margin-top:28px;font-size:11.5px;color:#5d6b86;line-height:1.45}
+#lb{position:fixed;inset:0;background:rgba(4,8,16,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+#lb.on{display:flex}
+#lb img{max-width:min(96vw,1100px);max-height:88vh;border-radius:12px}
+#lb button{position:absolute;top:14px;right:14px;border:0;background:rgba(255,255,255,.1);color:#fff;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
+@media (max-width:560px){
+  .totals{grid-template-columns:1fr; }
+  .stats{grid-template-columns:1fr 1fr 1fr}
+  .wrap{padding:14px 12px 56px}
+  h3{font-size:16px}
+  .tot .v{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Indonesia 2026</div>
+      <h1>Dive <em>Log</em></h1>
+      <p class="sub">Garmin profiles with GoPro stills on the Komodo leg. Separate from the trip map. Depths in feet (meters), temps in °F (°C).</p>
+    </div>
+    <div class="btns">
+      <a class="btn primary" id="backMap" href="./index.html">← Back to map</a>
+    </div>
+  </header>
+  <div class="totals" id="totals"></div>
+  <div id="content"><div class="note">Loading…</div></div>
+  <footer class="foot" id="foot"></footer>
+</div>
+<div id="lb" role="dialog" aria-modal="true"><button type="button" aria-label="Close">×</button><img alt=""></div>
+<script>
+(function(){
+  // Pages layout: dive-log.html sits next to index.html; data under dive_log/
+  const DATA_URL = 'dive_log/dives.json';
+  const lb = document.getElementById('lb');
+  const lbImg = lb.querySelector('img');
+  lb.querySelector('button').onclick = () => lb.classList.remove('on');
+  lb.onclick = e => { if (e.target === lb) lb.classList.remove('on'); };
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+
+  function fmtDate(d){
+    if (!d) return '';
+    return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+  }
+  function depth(d){
+    if (d.max_depth_ft == null) return '—';
+    return `${d.max_depth_ft} ft <small>(${d.max_depth_m} m)</small>`;
+  }
+  function temp(d){
+    if (d.water_temp_avg_f == null) return '—';
+    const avg = `${d.water_temp_avg_f}°F <small>(${d.water_temp_avg_c}°C)</small>`;
+    if (d.water_temp_min_f != null && d.water_temp_min_f !== d.water_temp_avg_f)
+      return avg + `<br><small>min ${d.water_temp_min_f}°F / ${d.water_temp_min_c}°C</small>`;
+    return avg;
+  }
+  function thumbs(photos){
+    if (!photos || !photos.length) return '';
+    return `<div class="thumbs">${photos.map(p =>
+      `<a href="${p.src}" data-full="${p.src}" title="${(p.caption||'').replace(/"/g,'&quot;')}">
+        <img loading="lazy" src="${p.src}" alt="${(p.caption||p.name||'').replace(/"/g,'&quot;')}">
+        ${p.match_confidence ? `<span class="conf ${p.match_confidence}">${p.match_confidence}</span>` : ''}
+      </a>`).join('')}</div>`;
+  }
+  function wireThumbs(root){
+    root.querySelectorAll('.thumbs a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        lbImg.src = a.dataset.full; lbImg.alt = a.title||'';
+        lb.classList.add('on');
+      });
+    });
+  }
+  function miniMap(el, gps, n){
+    if (!gps || gps.length!==2 || !window.L) {
+      el.classList.add('nogps'); el.textContent = 'No start GPS'; return;
+    }
+    const map = L.map(el, {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, boxZoom:false, keyboard:false, tap:false});
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Esri'}).addTo(map);
+    const m = L.circleMarker(gps, {radius:7, color:'#fff', weight:2, fillColor:'#2fd8c4', fillOpacity:1}).addTo(map);
+    m.bindTooltip('#'+n, {permanent:false});
+    map.setView(gps, 10);
+    setTimeout(()=>map.invalidateSize(), 50);
+  }
+
+  fetch(DATA_URL).then(r => { if(!r.ok) throw new Error(r.status); return r.json(); }).then(data => {
+    // Prefer published index.html; fall back to local map HTML when previewing from /map
+    const back = document.getElementById('backMap');
+    back.href = data.map_local || './index.html';
+
+    const t = data.totals;
+    document.getElementById('totals').innerHTML = `
+      <div class="tot"><div class="k">Dives</div><div class="v">${t.dive_count}</div><div class="s">Garmin #${data.dives[0]?.dive_number}–#${data.dives[data.dives.length-1]?.dive_number}</div></div>
+      <div class="tot"><div class="k">Bottom time</div><div class="v">${t.total_bottom_time_display}</div><div class="s">excludes 0:09 test logs</div></div>
+      <div class="tot"><div class="k">Deepest</div><div class="v">${t.deepest_ft} ft</div><div class="s">${t.deepest_m} m · Dive #${t.deepest_dive_number} · ${fmtDate(t.deepest_date)}</div></div>`;
+
+    const byTrip = {};
+    for (const d of data.dives) (byTrip[d.trip_id] ||= []).push(d);
+
+    const content = document.getElementById('content');
+    content.innerHTML = '';
+    const mapsToInit = [];
+
+    for (const trip of data.trips) {
+      const sec = document.createElement('section');
+      sec.className = 'trip';
+      const range = trip.date_range ? `${fmtDate(trip.date_range[0])} – ${fmtDate(trip.date_range[1])}` : '';
+      sec.innerHTML = `<h2>${trip.title}<span class="badge ${trip.status||''}">${trip.status==='in_progress'?'In progress':'Done'}</span></h2>
+        <div class="meta">${trip.subtitle||''}${range?' · '+range:''}
+          ${trip.map_link?` · <a href="${trip.map_link}">map pin</a>`:''}
+        </div>
+        ${trip.notes?`<div class="note">${trip.notes}</div>`:''}`;
+      content.appendChild(sec);
+
+      const list = document.createElement('div');
+      list.className = 'list';
+      for (const d of (byTrip[trip.id]||[])) {
+        const card = document.createElement('article');
+        card.className = 'card';
+        const mid = 'mm-'+d.dive_number;
+        card.innerHTML = `
+          <div class="row1">
+            <div>
+              <h3>${d.title}</h3>
+              <div class="when">${fmtDate(d.date)} · ${d.start_time_local} · ${d.duration_display}</div>
+            </div>
+            <span class="dn">#${d.dive_number}</span>
+          </div>
+          <div class="stats">
+            <div class="stat"><div class="k">Max depth</div><div class="v">${depth(d)}</div></div>
+            <div class="stat"><div class="k">Bottom time</div><div class="v">${d.duration_display}</div></div>
+            <div class="stat"><div class="k">Water temp</div><div class="v">${temp(d)}</div></div>
+          </div>
+          <div class="mini" id="${mid}"></div>
+          ${d.activity_url?`<a class="glink" href="${d.activity_url}" target="_blank" rel="noopener">Garmin activity</a>`:''}
+          ${trip.map_link?`<a class="maplink" href="${trip.map_link}">Trip map pin</a>`:''}
+          ${thumbs(d.photos)}`;
+        list.appendChild(card);
+        mapsToInit.push([mid, d.gps, d.dive_number]);
+        wireThumbs(card);
+      }
+      content.appendChild(list);
+
+      // day galleries under Komodo
+      if (trip.id === 'komodo') {
+        for (const g of (data.day_galleries||[])) {
+          const card = document.createElement('article');
+          card.className = 'card gallery';
+          card.innerHTML = `<h3>${g.title}</h3>
+            <div class="when">${fmtDate(g.date)} · ${g.photos.length} photo${g.photos.length===1?'':'s'}</div>
+            <div class="note">${g.notes||''}</div>
+            ${thumbs(g.photos)}`;
+          list.appendChild(card);
+          wireThumbs(card);
+        }
+      }
+    }
+
+    mapsToInit.forEach(([id,gps,n]) => miniMap(document.getElementById(id), gps, n));
+
+    document.getElementById('foot').textContent =
+      (data.time_assumption||'') +
+      ` · Photo match: ${data.photo_match?.matched||0} high/medium of ${data.totals.photos_total_komodo_stills} Komodo stills` +
+      (data.generated_at_wit ? ' · Generated ' + data.generated_at_wit : '');
+  }).catch(err => {
+    document.getElementById('content').innerHTML =
+      `<div class="note" style="color:#ff9a9a">Could not load ${DATA_URL}: ${err.message}. Serve the published folder (map/public) so dive_log/dives.json resolves.</div>`;
+  });
+})();
+</script>
+</body>
+</html>
