@@ -12,231 +12,457 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root{
-  --bg:#0a1222; --panel:rgba(12,20,38,.92); --line:rgba(255,255,255,.08);
+  --bg:#0a1222; --panel:rgba(12,20,38,.86); --line:rgba(255,255,255,.08);
   --text:#e9eef7; --muted:#8c9ab3; --accent:#2fd8c4; --boat:#36c9ff; --live:#7c8cff;
-  --pend:#ffa94d; --now:#ff6b6b;
+  --pend:#ffa94d; --now:#ff6b6b; --lembongan:#2fd8c4; --komodo:#36c9ff; --amaya:#7c8cff;
 }
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-body{background:
-  radial-gradient(1200px 600px at 10% -10%, rgba(47,216,196,.12), transparent 55%),
-  radial-gradient(900px 500px at 100% 0%, rgba(124,140,255,.14), transparent 50%),
-  var(--bg)}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-.wrap{max-width:960px;margin:0 auto;padding:20px 16px 72px}
-header.top{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+#map{position:absolute;inset:0;background:#08101e}
+.leaflet-container{font-family:Inter,system-ui,sans-serif}
+
+#panel{position:absolute;z-index:1000;top:16px;left:16px;bottom:16px;width:370px;display:flex;flex-direction:column;
+  background:var(--panel);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);
+  border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.45);overflow:hidden}
+#panel header{padding:18px 18px 10px}
 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
-h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(28px,5vw,36px);line-height:1.08;margin:6px 0 6px;letter-spacing:-.01em}
+h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:26px;line-height:1.08;margin:6px 0 4px;letter-spacing:-.01em}
 h1 em{font-style:normal;background:linear-gradient(90deg,#2fd8c4,#36c9ff 50%,#7c8cff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{color:var(--muted);font-size:13px;line-height:1.45;max-width:48ch}
-.btns{display:flex;gap:8px;flex-wrap:wrap}
-.btn{border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);font:600 12.5px Inter,sans-serif;padding:9px 14px;border-radius:999px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:6px}
-.btn:hover{background:rgba(47,216,196,.15);border-color:rgba(47,216,196,.5);text-decoration:none}
-.btn.primary{background:rgba(47,216,196,.16);border-color:rgba(47,216,196,.45);color:#9ff5e9}
-.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
-.tot{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px;backdrop-filter:blur(10px)}
-.tot .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.tot .v{font:700 22px Inter;margin-top:4px;letter-spacing:-.02em}
-.tot .s{font-size:12px;color:var(--muted);margin-top:2px}
-.trip{margin:28px 0 10px}
-.trip h2{font-family:Fraunces,Georgia,serif;font-size:24px;margin:0 0 4px}
-.trip .meta{font-size:12.5px;color:var(--muted);line-height:1.4}
-.trip .badge{display:inline-block;margin-left:8px;font:700 10px Inter;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;vertical-align:middle}
-.badge.done{background:rgba(47,216,196,.16);color:#7aefdf}
-.badge.in_progress{background:rgba(255,107,107,.16);color:#ff9a9a}
-.list{display:flex;flex-direction:column;gap:12px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px 14px 12px;box-shadow:0 14px 36px rgba(0,0,0,.25)}
-.card .row1{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.dn{flex:0 0 auto;font:700 11px Inter;letter-spacing:.06em;color:#0a1222;background:var(--accent);padding:5px 9px;border-radius:999px}
-h3{font-family:Fraunces,Georgia,serif;font-size:18px;margin:0 0 2px;line-height:1.2}
-.when{font-size:12.5px;color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 8px}
-.stat{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:9px}
-.stat .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.stat .v{font:700 14px Inter;margin-top:3px;line-height:1.25}
-.stat .v small{font-weight:500;color:var(--muted);font-size:11.5px}
-.mini{height:120px;border-radius:12px;border:1px solid var(--line);margin-top:8px;overflow:hidden;background:#0c1528}
-.mini.nogps{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px}
-.note{font-size:12.5px;color:#b8c3d8;line-height:1.4;margin-top:8px}
-.maplink,.glink{display:inline-flex;margin-top:8px;margin-right:10px;font:600 12px Inter;color:#5ff0de}
-.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:7px;margin-top:10px}
-.thumbs a{display:block;aspect-ratio:4/3;border-radius:9px;overflow:hidden;border:1px solid var(--line);background:#0c1528;position:relative}
+.sub{color:var(--muted);font-size:12.5px;line-height:1.45}
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 8px}
+.tot{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:9px 10px}
+.tot .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tot .v{font:700 16px Inter;margin-top:3px;letter-spacing:-.02em;line-height:1.15}
+.tot .s{font-size:10.5px;color:var(--muted);margin-top:1px}
+.btns{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);font:600 12px Inter,sans-serif;padding:7px 11px;border-radius:999px;cursor:pointer;transition:.2s}
+.btn:hover{background:rgba(47,216,196,.15);border-color:rgba(47,216,196,.5)}
+.btn.active{background:rgba(47,216,196,.18);border-color:rgba(47,216,196,.55);color:#9ff5e9}
+.btn.section-lembongan.active{background:rgba(47,216,196,.18);border-color:rgba(47,216,196,.55)}
+.btn.section-komodo.active{background:rgba(54,201,255,.18);border-color:rgba(54,201,255,.55);color:#9fe6ff}
+.btn.section-amaya.active{background:rgba(124,140,255,.18);border-color:rgba(124,140,255,.55);color:#c5cbff}
+a.btn{text-decoration:none;display:inline-flex;align-items:center;color:inherit}
+#list{flex:1;overflow-y:auto;padding:4px 10px 12px;scrollbar-width:thin;scrollbar-color:#2a3550 transparent}
+.sec{margin:10px 8px 4px;font:700 10.5px Inter;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.item{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:14px;cursor:pointer;transition:background .2s}
+.item:hover{background:rgba(255,255,255,.05)}
+.item.active{background:rgba(47,216,196,.10);box-shadow:inset 0 0 0 1px rgba(47,216,196,.35)}
+.item.hidden{display:none}
+.num{flex:0 0 30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 11px Inter,sans-serif;color:#06231f;position:relative;z-index:1}
+.num.lembongan{background:var(--lembongan)}
+.num.komodo{background:var(--komodo);color:#06202a}
+.num.amaya{background:var(--amaya);color:#0e1230}
+.meta{min-width:0;flex:1}
+.place{font-weight:600;font-size:13.5px;line-height:1.25}
+.prop{font-size:12px;color:#c4cde0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dates{font-size:11.5px;color:var(--muted);margin-top:2px}
+.badge{display:inline-block;font:700 9px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:999px;vertical-align:middle;margin-left:4px}
+.b-likely{background:rgba(255,169,77,.16);color:#ffc58a}
+.b-high{background:rgba(47,216,196,.16);color:#7aefdf}
+.b-unknown{background:rgba(255,255,255,.08);color:#aab6cc}
+#legend{border-top:1px solid var(--line);padding:10px 16px 8px;font-size:11.5px;color:#e3e8f2;display:grid;grid-template-columns:1fr 1fr;gap:6px 12px}
+#legend .k{display:flex;align-items:center;gap:8px}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex:0 0 11px}
+.foot{font-size:10.5px;color:#5d6b86;padding:0 16px 10px;line-height:1.4}
+.galleries{border-top:1px solid var(--line);padding:8px 14px 10px}
+.galleries summary{cursor:pointer;font:600 12px Inter;color:#c9d2e3;list-style:none;display:flex;align-items:center;justify-content:space-between}
+.galleries summary::-webkit-details-marker{display:none}
+.galleries summary::after{content:"▸";color:var(--muted);font-size:11px}
+.galleries[open] summary::after{content:"▾"}
+.gal-body{margin-top:8px;max-height:160px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.gal-day{margin-bottom:10px}
+.gal-day h4{margin:0 0 6px;font:600 12px Inter;color:#dfe6f3}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px}
+.thumbs a{display:block;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#0c1528}
 .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
-.thumbs .conf{position:absolute;left:4px;bottom:4px;font:700 8px Inter;letter-spacing:.04em;text-transform:uppercase;padding:2px 5px;border-radius:6px;background:rgba(0,0,0,.55);color:#c9d2e3}
-.thumbs .conf.high{color:#7aefdf}
-.thumbs .conf.medium{color:#ffc58a}
-.gallery{border-style:dashed}
-footer.foot{margin-top:28px;font-size:11.5px;color:#5d6b86;line-height:1.45}
-#lb{position:fixed;inset:0;background:rgba(4,8,16,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+
+/* markers — dive pins */
+.pin{width:30px;height:30px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);display:grid;place-items:center;
+  box-shadow:0 6px 16px rgba(0,0,0,.5);border:2px solid rgba(255,255,255,.85);transition:transform .2s}
+.pin span{transform:rotate(45deg);font:700 10px Inter,sans-serif;color:#06231f}
+.pin.lembongan{background:var(--lembongan)}
+.pin.komodo{background:var(--komodo)}.pin.komodo span{color:#06202a}
+.pin.amaya{background:var(--amaya)}.pin.amaya span{color:#0e1230}
+.leaflet-marker-icon:hover .pin{transform:rotate(-45deg) scale(1.12)}
+
+/* popup — scroll when many tidbits / photos */
+.leaflet-popup-content-wrapper{background:rgba(13,21,40,.96);color:var(--text);border-radius:16px;border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.leaflet-popup-tip{background:rgba(13,21,40,.96)}
+.leaflet-popup-content{margin:0;width:300px!important}
+.leaflet-container a.leaflet-popup-close-button{color:#8c9ab3;top:8px;right:8px}
+.card{padding:14px 16px 12px;max-height:min(62vh,420px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#2a3550 transparent}
+.card .top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.card h3{font-family:Fraunces,Georgia,serif;font-size:18px;margin:0;line-height:1.15}
+.card .prop{font-size:13px;color:#dfe6f3;font-weight:600;margin-bottom:6px}
+.card .row{font-size:12.5px;color:#b8c3d8;margin:3px 0}
+.card .note{font-size:12px;color:#c9d2e3;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08);line-height:1.4}
+.card .photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px;margin-top:10px}
+.card .photos a{display:block;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#0c1528}
+.card .photos img{width:100%;height:100%;object-fit:cover;display:block}
+.leaflet-control-layers{background:rgba(13,21,40,.9)!important;color:#e9eef7;border:1px solid rgba(255,255,255,.1)!important;border-radius:12px!important}
+.leaflet-control-zoom a{background:rgba(13,21,40,.9)!important;color:#e9eef7!important;border-color:rgba(255,255,255,.1)!important}
+.leaflet-control-attribution{background:rgba(10,18,34,.75)!important;color:#7d8aa3!important}
+.leaflet-control-attribution a{color:#9fb3d6!important}
+#toggle{display:none}
+
+#lb{position:fixed;inset:0;background:rgba(4,8,16,.92);display:none;align-items:center;justify-content:center;z-index:2000;padding:16px}
 #lb.on{display:flex}
 #lb img{max-width:min(96vw,1100px);max-height:88vh;border-radius:12px}
 #lb button{position:absolute;top:14px;right:14px;border:0;background:rgba(255,255,255,.1);color:#fff;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
-@media (max-width:560px){
-  .totals{grid-template-columns:1fr; }
-  .stats{grid-template-columns:1fr 1fr 1fr}
-  .wrap{padding:14px 12px 56px}
-  h3{font-size:16px}
-  .tot .v{font-size:20px}
+
+@media (max-width:760px){
+  #panel{top:auto;left:0;right:0;bottom:0;width:auto;max-height:52vh;border-radius:20px 20px 0 0;transition:max-height .35s ease;padding-bottom:env(safe-area-inset-bottom)}
+  #panel.collapsed{max-height:168px}
+  #panel header{padding:8px 14px 6px}
+  h1{font-size:22px}
+  .sub{display:none}
+  .totals{margin:8px 0 4px}
+  #toggle{display:block;width:44px;height:5px;border-radius:5px;background:rgba(255,255,255,.25);margin:8px auto 0;border:0;padding:0;cursor:pointer}
+  #legend{font-size:10.5px;padding:8px 12px}
+  .foot{display:none}
+  .leaflet-top.leaflet-right{top:env(safe-area-inset-top)}
+  .leaflet-popup-content{width:270px!important}
+  .card{max-height:min(48vh,360px)}
+  .galleries{max-height:none}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <div>
-      <div class="eyebrow">Indonesia 2026</div>
-      <h1>Dive <em>Log</em></h1>
-      <p class="sub">Garmin profiles with GoPro stills on the Komodo leg. Separate from the trip map. Depths in feet (meters), temps in °F (°C).</p>
-    </div>
+<div id="map"></div>
+
+<aside id="panel">
+  <button id="toggle" aria-label="Expand or collapse list"></button>
+  <header>
+    <div class="eyebrow">Garmin GPS · dive sites only</div>
+    <h1>Dive <em>Log</em></h1>
+    <div class="sub">Markers sit on each dive’s Garmin entry GPS (exit if no entry). Tap a pin for depth, time, temp, and photos.</div>
+    <div class="totals" id="totals"></div>
     <div class="btns">
-      <a class="btn primary" id="backMap" href="./index.html">← Back to map</a>
+      <a class="btn" href="./index.html" title="Back to trip map">← Trip map</a>
+      <button class="btn active" type="button" data-filter="all" id="bAll">All</button>
+      <button class="btn section-lembongan" type="button" data-filter="lembongan" data-zoom="lembongan">Lembongan</button>
+      <button class="btn section-komodo" type="button" data-filter="komodo" data-zoom="komodo">Komodo</button>
+      <button class="btn section-amaya" type="button" data-filter="amaya" data-zoom="amaya">Amaya</button>
     </div>
   </header>
-  <div class="totals" id="totals"></div>
-  <div id="content"><div class="note">Loading…</div></div>
-  <footer class="foot" id="foot"></footer>
-</div>
-<div id="lb" role="dialog" aria-modal="true"><button type="button" aria-label="Close">×</button><img alt=""></div>
-<script>
-(function(){
-  // Pages layout: dive-log.html sits next to index.html; data under dive_log/
-  const DATA_URL = 'dive_log/dives.json';
-  const lb = document.getElementById('lb');
-  const lbImg = lb.querySelector('img');
-  lb.querySelector('button').onclick = () => lb.classList.remove('on');
-  lb.onclick = e => { if (e.target === lb) lb.classList.remove('on'); };
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+  <div id="list"></div>
+  <details class="galleries" id="galleriesWrap" hidden>
+    <summary>Day-gallery photos <span id="galCount" style="color:var(--muted);font-weight:500"></span></summary>
+    <div class="gal-body" id="galleries"></div>
+  </details>
+  <div id="legend">
+    <div class="k"><span class="dot" style="background:var(--lembongan)"></span> Lembongan / Penida</div>
+    <div class="k"><span class="dot" style="background:var(--komodo)"></span> Komodo</div>
+    <div class="k"><span class="dot" style="background:var(--amaya)"></span> Amaya / Banda / Raja</div>
+    <div class="k"><span class="badge b-likely">likely</span> GPS site match</div>
+  </div>
+  <div class="foot">Pin = Garmin dive GPS (not the named-site database). Co-located dives are fanned a few metres so each pin is tappable. Depths ft (m), temps °F (°C).</div>
+</aside>
 
-  function fmtDate(d){
-    if (!d) return '';
-    return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+<div id="lb" role="dialog" aria-modal="true"><button type="button" aria-label="Close">×</button><img alt=""></div>
+
+<script>
+const DATA_URL = './dive_log/dives.json';
+const TRIP_LABEL = {
+  lembongan: 'Nusa Lembongan / Penida',
+  komodo: 'Komodo · Maria Seascape',
+  amaya: 'Amaya Explorer'
+};
+
+const map = L.map('map',{zoomControl:false,worldCopyJump:false,minZoom:2,zoomSnap:.25});
+L.control.zoom({position:'topright'}).addTo(map);
+const ESRI='https://server.arcgisonline.com/ArcGIS/rest/services/';
+const darkBase = L.tileLayer(ESRI+'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,
+  attribution:'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors, and the GIS User Community'});
+const darkRef = L.tileLayer(ESRI+'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,opacity:.8});
+const dark = L.layerGroup([darkBase,darkRef]);
+const sat = L.tileLayer(ESRI+'World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,
+  attribution:'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community'});
+const ocean = L.tileLayer(ESRI+'Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:13,
+  attribution:'Tiles &copy; Esri &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'});
+dark.addTo(map);
+L.control.layers({'Dark':dark,'Satellite (Esri)':sat,'Ocean (Esri)':ocean},null,{position:'topright'}).addTo(map);
+
+const diveLayer = L.layerGroup().addTo(map);
+const markers = {};
+let activeFilter = 'all';
+let DATA = null;
+
+function esc(s){
+  return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function gpsOf(d){
+  // Prefer Garmin entry GPS; exit only if no entry (steering: actual Garmin, not matched site coords)
+  if (Array.isArray(d.gps) && d.gps.length===2) return {ll:d.gps, used:'entry'};
+  if (Array.isArray(d.gps_exit) && d.gps_exit.length===2) return {ll:d.gps_exit, used:'exit'};
+  return null;
+}
+function siteTitle(d){
+  if (d.title) return d.title;
+  if (d.site){
+    const tag = d.site_confidence==='likely' ? ' (likely)' : '';
+    return d.site + tag;
   }
-  function depth(d){
-    if (d.max_depth_ft == null) return '—';
-    return `${d.max_depth_ft} ft <small>(${d.max_depth_m} m)</small>`;
-  }
-  function temp(d){
-    if (d.water_temp_avg_f == null) return '—';
-    const avg = `${d.water_temp_avg_f}°F <small>(${d.water_temp_avg_c}°C)</small>`;
-    if (d.water_temp_min_f != null && d.water_temp_min_f !== d.water_temp_avg_f)
-      return avg + `<br><small>min ${d.water_temp_min_f}°F / ${d.water_temp_min_c}°C</small>`;
-    return avg;
-  }
-  function thumbs(photos){
-    if (!photos || !photos.length) return '';
-    return `<div class="thumbs">${photos.map(p =>
-      `<a href="${p.src}" data-full="${p.src}" title="${(p.caption||'').replace(/"/g,'&quot;')}">
-        <img loading="lazy" src="${p.src}" alt="${(p.caption||p.name||'').replace(/"/g,'&quot;')}">
-        ${p.match_confidence ? `<span class="conf ${p.match_confidence}">${p.match_confidence}</span>` : ''}
-      </a>`).join('')}</div>`;
-  }
-  function wireThumbs(root){
-    root.querySelectorAll('.thumbs a').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        lbImg.src = a.dataset.full; lbImg.alt = a.title||'';
-        lb.classList.add('on');
-      });
+  return (d.region || 'Dive') + ' · Dive #' + d.dive_number;
+}
+function depthLine(d){
+  if (d.max_depth_ft==null) return '';
+  return `${d.max_depth_ft} ft (${d.max_depth_m} m)`;
+}
+function tempLine(d){
+  if (d.water_temp_avg_f==null) return '';
+  return `${d.water_temp_avg_f} °F (${d.water_temp_avg_c} °C)`;
+}
+function fmtDate(iso){
+  if (!iso) return '';
+  const [y,m,dd]=iso.split('-').map(Number);
+  const dt=new Date(Date.UTC(y,m-1,dd));
+  return dt.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',timeZone:'UTC'});
+}
+
+/** Fan co-located Garmin points a few metres so each pin is tappable; true GPS kept on the marker. */
+function approxM(a,b){
+  const dy=(a[0]-b[0])*111320;
+  const dx=(a[1]-b[1])*111320*Math.cos(a[0]*Math.PI/180);
+  return Math.hypot(dx,dy);
+}
+function spiderfy(dives){
+  const items=[];
+  dives.forEach(d=>{ const g=gpsOf(d); if(g) items.push({d,g}); });
+  const used=new Set();
+  const groups=[];
+  items.forEach((item,i)=>{
+    if (used.has(i)) return;
+    const group=[item]; used.add(i);
+    items.forEach((other,j)=>{
+      if (used.has(j)) return;
+      if (approxM(item.g.ll, other.g.ll) < 45){ group.push(other); used.add(j); }
+    });
+    groups.push(group);
+  });
+  const out = new Map();
+  groups.forEach(arr=>{
+    if (arr.length===1){ out.set(arr[0].d.dive_number, arr[0].g.ll.slice()); return; }
+    // centroid of true GPS, then ring offsets (~18–28 m)
+    const cLat=arr.reduce((s,x)=>s+x.g.ll[0],0)/arr.length;
+    const cLon=arr.reduce((s,x)=>s+x.g.ll[1],0)/arr.length;
+    const n=arr.length;
+    const R = 0.00022; // ~24 m
+    arr.forEach((item,idx)=>{
+      const ang = (2*Math.PI*idx)/n - Math.PI/2;
+      const lat = cLat + R*Math.cos(ang);
+      const lon = cLon + R*Math.sin(ang)/Math.max(0.2, Math.cos(cLat*Math.PI/180));
+      out.set(item.d.dive_number, [lat, lon]);
+    });
+  });
+  return out;
+}
+
+function photoSrc(src){
+  if (!src) return '';
+  if (src.startsWith('http') || src.startsWith('./') || src.startsWith('/')) return src;
+  return './' + src.replace(/^\.\//,'');
+}
+
+function cardHTML(d, gpsMeta){
+  const conf = d.site_confidence || (d.site_match && d.site_match.confidence) || 'unknown';
+  const badge = conf==='likely' ? '<span class="badge b-likely">likely</span>'
+    : conf==='high' ? '<span class="badge b-high">high</span>'
+    : '<span class="badge b-unknown">region</span>';
+  const photos = (d.photos||[]).map(p=>{
+    const src=photoSrc(p.src);
+    const cap=esc(p.caption||p.name||'');
+    return `<a href="${esc(src)}" data-full="${esc(src)}" title="${cap}"><img src="${esc(src)}" alt="${cap}" loading="lazy"></a>`;
+  }).join('');
+  const rows = [];
+  rows.push(`<div class="row">📅 ${esc(fmtDate(d.date))} · Dive #${d.dive_number}</div>`);
+  rows.push(`<div class="row">📍 ${esc(d.region || TRIP_LABEL[d.trip_id] || '')}</div>`);
+  if (depthLine(d)) rows.push(`<div class="row">↓ Max ${esc(depthLine(d))}</div>`);
+  if (d.duration_display) rows.push(`<div class="row">⏱ ${esc(d.duration_display)}</div>`);
+  if (tempLine(d)) rows.push(`<div class="row">🌡 ${esc(tempLine(d))}</div>`);
+  if (d.with_mary) rows.push(`<div class="row">🤝 with Mary</div>`);
+  if (gpsMeta && gpsMeta.used==='exit') rows.push(`<div class="row" style="color:var(--muted)">GPS: exit (no entry)</div>`);
+  return `<div class="card">
+    <div class="top"><div class="num ${esc(d.trip_id)}">${d.dive_number}</div>
+      <div><h3>${esc(siteTitle(d))} ${badge}</h3></div></div>
+    <div class="prop">${esc(d.subtitle || (d.region ? d.region + ' · Dive #' + d.dive_number : ''))}</div>
+    ${rows.join('')}
+    ${photos?`<div class="photos">${photos}</div>`:''}
+  </div>`;
+}
+
+function setActive(n){
+  document.querySelectorAll('.item').forEach(e=>e.classList.toggle('active', Number(e.dataset.n)===Number(n)));
+  const el=document.querySelector(`.item[data-n="${n}"]`);
+  if (el) el.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+
+function go(n){
+  const m=markers[n]; if(!m) return;
+  setActive(n);
+  const padTL = [innerWidth>760?400:10, 20];
+  const padBR = [20, innerWidth>760?20:180];
+  map.setView(m.getLatLng(), Math.max(map.getZoom(), 13), {animate:true});
+  m.openPopup();
+  map.panInside(m.getLatLng(), {paddingTopLeft:padTL, paddingBottomRight:padBR});
+  if (innerWidth<=760) document.getElementById('panel').classList.add('collapsed');
+}
+
+function applyFilter(filter, {zoom}={}){
+  activeFilter = filter;
+  document.querySelectorAll('.btns .btn[data-filter]').forEach(b=>{
+    b.classList.toggle('active', b.dataset.filter===filter || (filter==='all' && b.dataset.filter==='all'));
+  });
+  const bounds=[];
+  DATA.dives.forEach(d=>{
+    const show = filter==='all' || d.trip_id===filter;
+    const el=document.querySelector(`.item[data-n="${d.dive_number}"]`);
+    if (el) el.classList.toggle('hidden', !show);
+    const m=markers[d.dive_number];
+    if (!m) return;
+    if (show){ m.addTo(diveLayer); bounds.push(m.getLatLng()); }
+    else { diveLayer.removeLayer(m); }
+  });
+  // section headers
+  document.querySelectorAll('.sec').forEach(s=>{
+    const tid=s.dataset.trip;
+    s.style.display = (filter==='all' || filter===tid) ? '' : 'none';
+  });
+  if (zoom && bounds.length){
+    map.fitBounds(L.latLngBounds(bounds).pad(0.25), {
+      paddingTopLeft: innerWidth>760 ? [400,40] : [20,20],
+      paddingBottomRight: innerWidth>760 ? [40,40] : [20,200],
+      maxZoom: 13
     });
   }
-  function miniMap(el, gps, n){
-    if (!gps || gps.length!==2 || !window.L) {
-      el.classList.add('nogps'); el.textContent = 'No start GPS'; return;
-    }
-    const map = L.map(el, {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, boxZoom:false, keyboard:false, tap:false});
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Esri'}).addTo(map);
-    const m = L.circleMarker(gps, {radius:7, color:'#fff', weight:2, fillColor:'#2fd8c4', fillOpacity:1}).addTo(map);
-    m.bindTooltip('#'+n, {permanent:false});
-    map.setView(gps, 10);
-    setTimeout(()=>map.invalidateSize(), 50);
-  }
+}
 
-  fetch(DATA_URL).then(r => { if(!r.ok) throw new Error(r.status); return r.json(); }).then(data => {
-    // Prefer published index.html; fall back to local map HTML when previewing from /map
-    const back = document.getElementById('backMap');
-    back.href = data.map_local || './index.html';
+function renderPanel(data){
+  const t=data.totals||{};
+  document.getElementById('totals').innerHTML = `
+    <div class="tot"><div class="k">Dives</div><div class="v">${t.dive_count??data.dives.length}</div></div>
+    <div class="tot"><div class="k">Bottom time</div><div class="v">${esc(t.total_bottom_time_display||'—')}</div></div>
+    <div class="tot"><div class="k">Deepest</div><div class="v">${t.deepest_ft??'—'} ft</div><div class="s">${t.deepest_m??''} m · #${t.deepest_dive_number??''}</div></div>`;
 
-    const t = data.totals;
-    document.getElementById('totals').innerHTML = `
-      <div class="tot"><div class="k">Dives</div><div class="v">${t.dive_count}</div><div class="s">Garmin #${data.dives[0]?.dive_number}–#${data.dives[data.dives.length-1]?.dive_number}</div></div>
-      <div class="tot"><div class="k">Bottom time</div><div class="v">${t.total_bottom_time_display}</div><div class="s">excludes 0:09 test logs</div></div>
-      <div class="tot"><div class="k">Deepest</div><div class="v">${t.deepest_ft} ft</div><div class="s">${t.deepest_m} m · Dive #${t.deepest_dive_number} · ${fmtDate(t.deepest_date)}</div></div>`;
-
-    const byTrip = {};
-    for (const d of data.dives) (byTrip[d.trip_id] ||= []).push(d);
-
-    const content = document.getElementById('content');
-    content.innerHTML = '';
-    const mapsToInit = [];
-
-    for (const trip of data.trips) {
-      const sec = document.createElement('section');
-      sec.className = 'trip';
-      const range = trip.date_range ? `${fmtDate(trip.date_range[0])} – ${fmtDate(trip.date_range[1])}` : '';
-      sec.innerHTML = `<h2>${trip.title}<span class="badge ${trip.status||''}">${trip.status==='in_progress'?'In progress':'Done'}</span></h2>
-        <div class="meta">${trip.subtitle||''}${range?' · '+range:''}
-          ${trip.map_link?` · <a href="${trip.map_link}">map pin</a>`:''}
-        </div>
-        ${trip.notes?`<div class="note">${trip.notes}</div>`:''}`;
-      content.appendChild(sec);
-
-      const list = document.createElement('div');
-      list.className = 'list';
-      for (const d of (byTrip[trip.id]||[])) {
-        const card = document.createElement('article');
-        card.className = 'card';
-        const mid = 'mm-'+d.dive_number;
-        card.innerHTML = `
-          <div class="row1">
-            <div>
-              <h3>${d.title}</h3>
-              ${d.subtitle?`<div class="when">${d.subtitle}</div>`:''}
-              <div class="when">${fmtDate(d.date)} · ${d.start_time_local} · ${d.duration_display}${d.with_mary && !(d.subtitle||'').includes('with Mary')?' · with Mary':''}</div>
-            </div>
-            <span class="dn">#${d.dive_number}</span>
-          </div>
-          <div class="stats">
-            <div class="stat"><div class="k">Max depth</div><div class="v">${depth(d)}</div></div>
-            <div class="stat"><div class="k">Bottom time</div><div class="v">${d.duration_display}</div></div>
-            <div class="stat"><div class="k">Water temp</div><div class="v">${temp(d)}</div></div>
-          </div>
-          <div class="mini" id="${mid}"></div>
-          ${d.activity_url?`<a class="glink" href="${d.activity_url}" target="_blank" rel="noopener">Garmin activity</a>`:''}
-          ${trip.map_link?`<a class="maplink" href="${trip.map_link}">Trip map pin</a>`:''}
-          ${thumbs(d.photos)}`;
-        list.appendChild(card);
-        mapsToInit.push([mid, d.gps, d.dive_number]);
-        wireThumbs(card);
-      }
-      content.appendChild(list);
-
-      // day galleries under Komodo
-      if (trip.id === 'komodo') {
-        for (const g of (data.day_galleries||[])) {
-          const card = document.createElement('article');
-          card.className = 'card gallery';
-          card.innerHTML = `<h3>${g.title}</h3>
-            <div class="when">${fmtDate(g.date)} · ${g.photos.length} photo${g.photos.length===1?'':'s'}</div>
-            <div class="note">${g.notes||''}</div>
-            ${thumbs(g.photos)}`;
-          list.appendChild(card);
-          wireThumbs(card);
-        }
-      }
-    }
-
-    mapsToInit.forEach(([id,gps,n]) => miniMap(document.getElementById(id), gps, n));
-
-    document.getElementById('foot').textContent =
-      (data.time_assumption||'') +
-      ` · Photo match: ${data.photo_match?.matched||0} high/medium of ${data.totals.photos_total_komodo_stills} Komodo stills` +
-      (data.generated_at_wit ? ' · Generated ' + data.generated_at_wit : '');
-  }).catch(err => {
-    document.getElementById('content').innerHTML =
-      `<div class="note" style="color:#ff9a9a">Could not load ${DATA_URL}: ${err.message}. Serve the published folder (map/public) so dive_log/dives.json resolves.</div>`;
+  const list=document.getElementById('list');
+  list.innerHTML='';
+  const byTrip={};
+  (data.trips||[]).forEach(tr=>byTrip[tr.id]=tr);
+  const order = (data.trips||[]).map(tr=>tr.id);
+  order.forEach(tid=>{
+    const dives=data.dives.filter(d=>d.trip_id===tid);
+    if (!dives.length) return;
+    const tr=byTrip[tid]||{title:TRIP_LABEL[tid]||tid};
+    const h=document.createElement('div');
+    h.className='sec'; h.dataset.trip=tid;
+    h.textContent = `${tr.title} · ${dives.length} dive${dives.length===1?'':'s'}`;
+    list.appendChild(h);
+    dives.forEach(d=>{
+      const conf=d.site_confidence||'unknown';
+      const badge = conf==='likely'?'<span class="badge b-likely">likely</span>':(conf==='high'?'':'');
+      const el=document.createElement('div');
+      el.className='item'; el.dataset.n=d.dive_number; el.dataset.trip=tid;
+      el.innerHTML=`<div class="num ${tid}">${d.dive_number}</div>
+        <div class="meta"><div class="place">${esc(siteTitle(d))}${badge}</div>
+        <div class="prop">${esc(d.region||'')}${d.with_mary?' · with Mary':''}</div>
+        <div class="dates">${esc(fmtDate(d.date))}${d.duration_display?' · '+esc(d.duration_display):''}${depthLine(d)?' · '+esc(depthLine(d)):''}</div></div>`;
+      el.onclick=()=>go(d.dive_number);
+      list.appendChild(el);
+    });
   });
-})();
+
+  // day galleries
+  const gals=data.day_galleries||[];
+  const wrap=document.getElementById('galleriesWrap');
+  const body=document.getElementById('galleries');
+  if (!gals.length){ wrap.hidden=true; return; }
+  wrap.hidden=false;
+  const nPhoto=gals.reduce((a,g)=>a+(g.photos||[]).length,0);
+  document.getElementById('galCount').textContent = `(${nPhoto})`;
+  body.innerHTML = gals.map(g=>{
+    const thumbs=(g.photos||[]).map(p=>{
+      const src=photoSrc(p.src);
+      return `<a href="${esc(src)}" data-full="${esc(src)}" title="${esc(p.caption||p.name||'')}"><img src="${esc(src)}" alt="" loading="lazy"></a>`;
+    }).join('');
+    return `<div class="gal-day"><h4>${esc(g.title||g.date)}</h4><div class="thumbs">${thumbs}</div></div>`;
+  }).join('');
+}
+
+function placeMarkers(data){
+  diveLayer.clearLayers();
+  Object.keys(markers).forEach(k=>delete markers[k]);
+  const withGps = data.dives.map(d=>{
+    const g=gpsOf(d);
+    return g ? {d,g} : null;
+  }).filter(Boolean);
+  const display = spiderfy(withGps.map(x=>x.d));
+
+  withGps.forEach(({d,g})=>{
+    const ll = display.get(d.dive_number) || g.ll;
+    const icon=L.divIcon({
+      className:'',
+      html:`<div class="pin ${esc(d.trip_id)}"><span>${d.dive_number}</span></div>`,
+      iconSize:[30,30], iconAnchor:[15,36], popupAnchor:[0,-34]
+    });
+    const m=L.marker(ll,{icon, riseOnHover:true, zIndexOffset:500-d.dive_number})
+      .bindPopup(cardHTML(d,g),{
+        maxWidth:320,
+        autoPanPaddingTopLeft:[innerWidth>760?400:10,20],
+        autoPanPaddingBottomRight:[20,innerWidth>760?20:180]
+      })
+      .on('click',()=>setActive(d.dive_number));
+    // stash true Garmin GPS for debugging / future use
+    m._garminGps = g.ll.slice();
+    m._gpsUsed = g.used;
+    markers[d.dive_number]=m;
+    m.addTo(diveLayer);
+  });
+
+  const all = Object.values(markers).map(m=>m.getLatLng());
+  if (all.length){
+    map.fitBounds(L.latLngBounds(all).pad(0.18), {
+      paddingTopLeft: innerWidth>760 ? [400,40] : [20,20],
+      paddingBottomRight: innerWidth>760 ? [40,40] : [20,200],
+      maxZoom: 7
+    });
+  } else {
+    map.setView([-6.5, 122], 5);
+  }
+}
+
+// lightbox
+const lb=document.getElementById('lb');
+lb.querySelector('button').onclick=()=>lb.classList.remove('on');
+lb.onclick=e=>{ if(e.target===lb) lb.classList.remove('on'); };
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-full]');
+  if (!a) return;
+  e.preventDefault();
+  lb.querySelector('img').src=a.dataset.full;
+  lb.classList.add('on');
+});
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('on'); });
+
+document.getElementById('toggle').onclick=()=>document.getElementById('panel').classList.toggle('collapsed');
+document.querySelectorAll('.btns .btn[data-filter]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const f=b.dataset.filter;
+    applyFilter(f, {zoom: f!=='all'});
+  });
+});
+
+fetch(DATA_URL+'?t='+Date.now()).then(r=>{
+  if(!r.ok) throw new Error('dives.json '+r.status);
+  return r.json();
+}).then(data=>{
+  DATA=data;
+  renderPanel(data);
+  placeMarkers(data);
+  applyFilter('all');
+}).catch(err=>{
+  document.getElementById('list').innerHTML = `<div class="item"><div class="meta"><div class="place">Couldn’t load dive log</div><div class="dates">${esc(err.message)}</div></div></div>`;
+  map.setView([-6.5,122],5);
+});
 </script>
 </body>
 </html>
