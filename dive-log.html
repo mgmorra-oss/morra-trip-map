@@ -458,7 +458,17 @@ fetch(DATA_URL+'?t='+Date.now()).then(r=>{
   DATA=data;
   renderPanel(data);
   placeMarkers(data);
-  applyFilter('all');
+  const params=new URLSearchParams(location.search);
+  const wantTrip=params.get('section')||params.get('trip');
+  const wantDive=Number(params.get('dive')||params.get('open')||0);
+  if (wantTrip && ['lembongan','komodo','amaya'].includes(wantTrip)) {
+    applyFilter(wantTrip, {zoom:true});
+  } else {
+    applyFilter('all');
+  }
+  if (wantDive && markers[wantDive]) {
+    setTimeout(()=>go(wantDive), 400);
+  }
 }).catch(err=>{
   document.getElementById('list').innerHTML = `<div class="item"><div class="meta"><div class="place">Couldn’t load dive log</div><div class="dates">${esc(err.message)}</div></div></div>`;
   map.setView([-6.5,122],5);
