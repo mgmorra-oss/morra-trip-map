@@ -474,5 +474,29 @@ fetch(DATA_URL+'?t='+Date.now()).then(r=>{
   map.setView([-6.5,122],5);
 });
 </script>
+
+<!-- panel-toggle v1 (dive log; same look/placement as trip map) -->
+<style>
+#panel{transition:transform .35s ease,max-height .35s ease}
+body.phide #panel{transform:translateX(calc(-100% - 24px));pointer-events:none}
+#ptab{position:absolute;z-index:1001;top:24px;left:394px;padding:9px 13px;border:0;border-radius:0 12px 12px 0;background:rgba(14,22,40,.92);color:#fff;font:700 13px Inter,sans-serif;box-shadow:0 3px 10px rgba(0,0,0,.5);cursor:pointer;transition:left .35s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body.phide #ptab{left:0}
+@media (max-width:760px){
+  body.phide #panel{transform:translateY(calc(100% + 10px))}
+  #ptab{top:auto;left:12px;bottom:calc(52vh + 10px);border-radius:18px;padding:10px 15px}
+  body:not(.phide) #panel.collapsed ~ #ptab{bottom:160px}
+  body.phide #ptab{left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 18px)}
+}
+</style>
+<script>
+(function(){const K='morraDivePanel',b=document.body,t=document.createElement('button');
+t.id='ptab';t.type='button';document.getElementById('panel').after(t);
+const phone=()=>matchMedia('(max-width:760px)').matches;
+const lab=()=>{const h=b.classList.contains('phide');t.textContent=h?(phone()?'▲ Show log':'▶ Show'):(phone()?'▼ Hide':'◀ Hide');t.setAttribute('aria-expanded',String(!h));t.setAttribute('aria-label',h?'Show dive log panel':'Hide dive log panel');};
+let s=null;try{s=localStorage.getItem(K)}catch(e){}
+b.classList.toggle('phide',s?s==='hidden':phone());lab();
+t.onclick=e=>{e.stopPropagation();const h=!b.classList.contains('phide');b.classList.toggle('phide',h);try{localStorage.setItem(K,h?'hidden':'shown')}catch(e){}lab();setTimeout(()=>typeof map!=='undefined'&&map.invalidateSize(),400);};
+addEventListener('resize',lab);})();
+</script>
 </body>
 </html>
