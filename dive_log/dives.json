@@ -1,7 +1,7 @@
 {
   "title": "Gino & Mary — Dive Log",
   "trip": "Indonesia 2026",
-  "generated_at_wit": "2026-11-11 09:28 Asia/Jayapura (WIT, UTC+9)",
+  "generated_at_wit": "2026-11-11 19:08 Asia/Jayapura (WIT, UTC+9)",
   "time_assumption": "All Garmin start times are device-local as shown in Connect (not converted from UTC). Photo EXIF times are GoPro local after the +3,908-day date correction; treated as the same local clock family when matching Komodo dives.",
   "garmin_csv": "garmin_dives.csv",
   "garmin_status": "loaded",
@@ -34,10 +34,10 @@
     "deepest_dive_number": 323,
     "deepest_date": "2026-11-05",
     "photos_matched": 16,
-    "photos_unmatched": 24,
+    "photos_unmatched": 31,
     "photos_total_komodo_stills": 32,
-    "photos_total_banda_stills": 8,
-    "photos_total_stills": 40
+    "photos_total_banda_stills": 15,
+    "photos_total_stills": 47
   },
   "trips": [
     {
@@ -2133,6 +2133,15 @@
           "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
         },
         {
+          "src": "dive_log/photos/93881e50-5939-4c2e-87c4-107112b57a99.jpg",
+          "name": "93881e50-5939-4c2e-87c4-107112b57a99.JPG",
+          "caption": "93881e50-5939-4c2e-87c4-107112b57a99",
+          "captured_at": "2026-11-07T15:33:05",
+          "file_id": "1MySF98vZtjL4FZWRTv-eRiaub4Vd_R1t",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
           "src": "dive_log/photos/e22896ad-b2a5-40ae-8ac9-2121e655183b.jpg",
           "name": "e22896ad-b2a5-40ae-8ac9-2121e655183b.JPG",
           "caption": "e22896ad-b2a5-40ae-8ac9-2121e655183b",
@@ -2147,6 +2156,15 @@
           "caption": "scrambled egg nudibranch",
           "captured_at": "2026-11-07T15:52:18",
           "file_id": "1E0RRlu3U94ozTRYW64JoxqATrA27YCdW",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/3be56b80-099c-4666-a4b1-00fadd2fbaee.jpg",
+          "name": "3be56b80-099c-4666-a4b1-00fadd2fbaee.JPG",
+          "caption": "3be56b80-099c-4666-a4b1-00fadd2fbaee",
+          "captured_at": "2026-11-07T15:53:17",
+          "file_id": "1ZzXixA4sJD_Uj1Z5FvGy21NBHEfQC-FA",
           "match_confidence": "unmatched",
           "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
         },
@@ -2180,6 +2198,24 @@
       "notes": "Wayne color-corrected stills from Banda (not Raja). EXIF timestamps fall outside logged Banda Sea and Koon dive windows (Karang Hatta / Banda Sea #330–#332 on Nov 7; Too Many Fish (Koon) #333–#334 on Nov 8). Kept as a day gallery, not forced onto a dive. Pinned to trip-map stop 14 (Amaya: Ambon → Banda Sea → Raja Ampat).",
       "photos": [
         {
+          "src": "dive_log/photos/db52ead1-f012-4d02-9727-28509b8c661a.jpg",
+          "name": "db52ead1-f012-4d02-9727-28509b8c661a.JPG",
+          "caption": "db52ead1-f012-4d02-9727-28509b8c661a",
+          "captured_at": "2026-11-08T09:28:09",
+          "file_id": "1Fg8KWLizkc7vTFM5T_crr9CbGJm8mhDh",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/e1217a1c-989a-4b74-896c-13a790c3a32c.jpg",
+          "name": "e1217a1c-989a-4b74-896c-13a790c3a32c.JPG",
+          "caption": "e1217a1c-989a-4b74-896c-13a790c3a32c",
+          "captured_at": "2026-11-08T09:28:11",
+          "file_id": "1kR7XHdmHKCdI4Mv-xdtvkd4a57xFw9FA",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
           "src": "dive_log/photos/crocodile_fish.jpg",
           "name": "crocodile fish.JPG",
           "caption": "crocodile fish",
@@ -2196,6 +2232,33 @@
           "file_id": "1xCcFsM3V6dT-o47JJiDpfmdumdFmNBqR",
           "match_confidence": "unmatched",
           "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/e6da1f12-6c85-4fd8-bea9-e56526d087f0.jpg",
+          "name": "e6da1f12-6c85-4fd8-bea9-e56526d087f0.JPG",
+          "caption": "e6da1f12-6c85-4fd8-bea9-e56526d087f0",
+          "captured_at": "2026-11-08T12:59:58",
+          "file_id": "1OdRUmtzasR-q7_a0bcaTlH8dA9fLa8oO",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/2ab38944-8e78-4c65-9bf3-f79b8325cff2.jpg",
+          "name": "2ab38944-8e78-4c65-9bf3-f79b8325cff2.JPG",
+          "caption": "2ab38944-8e78-4c65-9bf3-f79b8325cff2",
+          "captured_at": "2026-11-08T13:33:26",
+          "file_id": "1jHScvd0KTUGHzu_WSHxDrqtPUQQQlu8_",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/69a5891d-73f7-47cb-9441-a2d6c7aa81cc.jpg",
+          "name": "69a5891d-73f7-47cb-9441-a2d6c7aa81cc.JPG",
+          "caption": "69a5891d-73f7-47cb-9441-a2d6c7aa81cc",
+          "captured_at": "2026-11-08T13:40:34",
+          "file_id": "1Kzn17T-brNQZgqhW8pa8MUFsorv6IZev",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
         }
       ],
       "map_stop": 14,
@@ -2210,7 +2273,7 @@
       "unmatched": "day gallery"
     },
     "matched": 16,
-    "unmatched": 24
+    "unmatched": 31
   },
   "fit_site_scan": {
     "scanned_zips": 37,
