@@ -84,6 +84,33 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;color:inherit}
 .pin.komodo{background:var(--komodo)}.pin.komodo span{color:#06202a}
 .pin.amaya{background:var(--amaya)}.pin.amaya span{color:#0e1230}
 .leaflet-marker-icon:hover .pin{transform:rotate(-45deg) scale(1.12)}
+.leaflet-marker-icon.dive-pin{background:none;border:0;overflow:visible}
+.pin-wrap{position:relative;width:30px;height:30px}
+.cam{
+  position:absolute;right:-6px;top:-7px;z-index:2;
+  width:15px;height:15px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(10,18,34,.94);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 1px 4px rgba(0,0,0,.45);
+  color:#e9eef7;pointer-events:none;
+}
+.cam svg{width:9px;height:9px;display:block;fill:currentColor}
+.cam-inline{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:15px;height:15px;margin-left:5px;vertical-align:-2px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.2);
+  color:#d5deee;
+}
+.cam-inline svg{width:9px;height:9px;display:block;fill:currentColor}
+@media (max-width:760px){
+  .cam{width:16px;height:16px;right:-7px;top:-8px}
+  .cam svg{width:10px;height:10px}
+  .cam-inline{width:16px;height:16px}
+  .cam-inline svg{width:10px;height:10px}
+}
 
 /* popup — scroll when many tidbits / photos */
 .leaflet-popup-content-wrapper{background:rgba(13,21,40,.96);color:var(--text);border-radius:16px;border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 50px rgba(0,0,0,.55)}
@@ -155,6 +182,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;color:inherit}
     <div class="k"><span class="dot" style="background:var(--komodo)"></span> Komodo</div>
     <div class="k"><span class="dot" style="background:var(--amaya)"></span> Amaya / Banda / Raja</div>
     <div class="k"><span class="badge b-likely">likely</span> GPS site match</div>
+    <div class="k"><span class="cam-inline" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.1 5l1.15 1.6h3.5L14.9 5H18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3.1zM12 9.25A3.25 3.25 0 1 0 15.25 12.5 3.25 3.25 0 0 0 12 9.25z"/></svg></span> Has photos</div>
   </div>
   <div class="foot">Pin = Garmin dive GPS (not the named-site database). Co-located dives are fanned a few metres so each pin is tappable. Depths ft (m), temps °F (°C).</div>
 </aside>
@@ -264,6 +292,16 @@ function photoSrc(src){
   return './' + src.replace(/^\.\//,'');
 }
 
+function hasDivePhotos(d){
+  return Array.isArray(d.photos) && d.photos.length>0;
+}
+function camSVG(){
+  return '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.1 5l1.15 1.6h3.5L14.9 5H18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3.1zM12 9.25A3.25 3.25 0 1 0 15.25 12.5 3.25 3.25 0 0 0 12 9.25z"/></svg>';
+}
+function camBadge(cls){
+  return `<span class="${cls}" title="Has photos" aria-label="Has photos">${camSVG()}</span>`;
+}
+
 function cardHTML(d, gpsMeta){
   const conf = d.site_confidence || (d.site_match && d.site_match.confidence) || 'unknown';
   const badge = conf==='likely' ? '<span class="badge b-likely">likely</span>'
@@ -284,7 +322,7 @@ function cardHTML(d, gpsMeta){
   if (gpsMeta && gpsMeta.used==='exit') rows.push(`<div class="row" style="color:var(--muted)">GPS: exit (no entry)</div>`);
   return `<div class="card">
     <div class="top"><div class="num ${esc(d.trip_id)}">${d.dive_number}</div>
-      <div><h3>${esc(siteTitle(d))} ${badge}</h3></div></div>
+      <div><h3>${esc(siteTitle(d))}${hasDivePhotos(d)?camBadge('cam-inline'):''} ${badge}</h3></div></div>
     <div class="prop">${esc(d.subtitle || (d.region ? d.region + ' · Dive #' + d.dive_number : ''))}</div>
     ${rows.join('')}
     ${photos?`<div class="photos">${photos}</div>`:''}
@@ -363,7 +401,7 @@ function renderPanel(data){
       const el=document.createElement('div');
       el.className='item'; el.dataset.n=d.dive_number; el.dataset.trip=tid;
       el.innerHTML=`<div class="num ${tid}">${d.dive_number}</div>
-        <div class="meta"><div class="place">${esc(siteTitle(d))}${badge}</div>
+        <div class="meta"><div class="place">${esc(siteTitle(d))}${hasDivePhotos(d)?camBadge('cam-inline'):''}${badge}</div>
         <div class="prop">${esc(d.region||'')}${d.with_mary?' · with Mary':''}</div>
         <div class="dates">${esc(fmtDate(d.date))}${d.duration_display?' · '+esc(d.duration_display):''}${depthLine(d)?' · '+esc(depthLine(d)):''}</div></div>`;
       el.onclick=()=>go(d.dive_number);
@@ -400,8 +438,8 @@ function placeMarkers(data){
   withGps.forEach(({d,g})=>{
     const ll = display.get(d.dive_number) || g.ll;
     const icon=L.divIcon({
-      className:'',
-      html:`<div class="pin ${esc(d.trip_id)}"><span>${d.dive_number}</span></div>`,
+      className:'dive-pin',
+      html:`<div class="pin-wrap">${hasDivePhotos(d)?camBadge('cam'):''}<div class="pin ${esc(d.trip_id)}"><span>${d.dive_number}</span></div></div>`,
       iconSize:[30,30], iconAnchor:[15,36], popupAnchor:[0,-34]
     });
     const m=L.marker(ll,{icon, riseOnHover:true, zIndexOffset:500-d.dive_number})
