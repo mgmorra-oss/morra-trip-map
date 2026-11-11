@@ -208,10 +208,7 @@ const STOPS = [
    note:'Phinisi liveaboard. Boards in Ambon Wed Nov 4; disembark Sorong Nov 14 noon.'},
   {n:15, place:'Sorong, West Papua', prop:'Swiss-Belhotel Sorong', ll:[-0.8790,131.2600],
    start:'2026-11-14', end:'2026-11-18', web:'https://www.swiss-belhotel.com/',
-   note:'4 nights in Sorong after the Amaya Explorer. Then the ferry to Waisai Nov 18.'},
-  {n:16, place:'Raja Ampat · Waisai', prop:'Scuba Republic, Waisai (then islands TBD)', ll:[-0.4300,130.8150], tentative:true,
-   start:'2026-11-18', end:'2026-12-01', dateText:'Nov 18 → ~Nov 28–Dec 1 (draft)',
-   note:'Waisai base first: Scuba Republic double bungalow confirmed Nov 18–21, then an island dive lodge or homestay (Mansuar / Kri). Back to Sorong ~Nov 28–Dec 1.'},
+   note:'4 nights in Sorong after the Amaya Explorer. Lodging after check-out is not booked yet.'},
   {n:17, place:'Sidemen, Bali', prop:'Abian Ayu Villa', ll:[-8.4870,115.4380],
    start:'2026-12-01', end:'2026-12-06',
    note:'Private pool villa with breakfast in the rice-terrace hills of east Bali. Check-in from 14:00 WITA, out by 12:00 Dec 6.'},
@@ -238,7 +235,7 @@ const STOPS = [
 const P = {
   SANUR_H:[-8.6795,115.2645], JUNG:[-8.6705,115.4455],
   LBJ:[-8.4866,119.8887], UPG:[-5.0616,119.5540], AMQ:[-3.7103,128.0891],
-  TULEHU:[-3.5880,128.3260], HARIA:[-3.5850,128.6450], SORONG_H:[-0.8780,131.2480], WAISAI_H:[-0.4330,130.8140], DPS:[-8.7482,115.1672], YIA:[-7.9006,110.0573], GMR:[-6.1764,106.8306], CGK:[-6.1256,106.6559]
+  TULEHU:[-3.5880,128.3260], HARIA:[-3.5850,128.6450], SORONG_H:[-0.8780,131.2480], DPS:[-8.7482,115.1672], YIA:[-7.9006,110.0573], GMR:[-6.1764,106.8306], CGK:[-6.1256,106.6559]
 };
 const MARIA_LOOP=[[-8.4935,119.8800],[-8.4985,119.7600],[-8.4600,119.6600],[-8.4200,119.5600],[-8.4050,119.5000],
   [-8.4300,119.4650],[-8.4700,119.5750],[-8.5350,119.5980],[-8.5400,119.6400],[-8.5600,119.7100],[-8.5200,119.8200],[-8.4950,119.8790]];
@@ -266,8 +263,7 @@ const LEGS = [
   {from:12, to:13, mode:'ground', date:'2026-10-30', label:'Short move Pacific Hotel → BIZ Hotel, Ambon city · Fri Oct 30'},
   {from:13, to:14, mode:'ground', date:'2026-11-04', label:'Transfer to Amaya Explorer (Ambon Bay) · Wed Nov 4'},
   {from:14, to:15, mode:'live', date:'2026-11-04', path:AMAYA, label:'Amaya Explorer · Ambon → Banda → Misool → Raja Ampat → Sorong (rough)', liveRoute:true},
-  {from:15, to:16, mode:'boat', date:'2026-11-18', tentative:true, label:'Draft: fast ferry Sorong → Waisai · Wed Nov 18 (~2 h)', path:[P.SORONG_H,[-0.7400,131.0800],[-0.5600,130.9000],P.WAISAI_H]},
-  /* Raja Ampat → Bali (late Nov) intentionally omitted (not yet booked) */
+  /* Waisai (stop 16) cancelled Nov 11. Lodging after Sorong (likely Gili T, then Amed) and the hop onward to Sidemen (Dec 1) omitted — not yet booked. */
   {from:17, to:18, mode:'ground', date:'2026-12-06', label:'Drive Sidemen → Canggu · Sun Dec 6'},
   {from:18, to:19, mode:'flight', date:'2026-12-10', label:'Garuda GA253 Bali → Yogyakarta · Thu Dec 10, 12:05 WITA → 12:55 WIB',
    path:[P.DPS,P.YIA], pre:[{mode:'ground',path:[[-8.6540,115.1330],P.DPS]}], then:[{mode:'ground',path:[P.YIA,[-7.8180,110.3690]]}]},
@@ -756,8 +752,8 @@ const W=[
  [-7.980,124.300],[-7.990,124.550],[-8.010,124.800],
  // Ambon / Banda Sea (Amaya route + Saparua crossing)
  [-3.8600,128.3200],[-4.2000,129.2000],[-4.5250,129.8950],[-4.2000,130.6000],[-3.5650,128.4300],[-3.5600,128.5500],
- // Misool -> Raja Ampat -> Sorong (Amaya route + Waisai ferry)
- [-3.2000,131.1500],[-2.1500,130.5800],[-1.6000,130.4500],[-1.0500,130.2800],[-0.7500,130.3600],[-0.5600,130.9000],[-0.7400,131.0800]
+ // Misool -> Raja Ampat -> Sorong (Amaya route)
+ [-3.2000,131.1500],[-2.1500,130.5800],[-1.6000,130.4500],[-1.0500,130.2800],[-0.7500,130.3600]
 ];
 const KINDS=['whale','manta','hammer'];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
