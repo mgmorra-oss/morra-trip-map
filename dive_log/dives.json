@@ -1,7 +1,7 @@
 {
-  "title": "Gino & Mary \u2014 Dive Log",
+  "title": "Gino & Mary — Dive Log",
   "trip": "Indonesia 2026",
-  "generated_at_wit": "2026-11-09 22:16 Asia/Jayapura (WIT, UTC+9)",
+  "generated_at_wit": "2026-11-11 09:28 Asia/Jayapura (WIT, UTC+9)",
   "time_assumption": "All Garmin start times are device-local as shown in Connect (not converted from UTC). Photo EXIF times are GoPro local after the +3,908-day date correction; treated as the same local clock family when matching Komodo dives.",
   "garmin_csv": "garmin_dives.csv",
   "garmin_status": "loaded",
@@ -12,7 +12,7 @@
       "start_time": "1:24 PM",
       "dive_time": "0:09",
       "max_depth": "5 ft",
-      "reason": "0:09 surface/test record \u2014 excluded from log totals"
+      "reason": "0:09 surface/test record — excluded from log totals"
     },
     {
       "dive_number": 301,
@@ -20,7 +20,7 @@
       "start_time": "2:49 PM",
       "dive_time": "0:09",
       "max_depth": "4 ft",
-      "reason": "0:09 surface/test record \u2014 excluded from log totals"
+      "reason": "0:09 surface/test record — excluded from log totals"
     }
   ],
   "map_url": "https://mgmorra-oss.github.io/morra-trip-map/",
@@ -34,14 +34,16 @@
     "deepest_dive_number": 323,
     "deepest_date": "2026-11-05",
     "photos_matched": 16,
-    "photos_unmatched": 16,
-    "photos_total_komodo_stills": 32
+    "photos_unmatched": 24,
+    "photos_total_komodo_stills": 32,
+    "photos_total_banda_stills": 8,
+    "photos_total_stills": 40
   },
   "trips": [
     {
       "id": "lembongan",
       "title": "Nusa Lembongan / Penida",
-      "subtitle": "Blue Corner Dive base \u00b7 Klungkung",
+      "subtitle": "Blue Corner Dive base · Klungkung",
       "date_range": [
         "2026-10-06",
         "2026-10-10"
@@ -49,12 +51,12 @@
       "map_stop": 6,
       "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-6",
       "status": "done",
-      "notes": "Day boat diving from Blue Corner Dive lodging. Garmin labels many as Klungkung. No named sites in trip file or Gmail \u2014 titles use region + Dive #."
+      "notes": "Day boat diving from Blue Corner Dive lodging. Garmin labels many as Klungkung. No named sites in trip file or Gmail — titles use region + Dive #."
     },
     {
       "id": "komodo",
-      "title": "Komodo \u00b7 Maria Seascape",
-      "subtitle": "Central & North Discovery liveaboard \u00b7 Manggarai Barat",
+      "title": "Komodo · Maria Seascape",
+      "subtitle": "Central & North Discovery liveaboard · Manggarai Barat",
       "date_range": [
         "2026-10-19",
         "2026-10-22"
@@ -66,8 +68,8 @@
     },
     {
       "id": "amaya",
-      "title": "Amaya Explorer \u00b7 Banda Sea \u2192 Raja Ampat",
-      "subtitle": "Ambon \u2192 Banda \u2192 Raja Ampat \u00b7 cabin ANILA 2",
+      "title": "Amaya Explorer · Banda Sea → Raja Ampat",
+      "subtitle": "Ambon → Banda → Raja Ampat · cabin ANILA 2",
       "date_range": [
         "2026-11-04",
         "2026-11-14"
@@ -117,7 +119,7 @@
       ],
       "avg_depth_ft": 45,
       "avg_depth_m": 13.7,
-      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #302 \u00b7 with Mary",
+      "subtitle": "Nusa Lembongan / Penida · Dive #302 · with Mary",
       "site_confidence": "high",
       "site_distance_m": 51.5,
       "site_match_notes": "nearest 52m; next 1547m",
@@ -166,7 +168,7 @@
       ],
       "avg_depth_ft": 36,
       "avg_depth_m": 11.0,
-      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #303 \u00b7 with Mary",
+      "subtitle": "Nusa Lembongan / Penida · Dive #303 · with Mary",
       "site_confidence": "high",
       "site_distance_m": 202.6,
       "site_match_notes": "nearest 203m; next 11819m",
@@ -215,10 +217,10 @@
       ],
       "avg_depth_ft": 43,
       "avg_depth_m": 13.1,
-      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #304 \u00b7 with Mary",
+      "subtitle": "Nusa Lembongan / Penida · Dive #304 · with Mary",
       "site_confidence": "likely",
       "site_distance_m": 302.2,
-      "site_match_notes": "nearest 302m (300m\u20131km band)",
+      "site_match_notes": "nearest 302m (300m–1km band)",
       "site_match": {
         "confidence": "likely",
         "distance_m": 302.2,
@@ -264,7 +266,7 @@
       ],
       "avg_depth_ft": 31,
       "avg_depth_m": 9.4,
-      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #305",
+      "subtitle": "Nusa Lembongan / Penida · Dive #305",
       "site_confidence": "likely",
       "site_distance_m": 1000.5,
       "site_match_notes": "nearest Mangrove Point 1000m (>1km)",
@@ -310,7 +312,7 @@
       ],
       "avg_depth_ft": 45,
       "avg_depth_m": 13.7,
-      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #306 \u00b7 with Mary",
+      "subtitle": "Nusa Lembongan / Penida · Dive #306 · with Mary",
       "site_confidence": "likely",
       "site_distance_m": 1151.6,
       "site_match_notes": "nearest Sental 1152m (>1km)",
@@ -359,7 +361,7 @@
       ],
       "avg_depth_ft": 38,
       "avg_depth_m": 11.6,
-      "subtitle": "Nusa Lembongan / Penida \u00b7 Dive #307",
+      "subtitle": "Nusa Lembongan / Penida · Dive #307",
       "site_confidence": "high",
       "site_distance_m": 253.0,
       "site_match_notes": "nearest 253m; next 491m",
@@ -373,7 +375,7 @@
     {
       "id": "dive-308",
       "dive_number": 308,
-      "title": "Nusa Lembongan / Penida \u00b7 Dive #308",
+      "title": "Nusa Lembongan / Penida · Dive #308",
       "site": null,
       "site_source": null,
       "region": "Nusa Lembongan / Penida",
@@ -422,7 +424,7 @@
     {
       "id": "dive-309",
       "dive_number": 309,
-      "title": "Nusa Lembongan / Penida \u00b7 Dive #309",
+      "title": "Nusa Lembongan / Penida · Dive #309",
       "site": null,
       "site_source": null,
       "region": "Nusa Lembongan / Penida",
@@ -513,7 +515,7 @@
       ],
       "avg_depth_ft": 43,
       "avg_depth_m": 13.1,
-      "subtitle": "Komodo \u00b7 Dive #310 \u00b7 with Mary",
+      "subtitle": "Komodo · Dive #310 · with Mary",
       "site_confidence": "likely",
       "site_distance_m": 11239.1,
       "site_match_notes": "nearest Siaba Besar 11239m (>1km)",
@@ -562,7 +564,7 @@
       ],
       "avg_depth_ft": 43,
       "avg_depth_m": 13.1,
-      "subtitle": "Komodo \u00b7 Dive #311",
+      "subtitle": "Komodo · Dive #311",
       "site_confidence": "high",
       "site_distance_m": 11045.4,
       "site_match_notes": "nearest Siaba Besar 11045m (>1km)",
@@ -576,7 +578,7 @@
     {
       "id": "dive-312",
       "dive_number": 312,
-      "title": "Komodo \u00b7 Dive #312",
+      "title": "Komodo · Dive #312",
       "site": null,
       "site_source": null,
       "region": "Komodo",
@@ -697,7 +699,7 @@
       ],
       "avg_depth_ft": 39,
       "avg_depth_m": 11.9,
-      "subtitle": "Komodo \u00b7 Dive #313",
+      "subtitle": "Komodo · Dive #313",
       "site_confidence": "high",
       "site_distance_m": 4723.9,
       "site_match_notes": "nearest Siaba Besar 4724m (>1km)",
@@ -746,10 +748,10 @@
       ],
       "avg_depth_ft": 35,
       "avg_depth_m": 10.7,
-      "subtitle": "Komodo \u00b7 Dive #314",
+      "subtitle": "Komodo · Dive #314",
       "site_confidence": "likely",
       "site_distance_m": 562.8,
-      "site_match_notes": "nearest 563m (300m\u20131km band)",
+      "site_match_notes": "nearest 563m (300m–1km band)",
       "site_match": {
         "confidence": "likely",
         "distance_m": 562.8,
@@ -814,10 +816,10 @@
       ],
       "avg_depth_ft": 44,
       "avg_depth_m": 13.4,
-      "subtitle": "Komodo \u00b7 Dive #315",
+      "subtitle": "Komodo · Dive #315",
       "site_confidence": "likely",
       "site_distance_m": 343.4,
-      "site_match_notes": "nearest 343m (300m\u20131km band)",
+      "site_match_notes": "nearest 343m (300m–1km band)",
       "site_match": {
         "confidence": "likely",
         "distance_m": 343.4,
@@ -936,7 +938,7 @@
       ],
       "avg_depth_ft": 43,
       "avg_depth_m": 13.1,
-      "subtitle": "Komodo \u00b7 Dive #316",
+      "subtitle": "Komodo · Dive #316",
       "site_confidence": "high",
       "site_distance_m": 95.6,
       "site_match_notes": "nearest 96m; next 294m",
@@ -995,7 +997,7 @@
       ],
       "avg_depth_ft": 29,
       "avg_depth_m": 8.8,
-      "subtitle": "Komodo \u00b7 Dive #317",
+      "subtitle": "Komodo · Dive #317",
       "site_confidence": "likely",
       "site_distance_m": 2438.7,
       "site_match_notes": "nearest Castle Rock (Diveboard) 2439m (>1km)",
@@ -1044,10 +1046,10 @@
       ],
       "avg_depth_ft": 35,
       "avg_depth_m": 10.7,
-      "subtitle": "Komodo \u00b7 Dive #318",
+      "subtitle": "Komodo · Dive #318",
       "site_confidence": "likely",
       "site_distance_m": 641.4,
-      "site_match_notes": "nearest 641m (300m\u20131km band)",
+      "site_match_notes": "nearest 641m (300m–1km band)",
       "site_match": {
         "confidence": "likely",
         "distance_m": 426.7,
@@ -1093,7 +1095,7 @@
       ],
       "avg_depth_ft": 37,
       "avg_depth_m": 11.3,
-      "subtitle": "Komodo \u00b7 Dive #319",
+      "subtitle": "Komodo · Dive #319",
       "site_confidence": "high",
       "site_distance_m": 187.5,
       "site_match_notes": "nearest 187m; next 7201m",
@@ -1107,7 +1109,7 @@
     {
       "id": "dive-320",
       "dive_number": 320,
-      "title": "Komodo \u00b7 Dive #320",
+      "title": "Komodo · Dive #320",
       "site": null,
       "site_source": null,
       "region": "Komodo",
@@ -1191,7 +1193,7 @@
       ],
       "avg_depth_ft": 44,
       "avg_depth_m": 13.4,
-      "subtitle": "Ambon \u00b7 Dive #322",
+      "subtitle": "Ambon · Dive #322",
       "site_confidence": "likely",
       "site_distance_m": 205.0,
       "site_match_notes": "nearest 205m; next 187827m",
@@ -1240,7 +1242,7 @@
       ],
       "avg_depth_ft": 55,
       "avg_depth_m": 16.8,
-      "subtitle": "Banda Sea \u00b7 Dive #323 \u00b7 with Mary",
+      "subtitle": "Banda Sea · Dive #323 · with Mary",
       "site_confidence": "likely",
       "site_distance_m": 512.6,
       "site_match_notes": "itinerary+tidbit Suanggi Selatan; nearest Suanggi catalog 513m",
@@ -1289,7 +1291,7 @@
       ],
       "avg_depth_ft": 59,
       "avg_depth_m": 18.0,
-      "subtitle": "Banda Sea \u00b7 Dive #324",
+      "subtitle": "Banda Sea · Dive #324",
       "site_confidence": "likely",
       "site_distance_m": 501.0,
       "site_match_notes": "itinerary+tidbit Suanggi Selatan; nearest Suanggi catalog 501m",
@@ -1338,7 +1340,7 @@
       ],
       "avg_depth_ft": 61,
       "avg_depth_m": 18.6,
-      "subtitle": "Banda Sea \u00b7 Dive #325 \u00b7 with Mary",
+      "subtitle": "Banda Sea · Dive #325 · with Mary",
       "site_confidence": "likely",
       "site_distance_m": 508.7,
       "site_match_notes": "itinerary+tidbit Suanggi Selatan; nearest Suanggi catalog 509m",
@@ -1387,7 +1389,7 @@
       ],
       "avg_depth_ft": 57,
       "avg_depth_m": 17.4,
-      "subtitle": "Banda Sea \u00b7 Dive #326 \u00b7 with Mary",
+      "subtitle": "Banda Sea · Dive #326 · with Mary",
       "site_confidence": "high",
       "site_distance_m": 296.4,
       "site_match_notes": "itinerary+tidbit Suanggi Selatan; nearest Suanggi catalog 296m",
@@ -1436,7 +1438,7 @@
       ],
       "avg_depth_ft": 57,
       "avg_depth_m": 17.4,
-      "subtitle": "Banda Sea \u00b7 Dive #327",
+      "subtitle": "Banda Sea · Dive #327",
       "site_confidence": "likely",
       "site_distance_m": 2925.0,
       "site_match_notes": "nearest Batu Kapal 2925m (>1km)",
@@ -1485,7 +1487,7 @@
       ],
       "avg_depth_ft": 56,
       "avg_depth_m": 17.1,
-      "subtitle": "Banda Sea \u00b7 Dive #328",
+      "subtitle": "Banda Sea · Dive #328",
       "site_confidence": "high",
       "site_distance_m": 220.5,
       "site_match_notes": "nearest 221m; next 11963m",
@@ -1534,7 +1536,7 @@
       ],
       "avg_depth_ft": 42,
       "avg_depth_m": 12.8,
-      "subtitle": "Banda Sea \u00b7 Dive #329 \u00b7 with Mary",
+      "subtitle": "Banda Sea · Dive #329 · with Mary",
       "site_confidence": "high",
       "site_distance_m": 5992.7,
       "site_match_notes": "nearest Batu Kapal 5993m (>1km)",
@@ -1583,7 +1585,7 @@
       ],
       "avg_depth_ft": 47,
       "avg_depth_m": 14.3,
-      "subtitle": "Banda Sea \u00b7 Dive #330",
+      "subtitle": "Banda Sea · Dive #330",
       "site_confidence": "likely",
       "site_distance_m": 18578.5,
       "site_match_notes": "nearest Batu Kapal 18579m (>1km)",
@@ -1597,7 +1599,7 @@
     {
       "id": "dive-331",
       "dive_number": 331,
-      "title": "Banda Sea \u00b7 Dive #331",
+      "title": "Banda Sea · Dive #331",
       "site": null,
       "site_source": null,
       "region": "Banda Sea",
@@ -1646,7 +1648,7 @@
     {
       "id": "dive-332",
       "dive_number": 332,
-      "title": "Banda Sea \u00b7 Dive #332",
+      "title": "Banda Sea · Dive #332",
       "site": null,
       "site_source": null,
       "region": "Banda Sea",
@@ -1698,7 +1700,7 @@
       "title": "Too Many Fish (Koon)",
       "site": "Too Many Fish (Koon)",
       "site_source": "divehappy.com Damai trip report Too Many Fish Koon",
-      "region": "Banda Sea \u2192 Raja Ampat",
+      "region": "Banda Sea → Raja Ampat",
       "garmin_location_site": null,
       "trip_id": "amaya",
       "date": "2026-11-08",
@@ -1730,7 +1732,7 @@
       ],
       "avg_depth_ft": 46,
       "avg_depth_m": 14.0,
-      "subtitle": "Banda Sea \u2192 Raja Ampat \u00b7 Dive #333 \u00b7 with Mary",
+      "subtitle": "Banda Sea → Raja Ampat · Dive #333 · with Mary",
       "site_confidence": "high",
       "site_distance_m": 155119.8,
       "site_match_notes": "nearest Batu Kapal 155120m (>1km)",
@@ -1747,7 +1749,7 @@
       "title": "Too Many Fish (Koon)",
       "site": "Too Many Fish (Koon)",
       "site_source": "divehappy.com Damai trip report Too Many Fish Koon",
-      "region": "Banda Sea \u2192 Raja Ampat",
+      "region": "Banda Sea → Raja Ampat",
       "garmin_location_site": null,
       "trip_id": "amaya",
       "date": "2026-11-08",
@@ -1779,7 +1781,7 @@
       ],
       "avg_depth_ft": 57,
       "avg_depth_m": 17.4,
-      "subtitle": "Banda Sea \u2192 Raja Ampat \u00b7 Dive #334",
+      "subtitle": "Banda Sea → Raja Ampat · Dive #334",
       "site_confidence": "high",
       "site_distance_m": 155102.5,
       "site_match_notes": "nearest Batu Kapal 155103m (>1km)",
@@ -1793,7 +1795,7 @@
     {
       "id": "dive-335",
       "dive_number": 335,
-      "title": "Raja Ampat \u00b7 Dive #335",
+      "title": "Raja Ampat · Dive #335",
       "site": null,
       "site_source": null,
       "region": "Raja Ampat",
@@ -1877,7 +1879,7 @@
       ],
       "avg_depth_ft": 57,
       "avg_depth_m": 17.4,
-      "subtitle": "Raja Ampat \u00b7 Dive #336",
+      "subtitle": "Raja Ampat · Dive #336",
       "site_confidence": "high",
       "site_distance_m": 20742.6,
       "site_match_notes": "nearest Boo Windows 20743m (>1km)",
@@ -1926,7 +1928,7 @@
       ],
       "avg_depth_ft": 52,
       "avg_depth_m": 15.8,
-      "subtitle": "Raja Ampat \u00b7 Dive #337",
+      "subtitle": "Raja Ampat · Dive #337",
       "site_confidence": "high",
       "site_distance_m": 21432.8,
       "site_match_notes": "nearest Boo Windows 21433m (>1km)",
@@ -1943,7 +1945,7 @@
       "id": "day-2026-10-19",
       "date": "2026-10-19",
       "trip_id": "komodo",
-      "title": "Komodo \u00b7 2026-10-19 \u00b7 unmatched photos",
+      "title": "Komodo · 2026-10-19 · unmatched photos",
       "notes": "Corrected GoPro timestamps fall outside logged dive windows (often morning clock vs afternoon/evening Garmin starts on Oct 19). Kept as a day gallery, not forced onto a dive.",
       "photos": [
         {
@@ -1953,7 +1955,7 @@
           "captured_at": "2026-10-19T08:07:57",
           "file_id": "1g5He3BH_RIn-7elTpdzayf18vQTObvIu",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/GOPR0525.jpg",
@@ -1962,7 +1964,7 @@
           "captured_at": "2026-10-19T08:15:00",
           "file_id": "1zGH_vW-4X_yvz9snSszLt8qi8U8xKjk_",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/clown_fish.jpg",
@@ -1971,7 +1973,7 @@
           "captured_at": "2026-10-19T08:15:13",
           "file_id": "1w7-xcNEuaVLcjFWASWlwlrEJdsFfDm0X",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/GOPR0531.jpg",
@@ -1980,7 +1982,7 @@
           "captured_at": "2026-10-19T08:21:41",
           "file_id": "1bG5aUzPVVdyN_-1OPzVZIzdVEi-0UJ18",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/manta1.jpg",
@@ -1989,7 +1991,7 @@
           "captured_at": "2026-10-19T08:25:33",
           "file_id": "1cbTojSByqCoSMsDuiu8BImKkBwfG9jsY",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/manta2.jpg",
@@ -1998,7 +2000,7 @@
           "captured_at": "2026-10-19T08:25:41",
           "file_id": "17O6cygP4ECDyvupmMckVVC2tDnXFEOtJ",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/manta3.jpg",
@@ -2007,7 +2009,7 @@
           "captured_at": "2026-10-19T08:25:52",
           "file_id": "15JltobdU_r3J1l4YCLxN-4QDYP97f1V8",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/GOPR0542.jpg",
@@ -2016,7 +2018,7 @@
           "captured_at": "2026-10-19T08:25:55",
           "file_id": "1tx4zfw8DlGcvtj5umRTu0K82WEkxIXk8",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/GOPR0548.jpg",
@@ -2025,7 +2027,7 @@
           "captured_at": "2026-10-19T08:38:44",
           "file_id": "1n9EZ6XIAldo7bjUMK4oVM8QNM8WAhNg2",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/GOPR0550.jpg",
@@ -2034,7 +2036,7 @@
           "captured_at": "2026-10-19T08:38:55",
           "file_id": "1fwUiqt-9Wq-Fy2Ds56kTWO1sqqRUMmcZ",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/GOPR0557.jpg",
@@ -2043,7 +2045,7 @@
           "captured_at": "2026-10-19T11:06:44",
           "file_id": "1tq26RxCSUnVTewfZ3MQpFqGS2D2xc_F9",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/sea_star.jpg",
@@ -2052,7 +2054,7 @@
           "captured_at": "2026-10-19T11:15:27",
           "file_id": "1KhxGUOYx7HhJ8CcLFqUFSih223Y3DUzU",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/GOPR0562.jpg",
@@ -2061,7 +2063,7 @@
           "captured_at": "2026-10-19T11:16:42",
           "file_id": "1XC26FMctZ42Uf5WX7iKeAlBZDJnXRKSQ",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/blue_sea_star.jpg",
@@ -2070,7 +2072,7 @@
           "captured_at": "2026-10-19T11:30:21",
           "file_id": "1v6At66_4qpleIhFIA77fgEYChKwVZ9Z1",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         },
         {
           "src": "dive_log/photos/orange_coral.jpg",
@@ -2079,7 +2081,7 @@
           "captured_at": "2026-10-19T11:51:03",
           "file_id": "1wJ1H8YMa1oseSg33tzqOzzPg5ap3otOL",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         }
       ],
       "map_stop": 9,
@@ -2089,7 +2091,7 @@
       "id": "day-2026-10-21",
       "date": "2026-10-21",
       "trip_id": "komodo",
-      "title": "Komodo \u00b7 2026-10-21 \u00b7 unmatched photos",
+      "title": "Komodo · 2026-10-21 · unmatched photos",
       "notes": "Corrected GoPro timestamps fall outside logged dive windows (often morning clock vs afternoon/evening Garmin starts on Oct 19). Kept as a day gallery, not forced onto a dive.",
       "photos": [
         {
@@ -2099,27 +2101,121 @@
           "captured_at": "2026-10-21T08:41:29",
           "file_id": "1cIXdPSj8VRt-jkw5NiZVLydVVl31bFT9",
           "match_confidence": "unmatched",
-          "match_note": "Corrected EXIF not inside any Komodo dive window (\u00b110 min); day gallery"
+          "match_note": "Corrected EXIF not inside any Komodo dive window (±10 min); day gallery"
         }
       ],
       "map_stop": 9,
       "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-9"
+    },
+    {
+      "id": "day-2026-11-07",
+      "date": "2026-11-07",
+      "trip_id": "amaya",
+      "title": "Banda Sea / Koon · 2026-11-07 · unmatched photos",
+      "notes": "Wayne color-corrected stills from Banda (not Raja). EXIF timestamps fall outside logged Banda Sea and Koon dive windows (Karang Hatta / Banda Sea #330–#332 on Nov 7; Too Many Fish (Koon) #333–#334 on Nov 8). Kept as a day gallery, not forced onto a dive. Pinned to trip-map stop 14 (Amaya: Ambon → Banda Sea → Raja Ampat).",
+      "photos": [
+        {
+          "src": "dive_log/photos/Sea_Squirts.jpg",
+          "name": "Sea Squirts.JPG",
+          "caption": "Sea Squirts",
+          "captured_at": "2026-11-07T12:48:26",
+          "file_id": "10SH7ZnQpR7A218hVsGIG1iMVddCJE7VU",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/BumpHead_Parrot_Fish_Banda.jpg",
+          "name": "BumpHead Parrot Fish, Banda.JPG",
+          "caption": "BumpHead Parrot Fish, Banda",
+          "captured_at": "2026-11-07T12:49:01",
+          "file_id": "16RuqF7uI-zMPBkgmTlJNEenqK8r_W-45",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/e22896ad-b2a5-40ae-8ac9-2121e655183b.jpg",
+          "name": "e22896ad-b2a5-40ae-8ac9-2121e655183b.JPG",
+          "caption": "e22896ad-b2a5-40ae-8ac9-2121e655183b",
+          "captured_at": "2026-11-07T15:36:34",
+          "file_id": "1uhHDFn_xmHpCJ_cjAfkdU1y-cusZoLwU",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/scrambled_egg_nudibranch.jpg",
+          "name": "scrambled egg nudibranch.JPG",
+          "caption": "scrambled egg nudibranch",
+          "captured_at": "2026-11-07T15:52:18",
+          "file_id": "1E0RRlu3U94ozTRYW64JoxqATrA27YCdW",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/Eel_Cleaning.jpg",
+          "name": "Eel Cleaning.JPG",
+          "caption": "Eel Cleaning",
+          "captured_at": "2026-11-07T17:46:45",
+          "file_id": "17lV_I6-dv3bqL9GZhdbkLxsZKEIVqlvL",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/Aww.jpg",
+          "name": "Aww.JPG",
+          "caption": "Aww",
+          "captured_at": "2026-11-07T19:57:46",
+          "file_id": "1zKHt8TlNMR88D5K_4Kk7zEl21ktdHlg8",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        }
+      ],
+      "map_stop": 14,
+      "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
+    },
+    {
+      "id": "day-2026-11-08",
+      "date": "2026-11-08",
+      "trip_id": "amaya",
+      "title": "Banda Sea / Koon · 2026-11-08 · unmatched photos",
+      "notes": "Wayne color-corrected stills from Banda (not Raja). EXIF timestamps fall outside logged Banda Sea and Koon dive windows (Karang Hatta / Banda Sea #330–#332 on Nov 7; Too Many Fish (Koon) #333–#334 on Nov 8). Kept as a day gallery, not forced onto a dive. Pinned to trip-map stop 14 (Amaya: Ambon → Banda Sea → Raja Ampat).",
+      "photos": [
+        {
+          "src": "dive_log/photos/crocodile_fish.jpg",
+          "name": "crocodile fish.JPG",
+          "caption": "crocodile fish",
+          "captured_at": "2026-11-08T09:47:33",
+          "file_id": "1rhyIG-PEP_M-U7hoDHDVnoNzx7yVFGZz",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        },
+        {
+          "src": "dive_log/photos/Turtle_Banda.jpg",
+          "name": "Turtle Banda.JPG",
+          "caption": "Turtle Banda",
+          "captured_at": "2026-11-08T12:59:57",
+          "file_id": "1xCcFsM3V6dT-o47JJiDpfmdumdFmNBqR",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea or Koon dive window (start−2 min to end+10 min); day gallery. Banda, not Raja."
+        }
+      ],
+      "map_stop": 14,
+      "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
     }
   ],
   "photo_match": {
     "method": "corrected EXIF DateTimeOriginal inside [start - 2min, end + 10min]",
     "confidence_levels": {
-      "high": "strictly inside dive start\u2192end",
+      "high": "strictly inside dive start→end",
       "medium": "within 2 min before start or 10 min after end",
       "unmatched": "day gallery"
     },
     "matched": 16,
-    "unmatched": 16
+    "unmatched": 24
   },
   "fit_site_scan": {
     "scanned_zips": 37,
     "result": "No dive site name strings found in FIT session/dive_summary/dive_settings/sport/developer-like fields or raw string scan. Connect Dive Location / site_name in garmin_sites.csv are region-only (Klungkung, Manggarai Barat, Maluku Tengah, Ambon, Raja Ampat) or blank.",
-    "buddy_source": "garmin_sites.csv notes \u201cDive buddy: Mary\u201d",
+    "buddy_source": "garmin_sites.csv notes “Dive buddy: Mary”",
     "with_mary_dives": [
       302,
       303,
@@ -2137,7 +2233,7 @@
     "scanned_at_wit": "2026-11-09 21:49 Asia/Jayapura (WIT)"
   },
   "gps_site_matching": {
-    "method": "Nearest public dive-site coordinate (PADI, Diveboard, divers.world, DiveHappy published trip GPS, ScubaBoard Bali/Komodo GPS thread, indive, reefwander, Wikivoyage). high=<300m unambiguous; likely=300\u20131100m or two sites both <400m; else unknown (region label kept). Entry GPS preferred; exit if no entry.",
+    "method": "Nearest public dive-site coordinate (PADI, Diveboard, divers.world, DiveHappy published trip GPS, ScubaBoard Bali/Komodo GPS thread, indive, reefwander, Wikivoyage). high=<300m unambiguous; likely=300–1100m or two sites both <400m; else unknown (region label kept). Entry GPS preferred; exit if no entry.",
     "counts": {
       "high": 14,
       "likely": 14,
