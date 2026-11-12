@@ -1,7 +1,7 @@
 {
   "title": "Gino & Mary — Dive Log",
   "trip": "Indonesia 2026",
-  "generated_at_wit": "2026-11-11 19:08 Asia/Jayapura (WIT, UTC+9)",
+  "generated_at_wit": "2026-11-12 17:14 Asia/Jayapura (WIT, UTC+9)",
   "time_assumption": "All Garmin start times are device-local as shown in Connect (not converted from UTC). Photo EXIF times are GoPro local after the +3,908-day date correction; treated as the same local clock family when matching Komodo dives.",
   "garmin_csv": "garmin_dives.csv",
   "garmin_status": "loaded",
@@ -34,10 +34,11 @@
     "deepest_dive_number": 323,
     "deepest_date": "2026-11-05",
     "photos_matched": 16,
-    "photos_unmatched": 31,
+    "photos_unmatched": 36,
     "photos_total_komodo_stills": 32,
-    "photos_total_banda_stills": 15,
-    "photos_total_stills": 47
+    "photos_total_banda_stills": 16,
+    "photos_total_stills": 52,
+    "photos_total_raja_stills": 4
   },
   "trips": [
     {
@@ -2108,6 +2109,26 @@
       "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-9"
     },
     {
+      "id": "day-2026-11-05",
+      "date": "2026-11-05",
+      "trip_id": "amaya",
+      "title": "Banda Sea · 2026-11-05 · unmatched photos",
+      "notes": "Wayne color-corrected still from Banda (Barrel Spnge). EXIF Nov 5 12:51 WIT falls between Suanggi Selatan #324 (ended 11:23) and #325 (started 13:43), outside the start−2 min to end+10 min window. Kept as a day gallery, not forced onto a dive. Pinned to trip-map stop 14 (Amaya: Ambon → Banda Sea → Raja Ampat).",
+      "photos": [
+        {
+          "src": "dive_log/photos/Barrel_Spnge.jpg",
+          "name": "Barrel Spnge.JPG",
+          "caption": "Barrel Spnge",
+          "file_id": "1efiza3p0BJBBJgaDMZNxZm8ozuBgbS0f",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Banda Sea dive window (start−2 min to end+10 min); day gallery. Banda, not Raja.",
+          "captured_at": "2026-11-05T12:51:51"
+        }
+      ],
+      "map_stop": 14,
+      "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
+    },
+    {
       "id": "day-2026-11-07",
       "date": "2026-11-07",
       "trip_id": "amaya",
@@ -2263,6 +2284,75 @@
       ],
       "map_stop": 14,
       "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
+    },
+    {
+      "id": "day-2026-11-09",
+      "date": "2026-11-09",
+      "trip_id": "amaya",
+      "title": "Raja Ampat · 2026-11-09 · unmatched photos",
+      "notes": "Wayne color-corrected still from Raja (gingerbread man). EXIF Nov 9 13:03 WIT falls between Barracuda (Wayil) #336 (ended 11:35) and Wedding Cake #337 (started 13:49), outside the start−2 min to end+10 min window. Kept as a day gallery, not forced onto a dive. Pinned to trip-map stop 14.",
+      "photos": [
+        {
+          "src": "dive_log/photos/gingerbread_man.jpg",
+          "name": "gingerbread man.JPG",
+          "caption": "gingerbread man",
+          "file_id": "1JQCOlm7Q4VIiP0tIKlvJLazaNLS0ylDH",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any Raja Ampat dive window (start−2 min to end+10 min); day gallery.",
+          "captured_at": "2026-11-09T13:03:34"
+        }
+      ],
+      "map_stop": 14,
+      "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
+    },
+    {
+      "id": "day-2026-11-10",
+      "date": "2026-11-10",
+      "trip_id": "amaya",
+      "title": "Raja Ampat · 2026-11-10 · unmatched photos",
+      "notes": "Wayne color-corrected stills from Raja (2 nudi's at 07:16 WIT, blue coral at 07:38 WIT). The dive log currently ends at #337 on Nov 9, so there is no logged Nov 10 dive window to match. Kept as a day gallery, not forced onto a dive. Pinned to trip-map stop 14.",
+      "photos": [
+        {
+          "src": "dive_log/photos/2_nudis.jpg",
+          "name": "2 nudi's.JPG",
+          "caption": "2 nudi's",
+          "file_id": "1Ll9rPJ8IFhGedsx4XxOFJNP5BZPGc6i3",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF Nov 10 07:16 WIT; no Nov 10 dives are logged yet (log ends at #337 on Nov 9); day gallery.",
+          "captured_at": "2026-11-10T07:16:02"
+        },
+        {
+          "src": "dive_log/photos/blue_coral.jpg",
+          "name": "blue coral.JPG",
+          "caption": "blue coral",
+          "file_id": "1yhEiFpTKmk5ZohE3xjmX-jC9Pn0YDuAu",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF Nov 10 07:38 WIT; no Nov 10 dives are logged yet (log ends at #337 on Nov 9); day gallery.",
+          "captured_at": "2026-11-10T07:38:57"
+        }
+      ],
+      "map_stop": 14,
+      "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
+    },
+    {
+      "id": "day-raja-melissas-garden",
+      "date": null,
+      "trip_id": "amaya",
+      "title": "Raja Ampat · Melissa's Garden · unmatched photos",
+      "notes": "Wayne color-corrected still from Raja (Clown fish Melissa Garden). No EXIF timestamp, and no logged dive is named Melissa's Garden, so it could not be attached to a dive pin. Placed in this day gallery by filename. Pinned to trip-map stop 14.",
+      "photos": [
+        {
+          "src": "dive_log/photos/Clown_fish_Melissa_Garden.jpg",
+          "name": "Clown fish Melissa Garden.jpeg",
+          "caption": "Clown fish Melissa Garden",
+          "file_id": "17jYHQ9MhJ432lNiASSdErRwMtm3Lx-dZ",
+          "match_confidence": "unmatched",
+          "match_note": "No EXIF; placed by filename at Raja / Melissa's Garden. No logged dive match; day gallery.",
+          "captured_at": null
+        }
+      ],
+      "map_stop": 14,
+      "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
     }
   ],
   "photo_match": {
@@ -2273,7 +2363,7 @@
       "unmatched": "day gallery"
     },
     "matched": 16,
-    "unmatched": 31
+    "unmatched": 36
   },
   "fit_site_scan": {
     "scanned_zips": 37,
