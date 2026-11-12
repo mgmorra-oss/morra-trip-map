@@ -1,7 +1,7 @@
 {
   "title": "Gino & Mary — Dive Log",
   "trip": "Indonesia 2026",
-  "generated_at_wit": "2026-11-12 17:14 Asia/Jayapura (WIT, UTC+9)",
+  "generated_at_wit": "2026-11-12 17:29 Asia/Jayapura (WIT, UTC+9)",
   "time_assumption": "All Garmin start times are device-local as shown in Connect (not converted from UTC). Photo EXIF times are GoPro local after the +3,908-day date correction; treated as the same local clock family when matching Komodo dives.",
   "garmin_csv": "garmin_dives.csv",
   "garmin_status": "loaded",
@@ -26,15 +26,15 @@
   "map_url": "https://mgmorra-oss.github.io/morra-trip-map/",
   "map_local": "./index.html",
   "totals": {
-    "dive_count": 35,
-    "total_bottom_time_sec": 105970,
-    "total_bottom_time_display": "29h 26m",
+    "dive_count": 43,
+    "total_bottom_time_sec": 131776,
+    "total_bottom_time_display": "36h 36m",
     "deepest_ft": 119.0,
     "deepest_m": 36.3,
     "deepest_dive_number": 323,
     "deepest_date": "2026-11-05",
-    "photos_matched": 16,
-    "photos_unmatched": 36,
+    "photos_matched": 19,
+    "photos_unmatched": 33,
     "photos_total_komodo_stills": 32,
     "photos_total_banda_stills": 16,
     "photos_total_stills": 52,
@@ -78,7 +78,7 @@
       "map_stop": 14,
       "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14",
       "status": "in_progress",
-      "notes": "Liveaboard AA392150, still underway as of latest Garmin sync (through Dive #337 on Nov 9). Regions from Garmin location_site + itinerary corridor; no named sites confirmed."
+      "notes": "Liveaboard AA392150, still underway as of latest Garmin sync (through Dive #345 on Nov 12). Regions from Garmin location_site + itinerary corridor; named sites only where GPS matches a public catalog pin (high <300m, likely 300–1100m)."
     }
   ],
   "dives": [
@@ -1939,6 +1939,427 @@
         "source": "divehappy.com Wedding Cake + padi.com",
         "gps_used": "entry"
       }
+    },
+    {
+      "id": "dive-338",
+      "dive_number": 338,
+      "title": "Raja Ampat · Dive #338",
+      "site": null,
+      "site_source": null,
+      "region": "Raja Ampat",
+      "garmin_location_site": null,
+      "trip_id": "amaya",
+      "date": "2026-11-10",
+      "start_time_local": "6:58 AM",
+      "start_iso_local": "2026-11-10T06:58:00",
+      "end_iso_local": "2026-11-10T07:45:29",
+      "duration_sec": 2849,
+      "duration_display": "47:29",
+      "max_depth_ft": 83.0,
+      "max_depth_m": 25.3,
+      "water_temp_min_f": 84.2,
+      "water_temp_min_c": 29.0,
+      "water_temp_avg_f": 84.2,
+      "water_temp_avg_c": 29.0,
+      "gps": [
+        -2.001897,
+        130.639392
+      ],
+      "activity_id": "25025904243",
+      "activity_url": "https://connect.garmin.com/modern/activity/25025904243",
+      "activity_name": "Dive 338: Single-Gas Dive",
+      "photos": [
+        {
+          "src": "dive_log/photos/2_nudis.jpg",
+          "name": "2 nudi's.JPG",
+          "caption": "2 nudi's",
+          "file_id": "1Ll9rPJ8IFhGedsx4XxOFJNP5BZPGc6i3",
+          "match_confidence": "high",
+          "match_note": "EXIF inside dive window",
+          "captured_at": "2026-11-10T07:16:02"
+        },
+        {
+          "src": "dive_log/photos/blue_coral.jpg",
+          "name": "blue coral.JPG",
+          "caption": "blue coral",
+          "file_id": "1yhEiFpTKmk5ZohE3xjmX-jC9Pn0YDuAu",
+          "match_confidence": "high",
+          "match_note": "EXIF inside dive window",
+          "captured_at": "2026-11-10T07:38:57"
+        }
+      ],
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -2.003093,
+        130.639876
+      ],
+      "avg_depth_ft": 48,
+      "avg_depth_m": 14.6,
+      "subtitle": null,
+      "site_confidence": "unknown",
+      "site_distance_m": 21818.0,
+      "site_match_notes": "nearest Yelliet Kecil 21818m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 21818.0,
+        "source": "nearest catalog: Yelliet Kecil @ 21818m (divehappy.com Yelliet Kecil)",
+        "gps_used": "entry"
+      }
+    },
+    {
+      "id": "dive-339",
+      "dive_number": 339,
+      "title": "Raja Ampat · Dive #339",
+      "site": null,
+      "site_source": null,
+      "region": "Raja Ampat",
+      "garmin_location_site": "Raja Ampat",
+      "trip_id": "amaya",
+      "date": "2026-11-10",
+      "start_time_local": "10:38 AM",
+      "start_iso_local": "2026-11-10T10:38:00",
+      "end_iso_local": "2026-11-10T11:30:44",
+      "duration_sec": 3164,
+      "duration_display": "52:44",
+      "max_depth_ft": 82.0,
+      "max_depth_m": 25.0,
+      "water_temp_min_f": 84.2,
+      "water_temp_min_c": 29.0,
+      "water_temp_avg_f": 84.2,
+      "water_temp_avg_c": 29.0,
+      "gps": [
+        -2.00833,
+        130.632274
+      ],
+      "activity_id": "25026466846",
+      "activity_url": "https://connect.garmin.com/modern/activity/25026466846",
+      "activity_name": "Dive 339: Raja Ampat Single-Gas Dive",
+      "photos": [],
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -2.012205,
+        130.632181
+      ],
+      "avg_depth_ft": 50,
+      "avg_depth_m": 15.2,
+      "subtitle": null,
+      "site_confidence": "unknown",
+      "site_distance_m": 21004.4,
+      "site_match_notes": "nearest Yelliet Kecil 21004m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 21004.4,
+        "source": "nearest catalog: Yelliet Kecil @ 21004m (divehappy.com Yelliet Kecil)",
+        "gps_used": "entry"
+      }
+    },
+    {
+      "id": "dive-340",
+      "dive_number": 340,
+      "title": "Melissa's Garden",
+      "site": "Melissa's Garden",
+      "site_source": "padi.com/dive-site/indonesia/melissas-garden",
+      "region": "Raja Ampat",
+      "garmin_location_site": null,
+      "trip_id": "amaya",
+      "date": "2026-11-11",
+      "start_time_local": "6:55 AM",
+      "start_iso_local": "2026-11-11T06:55:00",
+      "end_iso_local": "2026-11-11T07:56:20",
+      "duration_sec": 3680,
+      "duration_display": "61:20",
+      "max_depth_ft": 66.0,
+      "max_depth_m": 20.1,
+      "water_temp_min_f": 84.2,
+      "water_temp_min_c": 29.0,
+      "water_temp_avg_f": 84.2,
+      "water_temp_avg_c": 29.0,
+      "gps": [
+        -0.587742,
+        130.314465
+      ],
+      "activity_id": "25037340991",
+      "activity_url": "https://connect.garmin.com/modern/activity/25037340991",
+      "activity_name": "Dive 340: Single-Gas Dive",
+      "photos": [
+        {
+          "src": "dive_log/photos/Clown_fish_Melissa_Garden.jpg",
+          "name": "Clown fish Melissa Garden.jpeg",
+          "caption": "Clown fish Melissa Garden",
+          "file_id": "17jYHQ9MhJ432lNiASSdErRwMtm3Lx-dZ",
+          "match_confidence": "name",
+          "match_note": "No EXIF; placed by filename on the logged Melissa's Garden dive (#340)",
+          "captured_at": null
+        }
+      ],
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -0.589921,
+        130.314677
+      ],
+      "avg_depth_ft": 35,
+      "avg_depth_m": 10.7,
+      "subtitle": "Raja Ampat · Dive #340",
+      "site_confidence": "high",
+      "site_distance_m": 248.6,
+      "site_match_notes": "nearest 249m; next Keruo Channel 2056m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 248.6,
+        "source": "padi.com/dive-site/indonesia/melissas-garden",
+        "gps_used": "entry"
+      }
+    },
+    {
+      "id": "dive-341",
+      "dive_number": 341,
+      "title": "Keruo Channel",
+      "site": "Keruo Channel",
+      "site_source": "divemap.be Keruo Channel (Raja Ampat); Bird's Head Seascape S 00 35.331 E 130 17.759",
+      "region": "Raja Ampat",
+      "garmin_location_site": null,
+      "trip_id": "amaya",
+      "date": "2026-11-11",
+      "start_time_local": "10:50 AM",
+      "start_iso_local": "2026-11-11T10:50:00",
+      "end_iso_local": "2026-11-11T11:36:25",
+      "duration_sec": 2785,
+      "duration_display": "46:25",
+      "max_depth_ft": 82.0,
+      "max_depth_m": 25.0,
+      "water_temp_min_f": 82.4,
+      "water_temp_min_c": 28.0,
+      "water_temp_avg_f": 84.2,
+      "water_temp_avg_c": 29.0,
+      "gps": [
+        -0.588211,
+        130.295752
+      ],
+      "activity_id": "25038328860",
+      "activity_url": "https://connect.garmin.com/modern/activity/25038328860",
+      "activity_name": "Dive 341: Single-Gas Dive",
+      "photos": [],
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -0.595714,
+        130.302954
+      ],
+      "avg_depth_ft": 44,
+      "avg_depth_m": 13.4,
+      "subtitle": "Raja Ampat · Dive #341",
+      "site_confidence": "high",
+      "site_distance_m": 71.1,
+      "site_match_notes": "nearest 71m; next Melissa's Garden 2168m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 71.1,
+        "source": "divemap.be Keruo Channel (Raja Ampat); Bird's Head Seascape S 00 35.331 E 130 17.759",
+        "gps_used": "entry"
+      }
+    },
+    {
+      "id": "dive-342",
+      "dive_number": 342,
+      "title": "Raja Ampat · Dive #342",
+      "site": null,
+      "site_source": null,
+      "region": "Raja Ampat",
+      "garmin_location_site": null,
+      "trip_id": "amaya",
+      "date": "2026-11-11",
+      "start_time_local": "1:51 PM",
+      "start_iso_local": "2026-11-11T13:51:00",
+      "end_iso_local": "2026-11-11T14:46:15",
+      "duration_sec": 3315,
+      "duration_display": "55:15",
+      "max_depth_ft": 71.0,
+      "max_depth_m": 21.6,
+      "water_temp_min_f": 84.2,
+      "water_temp_min_c": 29.0,
+      "water_temp_avg_f": 86.0,
+      "water_temp_avg_c": 30.0,
+      "gps": [
+        -0.565851,
+        130.285453
+      ],
+      "activity_id": "25039067613",
+      "activity_url": "https://connect.garmin.com/modern/activity/25039067613",
+      "activity_name": "Dive 342: Single-Gas Dive",
+      "photos": [],
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -0.565777,
+        130.284843
+      ],
+      "avg_depth_ft": 44,
+      "avg_depth_m": 13.4,
+      "subtitle": null,
+      "site_confidence": "unknown",
+      "site_distance_m": 2808.4,
+      "site_match_notes": "nearest Keruo Channel 2808m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 2808.4,
+        "source": "nearest catalog: Keruo Channel @ 2808m (divemap.be Keruo Channel (Raja Ampat); Bird's Head Seascape S 00 35.331 E 130 17.759)",
+        "gps_used": "entry"
+      }
+    },
+    {
+      "id": "dive-343",
+      "dive_number": 343,
+      "title": "Mayhem",
+      "site": "Mayhem",
+      "site_source": "divemap.be Mayhem (Raja Ampat)",
+      "region": "Raja Ampat",
+      "garmin_location_site": "Raja Ampat",
+      "trip_id": "amaya",
+      "date": "2026-11-12",
+      "start_time_local": "6:53 AM",
+      "start_iso_local": "2026-11-12T06:53:00",
+      "end_iso_local": "2026-11-12T07:50:35",
+      "duration_sec": 3455,
+      "duration_display": "57:35",
+      "max_depth_ft": 71.0,
+      "max_depth_m": 21.6,
+      "water_temp_min_f": 84.2,
+      "water_temp_min_c": 29.0,
+      "water_temp_avg_f": 84.2,
+      "water_temp_avg_c": 29.0,
+      "gps": [
+        -0.511282,
+        130.445009
+      ],
+      "activity_id": "25049173471",
+      "activity_url": "https://connect.garmin.com/modern/activity/25049173471",
+      "activity_name": "Dive 343: Raja Ampat Single-Gas Dive",
+      "photos": [],
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -0.51114,
+        130.445059
+      ],
+      "avg_depth_ft": 43,
+      "avg_depth_m": 13.1,
+      "subtitle": "Raja Ampat · Dive #343",
+      "site_confidence": "high",
+      "site_distance_m": 177.2,
+      "site_match_notes": "nearest 177m; next Melissa's Garden 16874m",
+      "site_match": {
+        "confidence": "high",
+        "distance_m": 177.2,
+        "source": "divemap.be Mayhem (Raja Ampat)",
+        "gps_used": "entry"
+      }
+    },
+    {
+      "id": "dive-344",
+      "dive_number": 344,
+      "title": "Raja Ampat · Dive #344",
+      "site": null,
+      "site_source": null,
+      "region": "Raja Ampat",
+      "garmin_location_site": "Raja Ampat",
+      "trip_id": "amaya",
+      "date": "2026-11-12",
+      "start_time_local": "10:40 AM",
+      "start_iso_local": "2026-11-12T10:40:00",
+      "end_iso_local": "2026-11-12T11:30:44",
+      "duration_sec": 3044,
+      "duration_display": "50:44",
+      "max_depth_ft": 80.0,
+      "max_depth_m": 24.4,
+      "water_temp_min_f": 84.2,
+      "water_temp_min_c": 29.0,
+      "water_temp_avg_f": 84.2,
+      "water_temp_avg_c": 29.0,
+      "gps": [
+        -0.510995,
+        130.458045
+      ],
+      "activity_id": "25050165130",
+      "activity_url": "https://connect.garmin.com/modern/activity/25050165130",
+      "activity_name": "Dive 344: Raja Ampat Single-Gas Dive",
+      "photos": [],
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -0.508367,
+        130.455221
+      ],
+      "avg_depth_ft": 45,
+      "avg_depth_m": 13.7,
+      "subtitle": null,
+      "site_confidence": "unknown",
+      "site_distance_m": 1222.1,
+      "site_match_notes": "nearest Mayhem 1222m (>1km)",
+      "site_match": {
+        "confidence": "unknown",
+        "distance_m": 1222.1,
+        "source": "nearest catalog: Mayhem @ 1222m (indive.io/sites/raja-ampat/mayhem)",
+        "gps_used": "entry"
+      }
+    },
+    {
+      "id": "dive-345",
+      "dive_number": 345,
+      "title": "Mayhem (likely)",
+      "site": "Mayhem",
+      "site_source": "indive.io/sites/raja-ampat/mayhem",
+      "region": "Raja Ampat",
+      "garmin_location_site": "Raja Ampat",
+      "trip_id": "amaya",
+      "date": "2026-11-12",
+      "start_time_local": "1:52 PM",
+      "start_iso_local": "2026-11-12T13:52:00",
+      "end_iso_local": "2026-11-12T14:50:34",
+      "duration_sec": 3514,
+      "duration_display": "58:34",
+      "max_depth_ft": 75.0,
+      "max_depth_m": 22.9,
+      "water_temp_min_f": 84.2,
+      "water_temp_min_c": 29.0,
+      "water_temp_avg_f": 84.2,
+      "water_temp_avg_c": 29.0,
+      "gps": [
+        -0.510127,
+        130.455775
+      ],
+      "activity_id": "25050869598",
+      "activity_url": "https://connect.garmin.com/modern/activity/25050869598",
+      "activity_name": "Dive 345: Raja Ampat Single-Gas Dive",
+      "photos": [],
+      "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
+      "buddy": null,
+      "with_mary": false,
+      "gps_exit": [
+        -0.512726,
+        130.456902
+      ],
+      "avg_depth_ft": 44,
+      "avg_depth_m": 13.4,
+      "subtitle": "Raja Ampat · Dive #345",
+      "site_confidence": "likely",
+      "site_distance_m": 986.8,
+      "site_match_notes": "nearest 987m (300m–1km band); next Melissa's Garden 17972m",
+      "site_match": {
+        "confidence": "likely",
+        "distance_m": 986.8,
+        "source": "indive.io/sites/raja-ampat/mayhem",
+        "gps_used": "entry"
+      }
     }
   ],
   "day_galleries": [
@@ -2304,55 +2725,6 @@
       ],
       "map_stop": 14,
       "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
-    },
-    {
-      "id": "day-2026-11-10",
-      "date": "2026-11-10",
-      "trip_id": "amaya",
-      "title": "Raja Ampat · 2026-11-10 · unmatched photos",
-      "notes": "Wayne color-corrected stills from Raja (2 nudi's at 07:16 WIT, blue coral at 07:38 WIT). The dive log currently ends at #337 on Nov 9, so there is no logged Nov 10 dive window to match. Kept as a day gallery, not forced onto a dive. Pinned to trip-map stop 14.",
-      "photos": [
-        {
-          "src": "dive_log/photos/2_nudis.jpg",
-          "name": "2 nudi's.JPG",
-          "caption": "2 nudi's",
-          "file_id": "1Ll9rPJ8IFhGedsx4XxOFJNP5BZPGc6i3",
-          "match_confidence": "unmatched",
-          "match_note": "Color-corrected EXIF Nov 10 07:16 WIT; no Nov 10 dives are logged yet (log ends at #337 on Nov 9); day gallery.",
-          "captured_at": "2026-11-10T07:16:02"
-        },
-        {
-          "src": "dive_log/photos/blue_coral.jpg",
-          "name": "blue coral.JPG",
-          "caption": "blue coral",
-          "file_id": "1yhEiFpTKmk5ZohE3xjmX-jC9Pn0YDuAu",
-          "match_confidence": "unmatched",
-          "match_note": "Color-corrected EXIF Nov 10 07:38 WIT; no Nov 10 dives are logged yet (log ends at #337 on Nov 9); day gallery.",
-          "captured_at": "2026-11-10T07:38:57"
-        }
-      ],
-      "map_stop": 14,
-      "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
-    },
-    {
-      "id": "day-raja-melissas-garden",
-      "date": null,
-      "trip_id": "amaya",
-      "title": "Raja Ampat · Melissa's Garden · unmatched photos",
-      "notes": "Wayne color-corrected still from Raja (Clown fish Melissa Garden). No EXIF timestamp, and no logged dive is named Melissa's Garden, so it could not be attached to a dive pin. Placed in this day gallery by filename. Pinned to trip-map stop 14.",
-      "photos": [
-        {
-          "src": "dive_log/photos/Clown_fish_Melissa_Garden.jpg",
-          "name": "Clown fish Melissa Garden.jpeg",
-          "caption": "Clown fish Melissa Garden",
-          "file_id": "17jYHQ9MhJ432lNiASSdErRwMtm3Lx-dZ",
-          "match_confidence": "unmatched",
-          "match_note": "No EXIF; placed by filename at Raja / Melissa's Garden. No logged dive match; day gallery.",
-          "captured_at": null
-        }
-      ],
-      "map_stop": 14,
-      "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
     }
   ],
   "photo_match": {
@@ -2362,12 +2734,12 @@
       "medium": "within 2 min before start or 10 min after end",
       "unmatched": "day gallery"
     },
-    "matched": 16,
-    "unmatched": 36
+    "matched": 19,
+    "unmatched": 33
   },
   "fit_site_scan": {
-    "scanned_zips": 37,
-    "result": "No dive site name strings found in FIT session/dive_summary/dive_settings/sport/developer-like fields or raw string scan. Connect Dive Location / site_name in garmin_sites.csv are region-only (Klungkung, Manggarai Barat, Maluku Tengah, Ambon, Raja Ampat) or blank.",
+    "scanned_zips": 45,
+    "result": "No dive site name strings found in FIT session/dive_summary/dive_settings/sport/developer-like fields or raw string scan (original 37 zips scanned 2026-11-09; 8 new zips 338–345 string-scanned 2026-11-12, still no site names). Connect Dive Location / site_name in garmin_sites.csv are region-only (Klungkung, Manggarai Barat, Maluku Tengah, Ambon, Raja Ampat) or blank.",
     "buddy_source": "garmin_sites.csv notes “Dive buddy: Mary”",
     "with_mary_dives": [
       302,
@@ -2383,17 +2755,17 @@
       329,
       333
     ],
-    "scanned_at_wit": "2026-11-09 21:49 Asia/Jayapura (WIT)"
+    "scanned_at_wit": "2026-11-12 17:29 Asia/Jayapura (WIT) (new zips); earlier full parse 2026-11-09 21:49"
   },
   "gps_site_matching": {
     "method": "Nearest public dive-site coordinate (PADI, Diveboard, divers.world, DiveHappy published trip GPS, ScubaBoard Bali/Komodo GPS thread, indive, reefwander, Wikivoyage). high=<300m unambiguous; likely=300–1100m or two sites both <400m; else unknown (region label kept). Entry GPS preferred; exit if no entry.",
     "counts": {
-      "high": 14,
-      "likely": 14,
-      "unknown": 7,
+      "high": 17,
+      "likely": 15,
+      "unknown": 11,
       "no_gps": 0
     },
-    "generated_at_wit": "2026-11-09 22:16 Asia/Jayapura (WIT)",
+    "generated_at_wit": "2026-11-12 17:29 Asia/Jayapura (WIT)",
     "review_csv": "gps_site_matches.csv",
     "catalog_file": "site_catalog.json"
   }
