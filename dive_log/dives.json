@@ -1,7 +1,7 @@
 {
   "title": "Gino & Mary — Dive Log",
   "trip": "Indonesia 2026",
-  "generated_at_wit": "2026-11-12 17:29 Asia/Jayapura (WIT, UTC+9)",
+  "generated_at_wit": "2026-11-14 09:20 Asia/Jayapura (WIT, UTC+9)",
   "time_assumption": "All Garmin start times are device-local as shown in Connect (not converted from UTC). Photo EXIF times are GoPro local after the +3,908-day date correction; treated as the same local clock family when matching Komodo dives.",
   "garmin_csv": "garmin_dives.csv",
   "garmin_status": "loaded",
@@ -34,11 +34,11 @@
     "deepest_dive_number": 323,
     "deepest_date": "2026-11-05",
     "photos_matched": 19,
-    "photos_unmatched": 33,
+    "photos_unmatched": 35,
     "photos_total_komodo_stills": 32,
     "photos_total_banda_stills": 16,
-    "photos_total_stills": 52,
-    "photos_total_raja_stills": 4
+    "photos_total_stills": 54,
+    "photos_total_raja_stills": 6
   },
   "trips": [
     {
@@ -2725,6 +2725,35 @@
       ],
       "map_stop": 14,
       "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
+    },
+    {
+      "id": "day-2026-11-13",
+      "date": "2026-11-13",
+      "trip_id": "amaya",
+      "title": "Raja Ampat · 2026-11-13 · unmatched photos",
+      "notes": "Wayne color-corrected stills from Raja (Turtle at 08:44 WIT and Diver at 08:56 WIT), taken on the last Amaya morning. The dive log currently ends at #345 Mayhem (likely) on Nov 12, so no Garmin dive covers Nov 13. Kept as a day gallery, not forced onto a dive and no site name invented. Pinned to trip-map stop 14 (Amaya).",
+      "photos": [
+        {
+          "caption": "Turtle",
+          "captured_at": "2026-11-13T08:44:03",
+          "file_id": "1633RNu3y1NNtFVZR8nX55jIAhpgqg5eU",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any logged dive window (start−2 min to end+10 min); the dive log currently ends at #345 on Nov 12, and no Garmin dive covers Nov 13. Day gallery.",
+          "name": "0c630ab3-699b-4b54-9459-9282b6af3ecb.JPG",
+          "src": "dive_log/photos/0c630ab3-699b-4b54-9459-9282b6af3ecb.jpg"
+        },
+        {
+          "caption": "Diver",
+          "captured_at": "2026-11-13T08:56:46",
+          "file_id": "1DaxiQ0DCLDU7RVQZXoqQoGh3Jsb1NfhQ",
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any logged dive window (start−2 min to end+10 min); the dive log currently ends at #345 on Nov 12, and no Garmin dive covers Nov 13. Day gallery.",
+          "name": "1207032b-a07a-465f-b448-32aad5d466fc.JPG",
+          "src": "dive_log/photos/1207032b-a07a-465f-b448-32aad5d466fc.jpg"
+        }
+      ],
+      "map_stop": 14,
+      "map_link": "https://mgmorra-oss.github.io/morra-trip-map/#stop-14"
     }
   ],
   "photo_match": {
@@ -2735,7 +2764,7 @@
       "unmatched": "day gallery"
     },
     "matched": 19,
-    "unmatched": 33
+    "unmatched": 35
   },
   "fit_site_scan": {
     "scanned_zips": 45,
