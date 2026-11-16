@@ -208,24 +208,34 @@ const STOPS = [
    note:'Phinisi liveaboard. Boards in Ambon Wed Nov 4; disembark Sorong Nov 14 noon.'},
   {n:15, place:'Sorong, West Papua', prop:'Swiss-Belhotel Sorong', ll:[-0.8790,131.2600],
    start:'2026-11-14', end:'2026-11-18', web:'https://www.swiss-belhotel.com/',
-   note:'4 nights in Sorong after the Amaya Explorer. Lodging after check-out is not booked yet.'},
-  {n:17, place:'Sidemen, Bali', prop:'Abian Ayu Villa', ll:[-8.4870,115.4380],
+   note:'4 nights in Sorong after the Amaya Explorer. Then Lion JT 945 to Bali (15:25 WIT).'},
+  {n:16, place:'Sanur, Bali', prop:'Umah Bagus', ll:[-8.6723,115.2572],
+   start:'2026-11-18', end:'2026-11-19',
+   note:'One night near Sanur after Lion JT 945 lands 20:15 WITA. Early start Thu Nov 19 for The Tanis 09:00 boat to Gili Trawangan.'},
+  {n:17, place:'Gili Trawangan', prop:'Manta Dive Gili Trawangan Resort', ll:[-8.3534,116.0434],
+   start:'2026-11-19', end:'2026-11-23', web:'https://www.mantadive.com/',
+   note:'Beachfront dive resort, 4 nights with breakfast. Arrive on The Tanis ~12:30 WITA Nov 19; check-in from 14:00, out by 10:30 WITA Nov 23.'},
+  {n:18, place:'Amed, Bali', prop:'Aqua Dive Resort (planned)', ll:[-8.3359,115.6501],
+   start:'2026-11-23', end:'2026-12-01', web:'https://www.aquadive-bali.com/',
+   pending:true,
+   note:'Planned 8 nights in Amed after Gili T, then to Sidemen on Dec 1. Boat and lodging are not booked yet.'},
+  {n:19, place:'Sidemen, Bali', prop:'Abian Ayu Villa', ll:[-8.4870,115.4380],
    start:'2026-12-01', end:'2026-12-06',
    note:'Private pool villa with breakfast in the rice-terrace hills of east Bali. Check-in from 14:00 WITA, out by 12:00 Dec 6.'},
-  {n:18, place:'Canggu, Bali', prop:'The Calmtree Bungalow', ll:[-8.6540,115.1330],
+  {n:20, place:'Canggu, Bali', prop:'The Calmtree Bungalow', ll:[-8.6540,115.1330],
    start:'2026-12-06', end:'2026-12-10',
    note:'Deluxe Double Bungalow with breakfast near Batu Bolong beach. Check-out Dec 10 for the Garuda flight to Yogyakarta.'},
-  {n:19, place:'Yogyakarta, Java', prop:'Duta Garden Hotel', ll:[-7.8180,110.3690],
+  {n:21, place:'Yogyakarta, Java', prop:'Duta Garden Hotel', ll:[-7.8180,110.3690],
    start:'2026-12-10', end:'2026-12-17',
    note:'Garden hotel in Prawirotaman, 7 nights with breakfast. Check-in from 14:00 WIB Thu Dec 10, out Thu Dec 17.'},
-  {n:20, place:'Jakarta', prop:'CGK Terminal 3 (evening transit)', ll:[-6.1256,106.6559],
+  {n:22, place:'Jakarta', prop:'CGK Terminal 3 (evening transit)', ll:[-6.1256,106.6559],
    start:'2026-12-17', end:'2026-12-18',
    note:'Argo Semeru into Gambir, then to CGK for EgyptAir MS978 Business → Cairo, 00:50 Dec 18. No Jakarta hotel.'},
-  {n:21, place:'Cairo, Egypt', prop:'Le Méridien Cairo Airport', ll:[30.1219,31.4056],
+  {n:23, place:'Cairo, Egypt', prop:'Le Méridien Cairo Airport', ll:[30.1219,31.4056],
    start:'2026-12-18', end:'2026-12-19', note:'~22 h layover at the airport hotel (Terminal 3). Arrive 07:10, leave 05:15 next day.'},
   {id:'jfk', kind:'waypoint', place:'New York (JFK)', prop:'Back in the USA', ll:[40.6413,-73.7781],
    start:'2026-12-19', end:'2026-12-19', dateText:'Arrive Sat Dec 19, 10:15', note:'EgyptAir MS985 Business Cairo → JFK T1. Pick up an Avis rental SUV at JFK for the drive out to Long Island.'},
-  {n:22, place:'Long Island, NY', prop:'Lodging not on file', ll:[40.7900,-73.1350],
+  {n:24, place:'Long Island, NY', prop:'Lodging not on file', ll:[40.7900,-73.1350],
    start:'2026-12-19', end:'2026-12-21', note:'Two nights on Long Island with the rental car; drop it at Long Island MacArthur (ISP) the morning of Mon Dec 21.'},
   {id:'tpa', kind:'end', place:'Tampa, FL', prop:'Home stretch', ll:[27.9755,-82.5332],
    start:'2026-12-21', end:'2026-12-21', dateText:'Arrive Mon Dec 21, 12:35', note:'Southwest WN2242 Islip → Tampa, then home to Sarasota.'}
@@ -235,7 +245,7 @@ const STOPS = [
 const P = {
   SANUR_H:[-8.6795,115.2645], JUNG:[-8.6705,115.4455],
   LBJ:[-8.4866,119.8887], UPG:[-5.0616,119.5540], AMQ:[-3.7103,128.0891],
-  TULEHU:[-3.5880,128.3260], HARIA:[-3.5850,128.6450], SORONG_H:[-0.8780,131.2480], DPS:[-8.7482,115.1672], YIA:[-7.9006,110.0573], GMR:[-6.1764,106.8306], CGK:[-6.1256,106.6559]
+  TULEHU:[-3.5880,128.3260], HARIA:[-3.5850,128.6450], SORONG_H:[-0.8780,131.2480], SOQ:[-0.8931,131.2870], DPS:[-8.7482,115.1672], GILI_H:[-8.3510,116.0440], AMED_H:[-8.3350,115.6520], YIA:[-7.9006,110.0573], GMR:[-6.1764,106.8306], CGK:[-6.1256,106.6559]
 };
 const MARIA_LOOP=[[-8.4935,119.8800],[-8.4985,119.7600],[-8.4600,119.6600],[-8.4200,119.5600],[-8.4050,119.5000],
   [-8.4300,119.4650],[-8.4700,119.5750],[-8.5350,119.5980],[-8.5400,119.6400],[-8.5600,119.7100],[-8.5200,119.8200],[-8.4950,119.8790]];
@@ -263,16 +273,20 @@ const LEGS = [
   {from:12, to:13, mode:'ground', date:'2026-10-30', label:'Short move Pacific Hotel → BIZ Hotel, Ambon city · Fri Oct 30'},
   {from:13, to:14, mode:'ground', date:'2026-11-04', label:'Transfer to Amaya Explorer (Ambon Bay) · Wed Nov 4'},
   {from:14, to:15, mode:'live', date:'2026-11-04', path:AMAYA, label:'Amaya Explorer · Ambon → Banda → Misool → Raja Ampat → Sorong (rough)', liveRoute:true},
-  /* Waisai (stop 16) cancelled Nov 11. Lodging after Sorong (likely Gili T, then Amed) and the hop onward to Sidemen (Dec 1) omitted — not yet booked. */
-  {from:17, to:18, mode:'ground', date:'2026-12-06', label:'Drive Sidemen → Canggu · Sun Dec 6'},
-  {from:18, to:19, mode:'flight', date:'2026-12-10', label:'Garuda GA253 Bali → Yogyakarta · Thu Dec 10, 12:05 WITA → 12:55 WIB',
+  {from:15, to:16, mode:'flight', date:'2026-11-18', label:'Lion Air JT 945 Sorong → Bali (via Makassar) · Wed Nov 18, 15:25 WIT → 20:15 WITA',
+   path:[P.SOQ,P.UPG,P.DPS], pre:[{mode:'ground',path:[[-0.8790,131.2600],P.SOQ]}], then:[{mode:'ground',path:[P.DPS,[-8.6723,115.2572]]}]},
+  {from:16, to:17, mode:'boat', date:'2026-11-19', via:[P.SANUR_H, P.GILI_H], label:'The Tanis Fast Cruise Sanur → Gili Trawangan · Thu Nov 19, 09:00 → 12:30 WITA'},
+  {from:17, to:18, mode:'boat', date:'2026-11-23', via:[P.GILI_H, P.AMED_H], label:'Gili T → Amed fast boat · Mon Nov 23 (not yet booked)', tentative:true},
+  {from:18, to:19, mode:'ground', date:'2026-12-01', label:'Drive Amed → Sidemen · Tue Dec 1', tentative:true},
+  {from:19, to:20, mode:'ground', date:'2026-12-06', label:'Drive Sidemen → Canggu · Sun Dec 6'},
+  {from:20, to:21, mode:'flight', date:'2026-12-10', label:'Garuda GA253 Bali → Yogyakarta · Thu Dec 10, 12:05 WITA → 12:55 WIB',
    path:[P.DPS,P.YIA], pre:[{mode:'ground',path:[[-8.6540,115.1330],P.DPS]}], then:[{mode:'ground',path:[P.YIA,[-7.8180,110.3690]]}]},
-  {from:19, to:20, mode:'ground', date:'2026-12-17', label:'Argo Semeru Yogyakarta → Gambir · Thu Dec 17, 12:57 → 19:39 WIB',
+  {from:21, to:22, mode:'ground', date:'2026-12-17', label:'Argo Semeru Yogyakarta → Gambir · Thu Dec 17, 12:57 → 19:39 WIB',
    path:[[-7.8180,110.3690], P.GMR, P.CGK]},
-  {from:20, to:21, mode:'flight', date:'2026-12-18', label:'EgyptAir MS978 Jakarta → Cairo (Business) · 00:50 Dec 18'},
-  {from:21, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'},
-  {from:'jfk', to:22, mode:'ground', date:'2026-12-19', label:'Avis rental car JFK → Long Island · Sat Dec 19'},
-  {from:22, to:'tpa', mode:'flight', date:'2026-12-21', label:'Southwest WN2242 Islip → Tampa · Mon Dec 21, 09:25 → 12:35 ET'}
+  {from:22, to:23, mode:'flight', date:'2026-12-18', label:'EgyptAir MS978 Jakarta → Cairo (Business) · 00:50 Dec 18'},
+  {from:23, to:'jfk', mode:'flight', date:'2026-12-19', label:'EgyptAir MS985 Cairo → New York JFK (Business)'},
+  {from:'jfk', to:24, mode:'ground', date:'2026-12-19', label:'Avis rental car JFK → Long Island · Sat Dec 19'},
+  {from:24, to:'tpa', mode:'flight', date:'2026-12-21', label:'Southwest WN2242 Islip → Tampa · Mon Dec 21, 09:25 → 12:35 ET'}
 ];
 
 /* =========================================================
@@ -397,7 +411,7 @@ const hereM=L.marker(hereStop.ll,{interactive:false,zIndexOffset:2000,icon:L.div
 /* ---------- panel list ---------- */
 const list=document.getElementById('list');
 STOPS.forEach((s,i)=>{
-  if(s.n===17){const g=document.createElement('div');g.className='gap';g.innerHTML='⋯ <b>~Dec 1:</b> Raja Ampat → Bali return not yet booked (not drawn)';list.appendChild(g);}
+  if(s.n===18){const g=document.createElement('div');g.className='gap';g.innerHTML='⋯ <b>Nov 23:</b> Gili T → Amed boat and Amed lodging not yet booked';list.appendChild(g);}
   const st=s.status, el=document.createElement('div');
   el.className=`item s-${cls(s)}`; el.dataset.k=key(s);
   const dt = s.dateText || `${fmt(s.start)} → ${fmt(s.end)} · ${nights(s)}n`;
@@ -445,7 +459,7 @@ document.getElementById('pday').textContent=`Day ${Math.round((tn-t0)/864e5)+1} 
 /* ---------- views ---------- */
 const padTL = ()=> innerWidth>760?[400,30]:[20,20];
 const padBR = ()=> innerWidth>760?[30,30]:[20,170];
-const indoB = L.latLngBounds(STOPS.filter(s=>s.n>=3&&s.n<=20).map(s=>s.ll)).extend([-10.3,105]);
+const indoB = L.latLngBounds(STOPS.filter(s=>s.n>=3&&s.n<=22).map(s=>s.ll)).extend([-10.3,105]);
 const allB  = L.latLngBounds(STOPS.map(s=>s.ll));
 const fitIndo=()=>map.flyToBounds(indoB,{paddingTopLeft:padTL(),paddingBottomRight:padBR(),duration:1.4});
 document.getElementById('bIndo').onclick=fitIndo;
