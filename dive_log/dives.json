@@ -1,7 +1,7 @@
 {
   "title": "Gino & Mary — Dive Log",
   "trip": "Indonesia 2026",
-  "generated_at_wit": "2026-11-14 09:20 Asia/Jayapura (WIT, UTC+9)",
+  "generated_at_wit": "2026-11-17 08:39 Asia/Jayapura (WIT, UTC+9)",
   "time_assumption": "All Garmin start times are device-local as shown in Connect (not converted from UTC). Photo EXIF times are GoPro local after the +3,908-day date correction; treated as the same local clock family when matching Komodo dives.",
   "garmin_csv": "garmin_dives.csv",
   "garmin_status": "loaded",
@@ -33,12 +33,12 @@
     "deepest_m": 36.3,
     "deepest_dive_number": 323,
     "deepest_date": "2026-11-05",
-    "photos_matched": 19,
+    "photos_matched": 25,
     "photos_unmatched": 35,
     "photos_total_komodo_stills": 32,
     "photos_total_banda_stills": 16,
-    "photos_total_stills": 54,
-    "photos_total_raja_stills": 6
+    "photos_total_stills": 60,
+    "photos_total_raja_stills": 12
   },
   "trips": [
     {
@@ -2087,6 +2087,15 @@
       "activity_name": "Dive 340: Single-Gas Dive",
       "photos": [
         {
+          "src": "dive_log/photos/wobbegong.jpg",
+          "name": "wobelgong.JPG",
+          "caption": "Wobbegong",
+          "file_id": "1KL8I83f7roGWWiI-CSDApP8ya65PVqHY",
+          "match_confidence": "high",
+          "match_note": "EXIF inside dive window",
+          "captured_at": "2026-11-11T07:09:40"
+        },
+        {
           "src": "dive_log/photos/Clown_fish_Melissa_Garden.jpg",
           "name": "Clown fish Melissa Garden.jpeg",
           "caption": "Clown fish Melissa Garden",
@@ -2144,7 +2153,17 @@
       "activity_id": "25038328860",
       "activity_url": "https://connect.garmin.com/modern/activity/25038328860",
       "activity_name": "Dive 341: Single-Gas Dive",
-      "photos": [],
+      "photos": [
+        {
+          "src": "dive_log/photos/nemos.jpg",
+          "name": "nemo's.JPG",
+          "caption": "Nemo's",
+          "file_id": "1lFVKhWvC1gXxoZu9qjXRLjcnKyNxPEQE",
+          "match_confidence": "high",
+          "match_note": "EXIF inside dive window",
+          "captured_at": "2026-11-11T11:21:06"
+        }
+      ],
       "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
       "buddy": null,
       "with_mary": false,
@@ -2193,7 +2212,44 @@
       "activity_id": "25039067613",
       "activity_url": "https://connect.garmin.com/modern/activity/25039067613",
       "activity_name": "Dive 342: Single-Gas Dive",
-      "photos": [],
+      "photos": [
+        {
+          "src": "dive_log/photos/starfish.jpg",
+          "name": "starfish.JPG",
+          "caption": "Starfish",
+          "file_id": "1blW_-RuxdA6h9SNvFy-FNOnLRicvSgDE",
+          "match_confidence": "high",
+          "match_note": "EXIF inside dive window",
+          "captured_at": "2026-11-11T14:03:34"
+        },
+        {
+          "src": "dive_log/photos/school_of_little_fish.jpg",
+          "name": "school of little fish.JPG",
+          "caption": "School of little fish",
+          "file_id": "16YNoHXdmnpnq1_IJgvu8GbINeivGY2CH",
+          "match_confidence": "high",
+          "match_note": "EXIF inside dive window",
+          "captured_at": "2026-11-11T14:11:40"
+        },
+        {
+          "src": "dive_log/photos/soft_coral_raja.jpg",
+          "name": "soft coral raja.JPG",
+          "caption": "Soft coral",
+          "file_id": "1rY3faRfqzB4PTytzfIb0mK1Mjn6jpNx0",
+          "match_confidence": "high",
+          "match_note": "EXIF inside dive window",
+          "captured_at": "2026-11-11T14:15:02"
+        },
+        {
+          "src": "dive_log/photos/fish.jpg",
+          "name": "fish.JPG",
+          "caption": "Fish",
+          "file_id": "192NhRD5GjESkemgNKW9xkmLA7ALQKDRE",
+          "match_confidence": "high",
+          "match_note": "EXIF inside dive window",
+          "captured_at": "2026-11-11T14:16:49"
+        }
+      ],
       "time_assumption": "Garmin Connect start_time is device-local (not UTC). For Indonesia legs treated as the local zone of the dive (WITA UTC+8 for Lembongan/Komodo; WIT UTC+9 for Ambon/Banda/Raja Ampat).",
       "buddy": null,
       "with_mary": false,
@@ -2763,7 +2819,7 @@
       "medium": "within 2 min before start or 10 min after end",
       "unmatched": "day gallery"
     },
-    "matched": 19,
+    "matched": 25,
     "unmatched": 35
   },
   "fit_site_scan": {
