@@ -136,6 +136,12 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;color:inherit}
 #lb.on{display:flex}
 #lb img{max-width:min(96vw,1100px);max-height:88vh;border-radius:12px}
 #lb button{position:absolute;top:14px;right:14px;border:0;background:rgba(255,255,255,.1);color:#fff;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
+#lb{touch-action:pan-y;user-select:none;-webkit-user-select:none}
+#lb button.pv,#lb button.nx{top:50%;right:auto;margin-top:-24px;width:48px;height:48px;font-size:26px;line-height:48px;border:2px solid rgba(255,255,255,.8);background:rgba(0,0,0,.55);-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#lb button.pv{left:10px}#lb button.nx{right:10px;left:auto}
+#lb .cap{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);text-align:center;color:#fff;font:600 14px Inter,sans-serif;text-shadow:0 1px 4px #000;padding:0 64px}
+#lb .cap span{opacity:.7;font-weight:500}
+#lb.single button.pv,#lb.single button.nx{display:none}
 
 @media (max-width:760px){
   #panel{top:auto;left:0;right:0;bottom:0;width:auto;max-height:52vh;border-radius:20px 20px 0 0;transition:max-height .35s ease;padding-bottom:env(safe-area-inset-bottom)}
@@ -187,7 +193,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;color:inherit}
   <div class="foot">Pin = Garmin dive GPS (not the named-site database). Co-located dives are fanned a few metres so each pin is tappable. Depths ft (m), temps °F (°C).</div>
 </aside>
 
-<div id="lb" role="dialog" aria-modal="true"><button type="button" aria-label="Close">×</button><img alt=""></div>
+<div id="lb" role="dialog" aria-modal="true"><button type="button" class="cl" aria-label="Close">×</button><button type="button" class="pv" aria-label="Previous photo">‹</button><button type="button" class="nx" aria-label="Next photo">›</button><img alt=""><div class="cap"></div></div>
 
 <script>
 const DATA_URL = './dive_log/dives.json';
@@ -302,15 +308,22 @@ function camBadge(cls){
   return `<span class="${cls}" title="Has photos" aria-label="Has photos">${camSVG()}</span>`;
 }
 
+// photos run oldest to newest by capture time (EXIF DateTimeOriginal -> captured_at); undated last, original order kept for ties
+function byCapture(arr){
+  return (arr||[]).map((p,i)=>({p,i})).sort((a,b)=>{
+    const x=a.p.captured_at||'\uffff', y=b.p.captured_at||'\uffff';
+    return x<y?-1:x>y?1:a.i-b.i;
+  }).map(o=>o.p);
+}
 function cardHTML(d, gpsMeta){
   const conf = d.site_confidence || (d.site_match && d.site_match.confidence) || 'unknown';
   const badge = conf==='likely' ? '<span class="badge b-likely">likely</span>'
     : conf==='high' ? '<span class="badge b-high">high</span>'
     : '<span class="badge b-unknown">region</span>';
-  const photos = (d.photos||[]).map(p=>{
+  const photos = byCapture(d.photos).map(p=>{
     const src=photoSrc(p.src);
     const cap=esc(p.caption||p.name||'');
-    return `<a href="${esc(src)}" data-full="${esc(src)}" title="${cap}"><img src="${esc(src)}" alt="${cap}" loading="lazy"></a>`;
+    return `<a href="${esc(src)}" data-full="${esc(src)}" data-cap="${cap}" title="${cap}"><img src="${esc(src)}" alt="${cap}" loading="lazy"></a>`;
   }).join('');
   const rows = [];
   rows.push(`<div class="row">📅 ${esc(fmtDate(d.date))} · Dive #${d.dive_number}</div>`);
@@ -418,9 +431,10 @@ function renderPanel(data){
   const nPhoto=gals.reduce((a,g)=>a+(g.photos||[]).length,0);
   document.getElementById('galCount').textContent = `(${nPhoto})`;
   body.innerHTML = gals.map(g=>{
-    const thumbs=(g.photos||[]).map(p=>{
+    const thumbs=byCapture(g.photos).map(p=>{
       const src=photoSrc(p.src);
-      return `<a href="${esc(src)}" data-full="${esc(src)}" title="${esc(p.caption||p.name||'')}"><img src="${esc(src)}" alt="" loading="lazy"></a>`;
+      const cap=esc(p.caption||p.name||'');
+      return `<a href="${esc(src)}" data-full="${esc(src)}" data-cap="${cap}" title="${cap}"><img src="${esc(src)}" alt="${cap}" loading="lazy"></a>`;
     }).join('');
     return `<div class="gal-day"><h4>${esc(g.title||g.date)}</h4><div class="thumbs">${thumbs}</div></div>`;
   }).join('');
@@ -468,18 +482,45 @@ function placeMarkers(data){
   }
 }
 
-// lightbox
-const lb=document.getElementById('lb');
-lb.querySelector('button').onclick=()=>lb.classList.remove('on');
-lb.onclick=e=>{ if(e.target===lb) lb.classList.remove('on'); };
+// lightbox: prev/next loop inside the clicked set only (one dive's photos, or one day gallery)
+const lb=document.getElementById('lb'), lbImg=lb.querySelector('img'), lbCap=lb.querySelector('.cap');
+let lbSet=[], lbIdx=0;
+function lbShow(i){
+  if(!lbSet.length) return;
+  lbIdx=(i+lbSet.length)%lbSet.length;
+  const it=lbSet[lbIdx];
+  lbImg.src=it.src; lbImg.alt=it.cap;
+  lbCap.innerHTML=(it.cap?'<b>'+esc(it.cap)+'</b> ':'')+(lbSet.length>1?'<span>· '+(lbIdx+1)+' / '+lbSet.length+'</span>':'');
+  lb.classList.toggle('single', lbSet.length<2);
+  [lbSet[(lbIdx+1)%lbSet.length], lbSet[(lbIdx-1+lbSet.length)%lbSet.length]].forEach(q=>{ if(q){ const x=new Image(); x.src=q.src; } });
+  lb.classList.add('on');
+}
+function lbClose(){ lb.classList.remove('on'); lbSet=[]; }
+const lbStep=d=>lbShow(lbIdx+d);
+lb.querySelector('.cl').onclick=e=>{ e.stopPropagation(); lbClose(); };
+lb.querySelector('.pv').onclick=e=>{ e.stopPropagation(); lbStep(-1); };
+lb.querySelector('.nx').onclick=e=>{ e.stopPropagation(); lbStep(1); };
+lbImg.onclick=e=>e.stopPropagation();
+lb.onclick=e=>{ if(e.target===lb) lbClose(); };
 document.addEventListener('click',e=>{
   const a=e.target.closest('a[data-full]');
   if (!a) return;
   e.preventDefault();
-  lb.querySelector('img').src=a.dataset.full;
-  lb.classList.add('on');
+  const box=a.closest('.photos, .thumbs') || a.parentElement;
+  const links=[...box.querySelectorAll('a[data-full]')];
+  lbSet=links.map(x=>({src:x.dataset.full, cap:x.dataset.cap||x.title||''}));
+  lbShow(Math.max(0, links.indexOf(a)));
 });
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('on'); });
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('on')) return;
+  if(e.key==='Escape') lbClose();
+  else if(e.key==='ArrowRight') lbStep(1);
+  else if(e.key==='ArrowLeft') lbStep(-1);
+});
+let lbTx=null, lbTy=0;
+lb.addEventListener('touchstart',e=>{ lbTx=e.touches[0].clientX; lbTy=e.touches[0].clientY; },{passive:true});
+lb.addEventListener('touchend',e=>{ if(lbTx===null) return; const dx=e.changedTouches[0].clientX-lbTx, dy=e.changedTouches[0].clientY-lbTy; lbTx=null;
+  if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)) lbStep(dx<0?1:-1); },{passive:true});
 
 document.getElementById('toggle').onclick=()=>document.getElementById('panel').classList.toggle('collapsed');
 document.querySelectorAll('.btns .btn[data-filter]').forEach(b=>{
