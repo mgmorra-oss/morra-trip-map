@@ -33,12 +33,12 @@
     "deepest_m": 36.3,
     "deepest_dive_number": 323,
     "deepest_date": "2026-11-05",
-    "photos_matched": 25,
-    "photos_unmatched": 35,
+    "photos_matched": 33,
+    "photos_unmatched": 51,
     "photos_total_komodo_stills": 32,
     "photos_total_banda_stills": 16,
-    "photos_total_stills": 60,
-    "photos_total_raja_stills": 12
+    "photos_total_stills": 84,
+    "photos_total_raja_stills": 26
   },
   "trips": [
     {
@@ -2862,7 +2862,7 @@
       "date": "2026-11-13",
       "trip_id": "amaya",
       "title": "Raja Ampat · 2026-11-13 · unmatched photos",
-      "notes": "Wayne color-corrected stills from Raja taken on the last Amaya morning (Nov 13, 07:08–08:56 WIT). The dive log currently ends at #345 Mayhem (likely) on Nov 12, so no Garmin dive covers Nov 13. Kept as a day gallery, not forced onto a dive and no site name invented. Pinned to trip-map stop 14 (Amaya).",
+      "notes": "Wayne color-corrected stills from Raja taken on the last Amaya day (Nov 13, 07:08–12:48 WIT). The dive log currently ends at #345 Mayhem (likely) on Nov 12, so no Garmin dive covers Nov 13. Kept as a day gallery, not forced onto a dive and no site name invented. Pinned to trip-map stop 14 (Amaya).",
       "photos": [
         {
           "src": "dive_log/photos/SweetLips.jpg",
@@ -2926,6 +2926,15 @@
           "match_note": "Color-corrected EXIF not inside any logged dive window (start−2 min to end+10 min); the dive log currently ends at #345 on Nov 12, and no Garmin dive covers Nov 13. Day gallery.",
           "name": "1207032b-a07a-465f-b448-32aad5d466fc.JPG",
           "src": "dive_log/photos/1207032b-a07a-465f-b448-32aad5d466fc.jpg"
+        },
+        {
+          "src": "dive_log/photos/ee530830-b1d2-440e-8147-b3a710f4deef.jpg",
+          "name": "ee530830-b1d2-440e-8147-b3a710f4deef.JPG",
+          "caption": "Diver",
+          "file_id": null,
+          "match_confidence": "unmatched",
+          "match_note": "Color-corrected EXIF not inside any logged dive window (start−2 min to end+10 min); the dive log currently ends at #345 on Nov 12, and no Garmin dive covers Nov 13. Day gallery. Color-corrected master is local only (not uploaded to Drive); original lives in indonesian trip pics.",
+          "captured_at": "2026-11-13T12:48:59"
         }
       ],
       "map_stop": 14,
@@ -3050,7 +3059,7 @@
       "unmatched": "day gallery"
     },
     "matched": 33,
-    "unmatched": 50
+    "unmatched": 51
   },
   "fit_site_scan": {
     "scanned_zips": 45,

@@ -275,7 +275,8 @@ const LEGS = [
   {from:15, to:16, mode:'flight', date:'2026-11-18', label:'Lion Air JT 945 Sorong → Bali (via Makassar) · Wed Nov 18, 15:25 WIT → 20:15 WITA',
    path:[P.SOQ,P.UPG,P.DPS], pre:[{mode:'ground',path:[[-0.8790,131.2600],P.SOQ]}], then:[{mode:'ground',path:[P.DPS,[-8.6723,115.2572]]}]},
   {from:16, to:17, mode:'boat', date:'2026-11-19', via:[P.SANUR_H, P.GILI_H], label:'The Tanis Fast Cruise Sanur → Gili Trawangan · Thu Nov 19, 09:00 → 12:30 WITA'},
-  {from:17, to:18, mode:'boat', date:'2026-11-25', via:[P.GILI_H, P.AMED_H], label:'Gili T → Amed · Wed Nov 25 · ferry to Padang Bai, then private car (travel not ticketed, unverified)', tentative:true},
+  // Booked Nov 23: paper tickets bought at the Gili T kiosk (operator likely Eka Jaya 10:45 WITA, check-in ~09:45–10:15) plus the private car Padang Bai to Kura Kura. Source: trip file Nov 25 rows. Do not mark tentative.
+  {from:17, to:18, mode:'boat', date:'2026-11-25', via:[P.GILI_H, P.AMED_H], label:'Gili T → Padang Bai fast boat · Wed Nov 25, 10:45 WITA (check-in ~09:45–10:15; likely Eka Jaya), then private car to Kura Kura Divers Lodge'},
   {from:18, to:19, mode:'ground', date:'2026-12-01', label:'Drive Amed → Sidemen · Tue Dec 1', tentative:true},
   {from:19, to:20, mode:'ground', date:'2026-12-06', label:'Drive Sidemen → Canggu · Sun Dec 6'},
   {from:20, to:21, mode:'flight', date:'2026-12-10', label:'Garuda GA253 Bali → Yogyakarta · Thu Dec 10, 12:05 WITA → 12:55 WIB',
@@ -410,7 +411,6 @@ const hereM=L.marker(hereStop.ll,{interactive:false,zIndexOffset:2000,icon:L.div
 /* ---------- panel list ---------- */
 const list=document.getElementById('list');
 STOPS.forEach((s,i)=>{
-  if(s.n===18){const g=document.createElement('div');g.className='gap';g.innerHTML='⋯ <b>Nov 25:</b> Gili T → Amed travel (ferry + car) not ticketed';list.appendChild(g);}
   const st=s.status, el=document.createElement('div');
   el.className=`item s-${cls(s)}`; el.dataset.k=key(s);
   const dt = s.dateText || `${fmt(s.start)} → ${fmt(s.end)} · ${nights(s)}n`;
